@@ -38,5 +38,5 @@ if GAMESTATE:GetCurrentCourse() then
 		end
 	end
 end
-t[#t+1]= LoadActor(THEME:GetPathG("", "pause_menu"))
+--t[#t+1]= LoadActor(THEME:GetPathG("", "pause_menu"))
 return t

@@ -15,7 +15,7 @@ x[#x+1] = Def.ActorFrame {
 		InitCommand=function(self)
 			self:rotationx(-90/4*3.5):zoomto(SCREEN_WIDTH*2,SCREEN_HEIGHT*2):customtexturerect(0,0,SCREEN_WIDTH*4/256,SCREEN_HEIGHT*4/256)
 		end,
-		OnCommand=cmd(texcoordvelocity,0,0.25;diffuse,color("#ffd400");fadetop,1);
+		OnCommand=function(self) self:texcoordvelocity(0,0.25):diffuse(color("#ffd400")):fadetop(1) end;
 	}
 }
 

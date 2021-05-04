@@ -2,44 +2,44 @@ local t = Def.ActorFrame {};
 
 -- Fade
 t[#t+1] = Def.ActorFrame {
-	InitCommand=cmd(Center);	
+	InitCommand=function(self) self:Center() end;
 	Def.Quad {
-		InitCommand=cmd(scaletoclipped,SCREEN_WIDTH,SCREEN_HEIGHT);
-		OnCommand=cmd(diffuse,Color.Black;diffusealpha,0;linear,0.5;diffusealpha,0.75);
-		OffCommand=cmd(linear,0.25;diffusealpha,0);
+		InitCommand=function(self) self:scaletoclipped(SCREEN_WIDTH,SCREEN_HEIGHT) end;
+		OnCommand=function(self) self:diffuse(Color.Black):diffusealpha(0):linear(0.5):diffusealpha(0.75) end;
+		OffCommand=function(self) self:linear(0.25):diffusealpha(0) end;
 	};
 };
 -- Emblem
 t[#t+1] = Def.ActorFrame {
-	InitCommand=cmd(Center);
-	OnCommand=cmd(diffusealpha,0.5);
+	InitCommand=function(self) self:Center() end;
+	OnCommand=function(self) self:diffusealpha(0.5) end;
 	LoadActor("_warning bg") .. {
-		OnCommand=cmd(diffuse,Color.Yellow);
+		OnCommand=function(self) self:diffuse(Color.Yellow) end;
 	};
 	Def.ActorFrame {
 		LoadActor("_exclamation") .. {
-			OnCommand=cmd(diffuse,Color.Yellow);
+			OnCommand=function(self) self:diffuse(Color.Yellow) end;
 		};
 	};
 };
 
 -- Text
 t[#t+1] = Def.ActorFrame {
-	InitCommand=cmd(Center;y,SCREEN_CENTER_Y);
-	OnCommand=cmd(addy,-96);
+	InitCommand=function(self) self:Center():y(SCREEN_CENTER_Y) end;
+	OnCommand=function(self) self:addy(-96) end;
 	-- Underline
 	Def.Quad {
-		InitCommand=cmd(y,24;zoomto,256,2);
-		OnCommand=cmd(diffuse,color("#ffd400");shadowcolor,BoostColor(color("#ffd40077"),0.25);linear,0.25;zoomtowidth,256;fadeleft,0.25;faderight,0.25);
+		InitCommand=function(self) self:y(24):zoomto(256,2) end;
+		OnCommand=function(self) self:diffuse(color("#ffd400")):shadowcolor(BoostColor(color("#ffd40077"),0.25)):linear(0.25):zoomtowidth(256):fadeleft(0.25):faderight(0.25) end;
 	};
 	LoadFont("Common Large") .. {
 		Text=Screen.String("Caution");
-		OnCommand=cmd(skewx,-0.125;diffuse,color("#ffd400");strokecolor,ColorDarkTone(color("#ffd400")));
+		OnCommand=function(self) self:skewx(-0.125):diffuse(color("#ffd400")):strokecolor(ColorDarkTone(color("#ffd400"))) end;
 	};
 	LoadFont("Common Normal") .. {
 		Text=Screen.String("CautionText");
-		InitCommand=cmd(y,128);
-		OnCommand=cmd(strokecolor,color("0,0,0,0.5");shadowlength,1;wrapwidthpixels,SCREEN_WIDTH-80);
+		InitCommand=function(self) self:y(128) end;
+		OnCommand=function(self) self:strokecolor(color("0,0,0,0.5")):shadowlength(1):wrapwidthpixels(SCREEN_WIDTH-80) end;
 	};
 };
 --

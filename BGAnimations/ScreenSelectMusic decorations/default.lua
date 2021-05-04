@@ -7,7 +7,7 @@ local function StepsDisplay(pn)
 	end
 
 	local t = Def.StepsDisplay {
-		InitCommand=cmd(Load,"StepsDisplay",GAMESTATE:GetPlayerState(pn););
+		InitCommand=function(self) self:Load("StepsDisplay",GAMESTATE:GetPlayerState(pn)) end;
 	};
 
 	if pn == PLAYER_1 then
@@ -24,8 +24,8 @@ t[#t+1] = StandardDecorationFromFileOptional("AlternateHelpDisplay","AlternateHe
 
 local function PercentScore(pn)
 	local t = LoadFont("Common normal")..{
-		InitCommand=cmd(zoom,0.625;shadowlength,1);
-		BeginCommand=cmd(playcommand,"Set");
+		InitCommand=function(self) self:zoom(0.625):shadowlength(1) end;
+		BeginCommand=function(self) self:playcommand("Set") end;
 		SetCommand=function(self)
 			local SongOrCourse, StepsOrTrail;
 			if GAMESTATE:IsCourseMode() then
@@ -72,16 +72,16 @@ local function PercentScore(pn)
 			end;
 			self:settext(text);
 		end;
-		CurrentSongChangedMessageCommand=cmd(playcommand,"Set");
-		CurrentCourseChangedMessageCommand=cmd(playcommand,"Set");
+		CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end;
+		CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end;
 	};
 
 	if pn == PLAYER_1 then
-		t.CurrentStepsP1ChangedMessageCommand=cmd(playcommand,"Set");
-		t.CurrentTrailP1ChangedMessageCommand=cmd(playcommand,"Set");
+		t.CurrentStepsP1ChangedMessageCommand=function(self) self:playcommand("Set") end;
+		t.CurrentTrailP1ChangedMessageCommand=function(self) self:playcommand("Set") end;
 	else
-		t.CurrentStepsP2ChangedMessageCommand=cmd(playcommand,"Set");
-		t.CurrentTrailP2ChangedMessageCommand=cmd(playcommand,"Set");
+		t.CurrentStepsP2ChangedMessageCommand=function(self) self:playcommand("Set") end;
+		t.CurrentTrailP2ChangedMessageCommand=function(self) self:playcommand("Set") end;
 	end
 
 	return t;
@@ -120,8 +120,7 @@ t[#t+1] = StandardDecorationFromFileOptional("DifficultyList","DifficultyList");
 t[#t+1] = StandardDecorationFromFileOptional("BPMDisplay","BPMDisplay");
 t[#t+1] = StandardDecorationFromFileOptional("BPMLabel","BPMLabel");
 t[#t+1] = StandardDecorationFromFileOptional("SegmentDisplay","SegmentDisplay");
---[[ t[#t+1] = StandardDecorationFromFileOptional("NegativeDisplay","NegativeDisplay") .. {
-}; --]]
+--t[#t+1] = StandardDecorationFromFileOptional("NegativeDisplay","NegativeDisplay") .. {};
 
 t[#t+1] = StandardDecorationFromFileOptional("SongTime","SongTime") .. {
 	SetCommand=function(self)
@@ -159,10 +158,10 @@ t[#t+1] = StandardDecorationFromFileOptional("SongTime","SongTime") .. {
 		end;
 		self:settext( SecondsToMSS(length) );
 	end;
-	CurrentSongChangedMessageCommand=cmd(playcommand,"Set");
-	CurrentCourseChangedMessageCommand=cmd(playcommand,"Set");
-	CurrentTrailP1ChangedMessageCommand=cmd(playcommand,"Set");
-	CurrentTrailP2ChangedMessageCommand=cmd(playcommand,"Set");
+	CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end;
+	CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end;
+	CurrentTrailP1ChangedMessageCommand=function(self) self:playcommand("Set") end;
+	CurrentTrailP2ChangedMessageCommand=function(self) self:playcommand("Set") end;
 }
 
 if not GAMESTATE:IsCourseMode() then
@@ -185,20 +184,20 @@ if not GAMESTATE:IsCourseMode() then
 		self:zoom(scale(height,32,480,1,32/480))
 	end;
 	t[#t+1] = Def.ActorFrame {
-		OnCommand=cmd(draworder,105;x,SCREEN_CENTER_X-256;y,SCREEN_CENTER_Y-84;zoom,0;sleep,0.5;decelerate,0.25;zoom,1;SetUpdateFunction,CDTitleUpdate);
-		OffCommand=cmd(bouncebegin,0.15;zoomx,0);
+		OnCommand=function(self) self:draworder(105):x(SCREEN_CENTER_X-256):y(SCREEN_CENTER_Y-84):zoom(0):sleep(0.5):decelerate(0.25):zoom(1):SetUpdateFunction(CDTitleUpdate) end;
+		OffCommand=function(self) self:bouncebegin(0.15):zoomx(0) end;
 		Def.Sprite {
 			Name="CDTitle";
-			OnCommand=cmd(draworder,106;shadowlength,1;zoom,0.75;diffusealpha,1;zoom,0;bounceend,0.35;zoom,0.75;spin;effectperiod,2;effectmagnitude,0,180,0);
-			BackCullCommand=cmd(diffuse,color("0.5,0.5,0.5,1"));
+			OnCommand=function(self) self:draworder(106):shadowlength(1):zoom(0.75):diffusealpha(1):zoom(0):bounceend(0.35):zoom(0.75):spin():effectperiod(2):effectmagnitude(0,180,0) end;
+			BackCullCommand=function(self) self:diffuse(color("0.5,0.5,0.5,1")) end;
 		};	
 	};
 	t[#t+1] = StandardDecorationFromFileOptional("NewSong","NewSong") .. {
 	-- 	ShowCommand=THEME:GetMetric(Var "LoadingScreen", "NewSongShowCommand" );
 	-- 	HideCommand=THEME:GetMetric(Var "LoadingScreen", "NewSongHideCommand" );
-		InitCommand=cmd(playcommand,"Set");
-		BeginCommand=cmd(playcommand,"Set");
-		CurrentSongChangedMessageCommand=cmd(playcommand,"Set");
+		InitCommand=function(self) self:playcommand("Set") end;
+		BeginCommand=function(self) self:playcommand("Set") end;
+		CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end;
 		SetCommand=function(self)
 	-- 		local pTargetProfile;
 			local sSong;
@@ -214,31 +213,23 @@ if not GAMESTATE:IsCourseMode() then
 			end
 		end;
 	};
-	t[#t+1] = StandardDecorationFromFileOptional("StageDisplay","StageDisplay");
+	--t[#t+1] = StandardDecorationFromFileOptional("StageDisplay","StageDisplay");
 end;
 
 if GAMESTATE:IsCourseMode() then
 	t[#t+1] = Def.ActorFrame {
 		Def.Quad {
-			InitCommand=cmd(
-				x,THEME:GetMetric(Var "LoadingScreen","CourseContentsListX");
-				y,THEME:GetMetric(Var "LoadingScreen","CourseContentsListY") - 118;
-				zoomto,256+32,192;
-			);
-			OnCommand=cmd(diffuse,Color.Green;MaskSource);
+			InitCommand=function(self) self:x(THEME:GetMetric(Var "LoadingScreen","CourseContentsListX")):y(THEME:GetMetric(Var "LoadingScreen","CourseContentsListY") - 118):zoomto(256+32,192) end;
+			OnCommand=function(self) self:diffuse(Color.Green):MaskSource() end;
 		};
 		Def.Quad {
-			InitCommand=cmd(
-				x,THEME:GetMetric(Var "LoadingScreen","CourseContentsListX");
-				y,THEME:GetMetric(Var "LoadingScreen","CourseContentsListY") + 186;
-				zoomto,256+32,64;
-			);
-			OnCommand=cmd(diffuse,Color.Blue;MaskSource);
+			InitCommand=function(self) self:x(THEME:GetMetric(Var "LoadingScreen","CourseContentsListX")):y(THEME:GetMetric(Var "LoadingScreen","CourseContentsListY") + 186):zoomto(256+32,64) end;
+			OnCommand=function(self) self:diffuse(Color.Blue):MaskSource() end;
 		};
 	};
 	t[#t+1] = StandardDecorationFromFileOptional("CourseContentsList","CourseContentsList");
 	t[#t+1] = StandardDecorationFromFileOptional("NumCourseSongs","NumCourseSongs")..{
-		InitCommand=cmd(horizalign,right);
+		InitCommand=function(self) self:horizalign(right) end;
 		SetCommand=function(self)
 			local curSelection= nil;
 			local sAppend = "";
@@ -255,15 +246,23 @@ if GAMESTATE:IsCourseMode() then
 				self:visible(false);
 			end;
 		end;
-		CurrentCourseChangedMessageCommand=cmd(playcommand,"Set");
+		CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end;
 	};
 end
 
 t[#t+1] = StandardDecorationFromFileOptional("DifficultyDisplay","DifficultyDisplay");
-
+t[#t+1] = StandardDecorationFromFileOptional("SortOrderFrame","SortOrderFrame") .. {
+	BeginCommand=function(self) self:playcommand("Set") end;
+	SortOrderChangedMessageCommand=function(self) self:playcommand("Set") end;
+	SetCommand=function(self)
+		local s = SortOrderToLocalizedString( GAMESTATE:GetSortOrder() );
+		self:settext( s );
+		self:playcommand("Sort");
+	end;
+};
 t[#t+1] = StandardDecorationFromFileOptional("SortOrder","SortOrderText") .. {
-	BeginCommand=cmd(playcommand,"Set");
-	SortOrderChangedMessageCommand=cmd(playcommand,"Set");
+	BeginCommand=function(self) self:playcommand("Set") end;
+	SortOrderChangedMessageCommand=function(self) self:playcommand("Set") end;
 	SetCommand=function(self)
 		local s = GAMESTATE:GetSortOrder()
 		if s ~= nil then
@@ -289,10 +288,10 @@ t[#t+1] = StandardDecorationFromFileOptional("SongOptions","SongOptionsText") ..
 -- Sounds
 t[#t+1] = Def.ActorFrame {
 	LoadActor(THEME:GetPathS("_switch","up")) .. {
-		SelectMenuOpenedMessageCommand=cmd(stop;play);
+		SelectMenuOpenedMessageCommand=function(self) self:stop():play() end;
 	};
 	LoadActor(THEME:GetPathS("_switch","down")) .. {
-		SelectMenuClosedMessageCommand=cmd(stop;play);
+		SelectMenuClosedMessageCommand=function(self) self:stop():play() end;
 	};
 };
 

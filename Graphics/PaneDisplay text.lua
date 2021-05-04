@@ -20,16 +20,16 @@ end
 local function CreatePaneDisplayItem( _pnPlayer, _sLabel, _rcRadarCategory )
 	return Def.ActorFrame {
 		Def.BitmapText{
-			Font= "Common SemiBold",
+			Font= "Common Normal",
 			Text=string.upper( THEME:GetString("PaneDisplay",_sLabel) ),
 			InitCommand=function(self) self:horizalign(left) end,
-			OnCommand=function(self) self:zoom(0.5875):diffuse(color("0.9,0.9,0.9")):shadowlength(1) end,
+			OnCommand=function(self) self:zoom(0.5):diffuse(color("0.9,0.9,0.9")):shadowlength(1) end,
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
 			Text=string.format("%04i", 0),
-			InitCommand=function(self) self:x(96):horizalign(right) end,
-			OnCommand=function(self) self:zoom(0.5875):shadowlength(1) end,
+			InitCommand=function(self) self:x(96-24-2):horizalign(right) end,
+			OnCommand=function(self) self:zoom(0.5):shadowlength(1) end,
 			CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
 			CurrentStepsP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
 			CurrentStepsP2ChangedMessageCommand=function(self) self:playcommand("Set") end,
@@ -86,7 +86,7 @@ local function CreatePaneDisplayGraph( _pnPlayer, _sLabel, _rcRadarCategory )
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
-			InitCommand=function(self) self:x(14):zoom(0.5):halign(0) end,
+			InitCommand=function(self) self:x(14+25):zoom(0.5):horizalign(center) end,
 			OnCommand=function(self) self:shadowlength(1):strokecolor(color("0.15,0.15,0.15,0.625")) end,
 			CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
 			CurrentStepsP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
@@ -125,16 +125,32 @@ return Def.ActorFrame {
 		},
 		-- Center
 		CreatePaneDisplayItem( iPN, "Hands", 'RadarCategory_Hands' ) .. {
-			InitCommand=function(self) self:x(8):y(-14) end,
+			InitCommand=function(self) self:x(-128+16+8+74):y(-14) end,
 		},
 		CreatePaneDisplayItem( iPN, "Rolls", 'RadarCategory_Rolls' ) .. {
-			InitCommand=function(self) self:x(8):y(-14+16) end,
+			InitCommand=function(self) self:x(-128+16+8+74):y(-14+16) end,
 		},
 		CreatePaneDisplayItem( iPN, "Lifts", 'RadarCategory_Lifts' ) .. {
-			InitCommand=function(self) self:x(8):y(-14+16*2) end,
+			InitCommand=function(self) self:x(-128+16+8+74):y(-14+16*2) end,
 		},
 		CreatePaneDisplayItem( iPN, "Fakes", 'RadarCategory_Fakes' ) .. {
-			InitCommand=function(self) self:x(8):y(-14+16*3) end,
-		}
+			InitCommand=function(self) self:x(-128+16+8+74):y(-14+16*3) end,
+		},
+		-- Right
+		CreatePaneDisplayGraph( iPN, "S", 'RadarCategory_Stream' ) .. {
+			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14) end,
+		},
+		CreatePaneDisplayGraph( iPN, "V", 'RadarCategory_Voltage' ) .. {
+			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12) end,
+		},
+		CreatePaneDisplayGraph( iPN, "A", 'RadarCategory_Air' ) .. {
+			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12*2) end,
+		},
+		CreatePaneDisplayGraph( iPN, "F", 'RadarCategory_Freeze' ) .. {
+			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12*3) end,
+		},
+		CreatePaneDisplayGraph( iPN, "C", 'RadarCategory_Chaos' ) .. {
+			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12*4) end,
+		},
 	}
 }

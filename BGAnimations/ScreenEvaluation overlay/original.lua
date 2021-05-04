@@ -38,10 +38,10 @@ end
 
 local t = Def.ActorFrame {}
 t[#t+1] = Def.ActorFrame {
-	InitCommand=cmd(x,SCREEN_CENTER_X/3;y,SCREEN_CENTER_Y);
+	InitCommand=function(self) self:x(SCREEN_CENTER_X/3):y(SCREEN_CENTER_Y) end;
 	LoadFont("Common Normal") .. {
 		Text="MIGS DP: "..tostring(MIGSdp).."/"..tostring(MIGSdpmax).."\nITG DP: "..tostring(ITGdp).."/"..tostring(ITGdpmax).."\nOffset Avg: "..RoundTo(tTimingDifferenceAverage,5).."\nAbs Offset Avg: "..RoundTo(tTimingDifferenceAbsAverage,5).."\nEarly Taps: "..tEarlyHits.."\nLate Taps: "..tLateHits;
-		InitCommand=cmd(y,-4;shadowlength,1;diffuse,Color("Red");zoom,0.5)
+		InitCommand=function(self) self:y(-4):shadowlength(1):diffuse(Color("Red") end;zoom,0.5)
 	};
 }
 
@@ -51,32 +51,32 @@ for i=1,#histogram do
 		offset = 1
 	end
 	t[#t+1] = Def.Quad {
-		InitCommand=cmd(diffuse,Color("Red");zoomtowidth,300/#histogram-1;zoomtoheight,histogram[#histogram-i]/maxValue*150;x,SCREEN_CENTER_X+100+300/#histogram*i+offset;y,SCREEN_CENTER_Y-histogram[#histogram-i]/maxValue*150/2);
+		InitCommand=function(self) self:diffuse(Color("Red")):zoomtowidth(300/#histogram-1):zoomtoheight(histogram[#histogram-i]/maxValue*150):x(SCREEN_CENTER_X+100+300/#histogram*i+offset):y(SCREEN_CENTER_Y-histogram[#histogram-i]/maxValue*150/2) end;
 	}
 end
 
 t[#t+1] = Def.Quad {
-	InitCommand=cmd(x,SCREEN_CENTER_X+250;y,SCREEN_CENTER_Y+3;zoomtowidth,300;zoomtoheight,5;diffuse,color("#FFFFFF"));
+	InitCommand=function(self) self:x(SCREEN_CENTER_X+250):y(SCREEN_CENTER_Y+3):zoomtowidth(300):zoomtoheight(5):diffuse(color("#FFFFFF")) end;
 }
 
 t[#t+1] = Def.Quad {
-	InitCommand=cmd(x,SCREEN_CENTER_X+252;y,SCREEN_CENTER_Y-75;zoomtowidth,1;zoomtoheight,150;diffuse,color("#000000"));
+	InitCommand=function(self) self:x(SCREEN_CENTER_X+252):y(SCREEN_CENTER_Y-75):zoomtowidth(1):zoomtoheight(150):diffuse(color("#000000")) end;
 }
 
 
 t[#t+1] = Def.ActorFrame {
-	InitCommand=cmd(x,SCREEN_CENTER_X+125;y,SCREEN_CENTER_Y+15);
+	InitCommand=function(self) self:x(SCREEN_CENTER_X+125):y(SCREEN_CENTER_Y+15) end;
 	LoadFont("Common Normal") .. {
 		Text="Early";
-		InitCommand=cmd(shadowlength,1;diffuse,Color("#FF0000");zoom,0.5)
+		InitCommand=function(self) self:shadowlength(1):diffuse(Color("#FF0000") end;zoom,0.5)
 	};
 }
 
 t[#t+1] = Def.ActorFrame {
-	InitCommand=cmd(x,SCREEN_CENTER_X+375;y,SCREEN_CENTER_Y+15);
+	InitCommand=function(self) self:x(SCREEN_CENTER_X+375):y(SCREEN_CENTER_Y+15) end;
 	LoadFont("Common Normal") .. {
 		Text="Late";
-		InitCommand=cmd(shadowlength,1;diffuse,Color("#FF0000");zoom,0.5)
+		InitCommand=function(self) self:shadowlength(1):diffuse(Color("#FF0000") end;zoom,0.5)
 	};
 }
 

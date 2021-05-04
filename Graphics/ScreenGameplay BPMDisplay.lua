@@ -7,7 +7,7 @@ local function UpdateSingleBPM(self)
 	local pState = GAMESTATE:GetPlayerState(pn)
 	local songPosition = pState:GetSongPosition()
 	local bpm = songPosition:GetCurBPS() * 60
-	bpmDisplay:settext( string.format("%03.2f",bpm) )
+	bpmDisplay:settext( string.format("%03.0f",bpm) )
 end
 
 local displaySingle = Def.ActorFrame{
@@ -70,7 +70,7 @@ else
 			local pState = GAMESTATE:GetPlayerState(pn)
 			local songPosition = pState:GetSongPosition()
 			local bpm = songPosition:GetCurBPS() * 60
-			bpmDisplay:settext( string.format("%03.2f",bpm) )
+			bpmDisplay:settext( string.format("%03.0f",bpm) )
 		end
 	end
 

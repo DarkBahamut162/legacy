@@ -61,7 +61,7 @@ return Def.ActorFrame {
 	Def.ActorFrame {
 		InitCommand=function(self) self:x(-192/2):y(-10) end,
 		Def.BitmapText{
-			Font= "Common Large",
+			Font= "_helveticaneuelt std extblk cn 42px",
 			Text=string_name,
 			InitCommand=function(self)
 				self:y(-2):horizalign(left):diffuse(icon_color):strokecolor(ColorDarkTone(icon_color))
@@ -76,11 +76,11 @@ return Def.ActorFrame {
 			LoseFocusCommand=function(self) self:finishtweening():x(0):accelerate(0.4):diffusealpha(0):x(32):diffusealpha(0) end,
 		},
 		Def.BitmapText{
-			Font= "Common Normal",
+			Font= "_helveticaneuelt std extblk cn 42px",
 			Text=string_expl,
 			InitCommand=function(self)
 				self:horizalign(right):x(320):y(30):shadowlength(1)
-				:diffusealpha(0):skewx(-0.125):zoom(0.75) end,
+				:diffusealpha(0):skewx(-0.125):zoom(0.5) end,
 			GainFocusCommand=function(self)
 				self:finishtweening():x(320+16):decelerate(0.45):diffusealpha(1):x(320) end,
 			LoseFocusCommand=function(self)
