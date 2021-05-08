@@ -95,13 +95,13 @@ for pn in ivalues(PlayerNumber) do
 		PlayerJoinedMessageCommand=function(self, params)
 			if params.Player == pn then
 				self:visible(true);
-				(cmd(zoom,0;bounceend,0.3;zoom,1))(self);
+				self:zoom(0):bounceend(0.3):zoom(1);
 			end;
 		end;
 		PlayerUnjoinedMessageCommand=function(self, params)
 			if params.Player == pn then
 				self:visible(true);
-				(cmd(bouncebegin,0.3;zoom,0))(self);
+				self:bouncebegin(0.3):zoom(0);
 			end;
 		end;
 	};

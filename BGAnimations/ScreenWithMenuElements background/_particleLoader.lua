@@ -69,6 +69,6 @@ local function UpdateParticles(self,DeltaTime)
 	end;
 end;
 
-t.InitCommand = cmd(fov,90;SetUpdateFunction,UpdateParticles);
+t.InitCommand = function(self) self:fov(90):SetUpdateFunction(UpdateParticles) end;
 
 return t;
