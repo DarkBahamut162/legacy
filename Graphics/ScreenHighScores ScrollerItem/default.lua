@@ -78,7 +78,7 @@ end
 
 return Def.ActorFrame {
 	FOV=90,
-	InitCommand=function(self) self:runcommandsonleaves(function(self) self:ztest(true) end) end,
+	InitCommand=function(self) self:runcommandsonleaves(function(child) child:ztest(true) end) end,
 	Def.Sprite{
 		Texture= THEME:GetPathG("ScreenHighScores","ScrollerItem/frame"),
 		InitCommand=function(self) self:diffusealpha(0.25) end,

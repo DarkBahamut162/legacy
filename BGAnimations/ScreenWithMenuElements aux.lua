@@ -19,7 +19,7 @@ local function Clock()
 		Name="Clock",
 		InitCommand=function(self) self:x(50):y(12):playcommand("Update") end,
 		ScreenChangedMessageCommand=UpdateVisible,
-		UpdateCommand=function(self) self:runcommandsonleaves(function(self) self:queuecommand("Update") end) end,
+		UpdateCommand=function(self) self:runcommandsonleaves(function(child) child:queuecommand("Update") end) end,
 		Def.RoundedBox(90,26)..{ InitCommand=function(self) self:x(-22):y(-4) end },
 		Def.ActorFrame {
 			Name="ClockText",

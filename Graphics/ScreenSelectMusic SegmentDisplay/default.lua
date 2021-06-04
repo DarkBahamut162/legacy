@@ -18,7 +18,7 @@ local SegmentTypes = {
 
 return Def.ActorFrame{
 	BeginCommand=function(self) self:playcommand("SetIcons"):playcommand("SetAttacksIconMessage") end,
-	--OffCommand=function(self) self:RunCommandsOnChildren(function(self) self:playcommand("Hide") end) end,
+	--OffCommand=function(self) self:RunCommandsOnChildren(function(child) child:playcommand("Hide") end) end,
 
 	SetIconsCommand=function(self)
 		local stops = self:GetChild("StopsIcon")
