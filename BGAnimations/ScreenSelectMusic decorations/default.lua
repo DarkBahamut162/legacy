@@ -251,15 +251,7 @@ if GAMESTATE:IsCourseMode() then
 end
 
 t[#t+1] = StandardDecorationFromFileOptional("DifficultyDisplay","DifficultyDisplay");
-t[#t+1] = StandardDecorationFromFileOptional("SortOrderFrame","SortOrderFrame") .. {
-	BeginCommand=function(self) self:playcommand("Set") end;
-	SortOrderChangedMessageCommand=function(self) self:playcommand("Set") end;
-	SetCommand=function(self)
-		local s = SortOrderToLocalizedString( GAMESTATE:GetSortOrder() );
-		self:settext( s );
-		self:playcommand("Sort");
-	end;
-};
+t[#t+1] = StandardDecorationFromFileOptional("SortOrderFrame","SortOrderFrame");
 t[#t+1] = StandardDecorationFromFileOptional("SortOrder","SortOrderText") .. {
 	BeginCommand=function(self) self:playcommand("Set") end;
 	SortOrderChangedMessageCommand=function(self) self:playcommand("Set") end;
