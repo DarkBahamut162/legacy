@@ -37,10 +37,10 @@ local function CreateStats( pnPlayer )
 		LoadActor(THEME:GetPathG("ScreenTitleMenu","PreferenceFrame")) .. {
 			InitCommand=function(self) self:zoom(0.875):diffuse(PlayerColor( pnPlayer )) end;
 		};
-		aLabel .. { Text=THEME:GetString("ScreenEvaluation","ITG DP:"); InitCommand=function(self) self:x(-64) end; };
-		aText .. { Text=string.format("%04i",tValues["ITG"]); InitCommand=function(self) self:x(-8):y(5):vertalign(bottom):zoom(0.6) end; };
+		aLabel .. { Text=THEME:GetString("ScreenEvaluation","ITG DP:"); InitCommand=function(self) self:x(-64)end; };
+		aText .. { Text=string.format("%04i",tValues["ITG"]); InitCommand=function(self) self:x(-8):y(5):vertalign(bottom):zoom(0.6):maxwidth(60) end; };
 		aText .. { Text="/"; InitCommand=function(self) self:x(28):y(5):vertalign(bottom):zoom(0.5):diffusealpha(0.5) end; };
-		aText .. { Text=string.format("%04i",tValues["ITG_MAX"]); InitCommand=function(self) self:x(32):y(5):vertalign(bottom):zoom(0.5) end; };
+		aText .. { Text=string.format("%04i",tValues["ITG_MAX"]); InitCommand=function(self) self:x(32):y(5):vertalign(bottom):zoom(0.5):maxwidth(60) end; };
 	};
 	t[#t+1] = Def.ActorFrame {
 		InitCommand=function(self) self:y(-6) end;
@@ -48,9 +48,9 @@ local function CreateStats( pnPlayer )
 			InitCommand=function(self) self:zoom(0.875):diffuse(PlayerColor( pnPlayer )) end;
 		};
 		aLabel .. { Text=THEME:GetString("ScreenEvaluation","MIGS DP:"); InitCommand=function(self) self:x(-64) end; };
-		aText .. { Text=string.format("%04i",tValues["MIGS"]); InitCommand=function(self) self:x(-8):y(5):vertalign(bottom):zoom(0.6) end; };
+		aText .. { Text=string.format("%04i",tValues["MIGS"]); InitCommand=function(self) self:x(-8):y(5):vertalign(bottom):zoom(0.6):maxwidth(60) end; };
 		aText .. { Text="/"; InitCommand=function(self) self:x(28):y(5):vertalign(bottom):zoom(0.5):diffusealpha(0.5) end; };
-		aText .. { Text=string.format("%04i",tValues["MIGS_MAX"]); InitCommand=function(self) self:x(32):y(5):vertalign(bottom):zoom(0.5) end; };
+		aText .. { Text=string.format("%04i",tValues["MIGS_MAX"]); InitCommand=function(self) self:x(32):y(5):vertalign(bottom):zoom(0.5):maxwidth(60) end; };
 	};
 	return t
 end;
@@ -65,15 +65,5 @@ t[#t+1] = Def.ActorFrame {
 	InitCommand=function(self) self:hide_if(not GAMESTATE:IsPlayerEnabled(PLAYER_2)):x(WideScale(math.floor(SCREEN_CENTER_X*1.7)+8,math.floor(SCREEN_CENTER_X*1.5)+8)):y(SCREEN_CENTER_Y-20) end;
 	CreateStats( PLAYER_2 );
 };
-
-if gameplay_pause_count > 0 then
-	t[#t+1]= Def.BitmapText{
-		Font= "Common Normal",
-		Text= THEME:GetString("PauseMenu", "pause_count") .. ": " .. gameplay_pause_count,
-		InitCommand= function(self)
-			self:xy(_screen.cx, 375):diffuse(Color.White):zoom(.75)
-		end
-	}
-end
 
 return t
