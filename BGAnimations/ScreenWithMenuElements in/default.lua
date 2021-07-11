@@ -3,7 +3,7 @@ local iTilesX = math.ceil( SCREEN_WIDTH/fTileSize );
 local iTilesY = math.ceil( SCREEN_HEIGHT/fTileSize );
 local fSleepTime = THEME:GetMetric( Var "LoadingScreen","ScreenInDelay");
 local t = Def.ActorFrame {
-	InitCommand=function(self) self:x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y) end;
+	InitCommand=function(self) self:Center() end;
 	OnCommand=function(self) self:sleep(fSleepTime) end;
 };
 t[#t+1] = Def.Quad {

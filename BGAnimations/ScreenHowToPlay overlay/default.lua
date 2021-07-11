@@ -47,7 +47,7 @@ return Def.ActorFrame {
 	-- messages
 	LoadFont("Common Bold") .. {
 		Text=ScreenString("How To Play StepMania"),
-		InitCommand=function(self) self:zbuffer(1):z(20):x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y):shadowlength(1):strokecolor(Color("Outline")) end;
+		InitCommand=function(self) self:zbuffer(1):z(20):Center():shadowlength(1):strokecolor(Color("Outline")) end;
 		BeginCommand=function(self)
 			self:AddAttribute(12, {Length=9, Diffuse=Color.White});
 		end;
@@ -55,7 +55,7 @@ return Def.ActorFrame {
 	};
 	LoadActor("_howtoplay feet") .. {
 			InitCommand=function(self) self:shadowlength(1):strokecolor(Color.Outline) end;
-			OnCommand=function(self) self:z(20):x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y):addx(-SCREEN_WIDTH):sleep(2.4):decelerate(0.3):addx(SCREEN_WIDTH):sleep(2):linear(0.3):zoomy(0) end;
+			OnCommand=function(self) self:z(20):Center():addx(-SCREEN_WIDTH):sleep(2.4):decelerate(0.3):addx(SCREEN_WIDTH):sleep(2):linear(0.3):zoomy(0) end;
 	};
 	Def.ActorFrame {
 		InitCommand=function(self) self:x(SCREEN_CENTER_X+120):y(SCREEN_CENTER_Y+40) end;

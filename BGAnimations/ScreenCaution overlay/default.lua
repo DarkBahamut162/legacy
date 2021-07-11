@@ -25,7 +25,7 @@ t[#t+1] = Def.ActorFrame {
 
 -- Text
 t[#t+1] = Def.ActorFrame {
-	InitCommand=function(self) self:Center():y(SCREEN_CENTER_Y) end;
+	InitCommand=function(self) self:Center() end;
 	OnCommand=function(self) self:addy(-96) end;
 	-- Underline
 	Def.Quad {

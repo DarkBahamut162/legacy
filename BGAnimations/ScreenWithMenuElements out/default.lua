@@ -7,7 +7,7 @@ local fSleepTime = THEME:GetMetric( Var "LoadingScreen","ScreenOutDelay");
 	self:y( scale(iY,1,iTilesY,-SCREEN_CENTER_Y,SCREEN_CENTER_Y) );
 end --]]
 local t = Def.ActorFrame {
-	InitCommand=function(self) self:x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y) end;
+	InitCommand=function(self) self:Center() end;
 	OnCommand=function(self) self:sleep(fSleepTime) end;
 };
 --[[ for indx=1,iTilesX do

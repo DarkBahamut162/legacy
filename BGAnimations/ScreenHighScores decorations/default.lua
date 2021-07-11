@@ -6,7 +6,7 @@ local stString = THEME:GetString("StepsType",StepsType);
 local NumColumns = THEME:GetMetric(Var "LoadingScreen", "NumColumns");
 
 t[#t+1] = Def.ActorFrame {
-	InitCommand=function(self) self:x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y-160) end;
+	InitCommand=function(self) self:CenterX():y(SCREEN_CENTER_Y-160) end;
 	Def.Quad {
 		InitCommand=function(self) self:zoomto(SCREEN_WIDTH, 32) end;
 		OnCommand=function(self) self:y(-16):diffuse(Color.Black):fadebottom(0.8) end;

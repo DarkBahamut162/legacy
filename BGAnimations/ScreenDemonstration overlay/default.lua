@@ -26,7 +26,7 @@ local t = Def.ActorFrame{
 
 	LoadFont("Common normal")..{
 		Name="SongTitle";
-		InitCommand=function(self) self:x(SCREEN_CENTER_X):y(SCREEN_TOP+16):zoom(0.5):shadowlength(1):valign(0) end;
+		InitCommand=function(self) self:CenterX():y(SCREEN_TOP+16):zoom(0.5):shadowlength(1):valign(0) end;
 		BeginCommand=function(self)
 			local song = GAMESTATE:GetCurrentSong();
 			local text = "";

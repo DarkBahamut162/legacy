@@ -38,7 +38,7 @@ end
 
 local t = Def.ActorFrame {}
 t[#t+1] = Def.ActorFrame {
-	InitCommand=function(self) self:x(SCREEN_CENTER_X/3):y(SCREEN_CENTER_Y) end;
+	InitCommand=function(self) self:x(SCREEN_CENTER_X/3):CenterY() end;
 	LoadFont("Common Normal") .. {
 		Text="MIGS DP: "..tostring(MIGSdp).."/"..tostring(MIGSdpmax).."\nITG DP: "..tostring(ITGdp).."/"..tostring(ITGdpmax).."\nOffset Avg: "..RoundTo(tTimingDifferenceAverage,5).."\nAbs Offset Avg: "..RoundTo(tTimingDifferenceAbsAverage,5).."\nEarly Taps: "..tEarlyHits.."\nLate Taps: "..tLateHits;
 		InitCommand=function(self) self:y(-4):shadowlength(1):diffuse(Color("Red") end;zoom,0.5)

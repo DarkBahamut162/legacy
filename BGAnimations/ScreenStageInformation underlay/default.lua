@@ -46,7 +46,7 @@ else
 end
 
 t[#t+1] = Def.ActorFrame {
-	InitCommand=function(self) self:x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y) end;
+	InitCommand=function(self) self:Center() end;
 	OnCommand=function(self) self:stoptweening():zoom(1.25):decelerate(3):zoom(1) end;
 	stage_num_actor .. {
 		OnCommand=function(self) self:diffusealpha(0):linear(0.25):diffusealpha(1):sleep(1.75):linear(0.5):zoomy(0):zoomx(2):diffusealpha(0) end;
@@ -54,7 +54,7 @@ t[#t+1] = Def.ActorFrame {
 };
 
 t[#t+1] = Def.ActorFrame {
-  InitCommand=function(self) self:x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y+96) end;
+  InitCommand=function(self) self:CenterX():y(SCREEN_CENTER_Y+96) end;
   OnCommand=function(self) self:stoptweening():addy(-16):decelerate(3):addy(16) end;
 	LoadFont("Common Normal") .. {
 		Text=GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse():GetDisplayFullTitle() or GAMESTATE:GetCurrentSong():GetDisplayFullTitle();

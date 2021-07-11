@@ -276,7 +276,7 @@ return Def.ActorFrame {
 	children = {
 		Def.ActorFrame {
 			Name = 'P1Frame',
-			InitCommand=function(self) self:x(SCREEN_CENTER_X-160):y(SCREEN_CENTER_Y) end,
+			InitCommand=function(self) self:x(SCREEN_CENTER_X-160):CenterY() end,
 			OnCommand=function(self) self:zoom(0):bounceend(0.35):zoom(1) end,
 			OffCommand=function(self) self:bouncebegin(0.35):zoom(0) end,
 			PlayerJoinedMessageCommand=function(self,param)
@@ -288,7 +288,7 @@ return Def.ActorFrame {
 		},
 		Def.ActorFrame {
 			Name = 'P2Frame',
-			InitCommand=function(self) self:x(SCREEN_CENTER_X+160):y(SCREEN_CENTER_Y) end,
+			InitCommand=function(self) self:x(SCREEN_CENTER_X+160):CenterY() end,
 			OnCommand=function(self) self:zoom(0):bounceend(0.35):zoom(1) end,
 			OffCommand=function(self) self:bouncebegin(0.35):zoom(0) end,
 			PlayerJoinedMessageCommand=function(self,param)

@@ -8,7 +8,7 @@ return Def.ActorFrame {
 	Def.BitmapText{
 		Font= "common normal",
 		InitCommand=function(self)
-			self:settext("Press &START; for more options"):x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y+100):visible(false) end,
+			self:settext("Press &START; for more options"):CenterX():y(SCREEN_CENTER_Y+100):visible(false) end,
 		AskForGoToOptionsCommand=function(self)
 			self:visible(true)
 			:diffusealpha(0)
@@ -25,7 +25,7 @@ return Def.ActorFrame {
 	Def.BitmapText{
 		Font= "common normal",
 		InitCommand=function(self)
-			self:settext("entering options..."):x(SCREEN_CENTER_X):y(SCREEN_CENTER_Y+100):visible(false) end,
+			self:settext("entering options..."):CenterX():y(SCREEN_CENTER_Y+100):visible(false) end,
 		AskForGoToOptionsCommand=function(self)
 			self:visible(false)
 			:linear(0.15)
