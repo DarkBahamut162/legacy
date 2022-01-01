@@ -27,22 +27,22 @@ local function GetEdits( in_Song, in_StepsType )
 	end
 end
 --
+local tLocation = {
+	Beginner	= 32*-1.25,
+	Easy 		= 32*-0.25,
+	Medium		= 32*0.75,
+	Hard		= 32*1.75,
+	Challenge	= 32*2.75,
+	Edit 		= 32*4.75,
+}
 for idx,diff in pairs(Difficulty) do
 	local sDifficulty = ToEnumShortString( diff )
-	local tLocation = {
-		Beginner	= 32*-1.25,
-		Easy 		= 32*-0.25,
-		Medium		= 32*0.75,
-		Hard		= 32*1.75,
-		Challenge	= 32*2.75,
-		Edit 		= 32*4.75,
-	}
-	if idx <=6 then
+	if tLocation[sDifficulty] then
 		t[#t+1] = Def.ActorFrame {
 			SetCommand=function(self)
 				local c = self:GetChildren()
-	-- 			local Bar = self:GetChild("Bar")
-	-- 			local Meter = self:GetChild("Meter"
+				--local Bar = self:GetChild("Bar")
+				--local Meter = self:GetChild("Meter")
 				local song = GAMESTATE:GetCurrentSong()
 				local bHasStepsTypeAndDifficulty = false
 				local meter = ""
