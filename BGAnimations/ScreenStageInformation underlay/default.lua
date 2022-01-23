@@ -58,12 +58,12 @@ t[#t+1] = Def.ActorFrame {
   OnCommand=function(self) self:stoptweening():addy(-16):decelerate(3):addy(16) end;
 	LoadFont("Common Normal") .. {
 		Text=GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse():GetDisplayFullTitle() or GAMESTATE:GetCurrentSong():GetDisplayFullTitle();
-		InitCommand=function(self) self:strokecolor(Color("Outline")):y(-20) end;
+		InitCommand=function(self) self:strokecolor(Color("Outline")):y(-20):maxwidth(SCREEN_WIDTH-16) end;
 		OnCommand=function(self) self:diffusealpha(0):linear(0.5):diffusealpha(1):sleep(1.5):linear(0.5):diffusealpha(0) end;
 	};
 	LoadFont("Common Normal") .. {
 		Text=GAMESTATE:IsCourseMode() and ToEnumShortString( GAMESTATE:GetCurrentCourse():GetCourseType() ) or GAMESTATE:GetCurrentSong():GetDisplayArtist();
-		InitCommand=function(self) self:strokecolor(Color("Outline")):zoom(0.75) end;
+		InitCommand=function(self) self:strokecolor(Color("Outline")):zoom(0.75):maxwidth(SCREEN_WIDTH-16) end;
 		OnCommand=function(self) self:diffusealpha(0):linear(0.5):diffusealpha(1):sleep(1.5):linear(0.5):diffusealpha(0) end;
 	};
 	LoadFont("Common Normal") .. {

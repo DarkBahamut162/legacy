@@ -1,3 +1,5 @@
+--[[
+OLD STATS
 local mainMaxWidth = 228; -- zoom w/subtitle is 0.75 (multiply by 1.25)
 local subMaxWidth = 420; -- zoom is 0.6 (multiply zoom,1 value by 1.4)
 local artistMaxWidth = 300/0.8;
@@ -5,6 +7,14 @@ local artistMaxWidth = 300/0.8;
 local mainMaxWidthHighScore = 192; -- zoom w/subtitle is 0.75 (multiply by 1.25)
 local subMaxWidthHighScore = 280; -- zoom is 0.6 (multiply zoom,1 value by 1.4)
 local artistMaxWidthHighScore = 280/0.8;
+]]
+local mainMaxWidth = 280;
+local subMaxWidth = 448;
+local artistMaxWidth = 280;
+
+local mainMaxWidthHighScore = 280;
+local subMaxWidthHighScore = 448;
+local artistMaxWidthHighScore = 280;
 
 --[[
 -- The old (cmd(blah))(Actor) syntax is hard to read.
@@ -17,18 +27,18 @@ function TextBannerAfterSet(self,param)
 	
 	if Subtitle:GetText() == "" then
 		Title:maxwidth(mainMaxWidth)
-		Title:y(-8)
+		Title:y(-9)
 		Title:zoom(1)
 		
 		-- hide so that the game skips drawing.
 		Subtitle:visible(false)
 
 		Artist:zoom(0.66)
-		Artist:maxwidth(artistMaxWidth)
-		Artist:y(8)
+		Artist:maxwidth(artistMaxWidth/0.66)
+		Artist:y(9)
 	else
-		Title:maxwidth(mainMaxWidth*1.25)
-		Title:y(-11)
+		Title:maxwidth(mainMaxWidth*1.333)
+		Title:y(-12)
 		Title:zoom(0.75)
 		
 		-- subtitle below title
@@ -38,8 +48,8 @@ function TextBannerAfterSet(self,param)
 		Subtitle:maxwidth(subMaxWidth)
 		
 		Artist:zoom(0.6)
-		Artist:maxwidth(artistMaxWidth)
-		Artist:y(10)
+		Artist:maxwidth(artistMaxWidth/0.6)
+		Artist:y(12)
 	end
 end
 
@@ -50,18 +60,18 @@ function TextBannerHighScoreAfterSet(self,param)
 	
 	if Subtitle:GetText() == "" then
 		Title:maxwidth(mainMaxWidthHighScore)
-		Title:y(-8)
+		Title:y(-9)
 		Title:zoom(1)
 		
 		-- hide so that the game skips drawing.
 		Subtitle:visible(false)
 
 		Artist:zoom(0.66)
-		Artist:maxwidth(artistMaxWidthHighScore)
-		Artist:y(8)
+		Artist:maxwidth(artistMaxWidthHighScore/0.66)
+		Artist:y(9)
 	else
-		Title:maxwidth(mainMaxWidthHighScore*1.25)
-		Title:y(-11)
+		Title:maxwidth(mainMaxWidthHighScore*1.333)
+		Title:y(-12)
 		Title:zoom(0.75)
 		
 		-- subtitle below title
@@ -71,7 +81,7 @@ function TextBannerHighScoreAfterSet(self,param)
 		Subtitle:maxwidth(subMaxWidthHighScore)
 		
 		Artist:zoom(0.6)
-		Artist:maxwidth(artistMaxWidthHighScore)
-		Artist:y(10)
+		Artist:maxwidth(artistMaxWidthHighScore*1.5)
+		Artist:y(12)
 	end
 end
