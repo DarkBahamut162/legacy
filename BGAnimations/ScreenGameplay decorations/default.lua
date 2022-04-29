@@ -17,6 +17,7 @@ local function CreateSegments(Player)
 	if not GAMESTATE:IsCourseMode() then
 	-- Straight rip off NCRX
 		local song = GAMESTATE:GetCurrentSong();
+		local step = GAMESTATE:GetCurrentSteps(GAMESTATE:GetMasterPlayerNumber());
 		local timingData = song:GetTimingData();
 		-- use the StepsSeconds, which will almost always be more proper
 		-- than a file with ITG2r21 compatibility.
@@ -25,6 +26,10 @@ local function CreateSegments(Player)
 
 			local firstBeatSecs = song:GetFirstSecond();
 			local lastBeatSecs = song:GetLastSecond();
+
+			if step then
+				timingData = step:GetTimingData();
+			end
 
 			local bpms = timingData:GetBPMsAndTimes(true);
 			local stops = timingData:GetStops(true);
