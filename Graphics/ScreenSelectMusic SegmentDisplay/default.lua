@@ -70,7 +70,7 @@ return Def.ActorFrame{
 				else fakes:playcommand("Hide")
 				end
 
-				if steps and steps:HasAttacks() or song:HasAttacks() then attacks:playcommand("Show")
+				if song:HasAttacks() then attacks:playcommand("Show")
 				else attacks:playcommand("Hide")
 				end
 			else
