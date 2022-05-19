@@ -19,7 +19,6 @@ I actually could have forked this one as well, but I didn't (for even more bizza
 What has been fixed so far:
 
 * All **cmd()** transformed to **function(self)**
-* Fixed **PeakComboAward** & **StageAward**
 * Fixed and reintroduced **Segments** in GamePlay
 * "Removed" **StageDisplay** (not really needed)
 * Reintroduced **SortOrderFrame** & fixed **SortOrderText** in ScreenSelectMusic

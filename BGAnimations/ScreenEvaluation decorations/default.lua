@@ -119,22 +119,6 @@ for pn in ivalues(PlayerNumber) do
 	};
 end
 
-function GetRadarData( pnPlayer, rcRadarCategory )
-	local tRadarValues;
-	local StepsOrTrail;
-	local fDesiredValue = 0;
-	if GAMESTATE:GetCurrentSteps( pnPlayer ) then
-		StepsOrTrail = GAMESTATE:GetCurrentSteps( pnPlayer );
-		fDesiredValue = StepsOrTrail:GetRadarValues( pnPlayer ):GetValue( rcRadarCategory );
-	elseif GAMESTATE:GetCurrentTrail( pnPlayer ) then
-		StepsOrTrail = GAMESTATE:GetCurrentTrail( pnPlayer );
-		fDesiredValue = StepsOrTrail:GetRadarValues( pnPlayer ):GetValue( rcRadarCategory );
-	else
-		StepsOrTrail = nil;
-	end;
-	return fDesiredValue;
-end;
-
 for pn in ivalues(PlayerNumber) do
 	local MetricsName = "StageAward" .. PlayerNumberToString(pn);
 	t[#t+1] = LoadActor( THEME:GetPathG(Var "LoadingScreen", "StageAward"), pn ) .. {
@@ -145,58 +129,14 @@ for pn in ivalues(PlayerNumber) do
 		end;
 		BeginCommand=function(self) self:playcommand("Set") end;
 		SetCommand=function(self)
-			local award;
-			local steps = GetRadarData(pn,"RadarCategory_TapsAndHolds");
-			local pss = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn);
-			local W1FC = pss:FullComboOfScore('TapNoteScore_W1');
-			local W1 = pss:GetTapNoteScores('TapNoteScore_W1');
-			local W2FC = pss:FullComboOfScore('TapNoteScore_W2');
-			local W2 = pss:GetTapNoteScores('TapNoteScore_W2');
-			local W3FC = pss:FullComboOfScore('TapNoteScore_W3');
-			local W3 = pss:GetTapNoteScores('TapNoteScore_W3');
-			local percent = W3 / steps;
-			
-			if percent >= 0.8 then
-				if percent >= 0.8 and percent < 0.9 then
-					award = "80PercentW3";
-				elseif percent >= 0.9 and percent < 1 then
-					award = "90PercentW3";
-				elseif percent == 1 then
-					award = "100PercentW3";
-				end
-			elseif W3FC then
-				if W3 > 1 and W3 < 10 then
-					award = "SingleDigitW3";
-				elseif W3 == 1 then
-					award = "OneW3";
-				elseif W3 == 0 then
-					award = "FullComboW3";
-				end 
-			elseif W2FC then
-				if W2 > 1 and W2 < 10 then
-					award = "SingleDigitW2";
-				elseif W2 == 1 then
-					award = "OneW2";
-				elseif W2 == 0 then
-					award = "FullComboW2";
-				end 
-			elseif W1FC then
-				award = "FullComboW1";
-			end
-			if award ~= nil then
+			local award = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn):GetStageAward();
+			if award then
 				self:settext( THEME:GetString( "StageAward", award ) );
 			else
 				self:settext( "" );
 			end
 		end;
 	};
-end
-
-function PlayerMaxCombo(pn)
-	if GAMESTATE:IsPlayerEnabled(pn) then
-		return STATSMAN:GetCurStageStats():GetPlayerStageStats(pn):MaxCombo()
-	end	
-	return -1
 end
 
 for pn in ivalues(PlayerNumber) do
@@ -209,11 +149,8 @@ for pn in ivalues(PlayerNumber) do
 		end;
 		BeginCommand=function(self) self:playcommand("Set") end;
 		SetCommand=function(self)
-			local combo = PlayerMaxCombo(pn)
-			local combo_ = math.floor(combo/1000)*1000;
-			if combo_ > 10000 then combo_ = 10000 end;
-			local award = "PeakComboAward_"..combo_;
-			if combo_ > 0 then
+			local award = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn):GetPeakComboAward();
+			if award then
 				self:settext( THEME:GetString( "PeakComboAward", ToEnumShortString( award ) ) );
 			else
 				self:settext( "" );
