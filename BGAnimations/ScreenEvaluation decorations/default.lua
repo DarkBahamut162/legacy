@@ -131,7 +131,7 @@ for pn in ivalues(PlayerNumber) do
 		SetCommand=function(self)
 			local award = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn):GetStageAward();
 			if award then
-				self:settext( THEME:GetString( "StageAward", award ) );
+				self:settext( THEME:GetString( "StageAward", ToEnumShortString( award ) ) );
 			else
 				self:settext( "" );
 			end
