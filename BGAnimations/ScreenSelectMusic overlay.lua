@@ -53,7 +53,7 @@ for i=1,#num_players do
 			OnCommand=function(self) self:shadowlength(1):zoom(0.75) end,
 		}
 	}
-	if GAMESTATE:GetCurrentGame():GetName() == "pump" then
+	if IsRoutine() then
 		local ns = num_players[i] == PLAYER_1 and RoutineSkinP1() or RoutineSkinP2()
 		f[#f+1] = LoadActor( NOTESKIN:GetPathForNoteSkin("Center","Tap",ns) ) .. {
 			InitCommand=function(self) self:y(20) end,
