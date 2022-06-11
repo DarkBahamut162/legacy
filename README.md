@@ -19,15 +19,16 @@ I actually could have forked this one as well, but I didn't (for even more bizza
 What has been fixed so far:
 
 * All **cmd()** transformed to **function(self)**
-* Fixed and reintroduced **Segments** in GamePlay
-* "Removed" **StageDisplay** (not really needed)
+* "Removed" **StageDisplay** at places (not really needed)
 * Reintroduced **SortOrderFrame** & fixed **SortOrderText** in ScreenSelectMusic
+* **SegmentTypes** reconfigured for 2-Player in ScreenSelectMusic
+* Reintroduces **BPMDisplay** color change on ScreenSelectMusic
 * Fixed **ScreenEdit background**
 * "Removed" **SM5's pause system**
 * Reintroduced **all Fonts** from SM SSC
 * Reintroduced **PaneDisplays** for Stream/Voltage/Air/Freeze/Chaos (3rd column)
-* Remove Decimals from **BPMDisplay** during GamePlay
-* Reintroduces **BPMDisplay** color change on ScreenSelectMusic
+* Remove Decimals from **BPMDisplay** during ScreenGamePlay
+* Fixed and reintroduced **Segments** in ScreenGamePlay that now uses **StepTimingData**
 * Lowered **MinSecondsToStep/-Music/-StepNextSong** to ITG times
 
 
