@@ -17,15 +17,14 @@ local function CreateSegments(Player)
 	if not GAMESTATE:IsCourseMode() then
 	-- Straight rip off NCRX
 		local song = GAMESTATE:GetCurrentSong();
-		local step = GAMESTATE:GetCurrentSteps(Player);
 		local timingData = song:GetTimingData();
 		-- use the StepsSeconds, which will almost always be more proper
 		-- than a file with ITG2r21 compatibility.
 		if song then
 			local songLen = song:MusicLengthSeconds();
-
 			local firstBeatSecs = song:GetFirstSecond();
 			local lastBeatSecs = song:GetLastSecond();
+			local step = GAMESTATE:GetCurrentSteps(Player);
 
 			if step then
 				timingData = step:GetTimingData();
@@ -169,10 +168,13 @@ local function songMeterScale(val) return scale(val,0,1,-380/2,380/2) end
 
 for pn in ivalues(PlayerNumber) do
 	local MetricsName;
+	local playerColor;
 	if GAMESTATE:GetNumPlayersEnabled()==1 then
 		MetricsName = "SongMeterDisplay"
+		playerColor = Color("Orange")
 	else
 		MetricsName = "SongMeterDisplay" .. PlayerNumberToString(pn)
+		playerColor = PlayerColor(pn)
 	end
 	local songMeterDisplay = Def.ActorFrame{
 		InitCommand=function(self)
@@ -187,20 +189,20 @@ for pn in ivalues(PlayerNumber) do
 		};
 		Def.Quad {
 			InitCommand=function(self) self:zoomto(2,8) end;
-			OnCommand=function(self) self:x(songMeterScale(0.25)):diffuse(Color("Orange")):diffusealpha(0.5) end;
+			OnCommand=function(self) self:x(songMeterScale(0.25)):diffuse(playerColor):diffusealpha(0.5) end;
 		};
 		Def.Quad {
 			InitCommand=function(self) self:zoomto(2,8) end;
-			OnCommand=function(self) self:x(songMeterScale(0.5)):diffuse(Color("Orange")):diffusealpha(0.5) end;
+			OnCommand=function(self) self:x(songMeterScale(0.5)):diffuse(playerColor):diffusealpha(0.5) end;
 		};
 		Def.Quad {
 			InitCommand=function(self) self:zoomto(2,8) end;
-			OnCommand=function(self) self:x(songMeterScale(0.75)):diffuse(Color("Orange")):diffusealpha(0.5) end;
+			OnCommand=function(self) self:x(songMeterScale(0.75)):diffuse(playerColor):diffusealpha(0.5) end;
 		};
 		Def.SongMeterDisplay {
 			StreamWidth=THEME:GetMetric( MetricsName, 'StreamWidth' );
 			Stream=LoadActor( THEME:GetPathG( 'SongMeterDisplay', 'stream ' .. PlayerNumberToString(pn) ) )..{
-				InitCommand=function(self) self:diffuse(Color("Orange")):diffusealpha(0.5):blend(Blend.Add) end;
+				InitCommand=function(self) self:diffuse(playerColor):diffusealpha(0.5):blend(Blend.Add) end;
 			};
 			Tip=LoadActor( THEME:GetPathG( 'SongMeterDisplay', 'tip ' .. PlayerNumberToString(pn) ) ) .. { InitCommand=function(self) self:visible(false) end; };
 		};
