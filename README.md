@@ -1,6 +1,7 @@
-# StepMania 5 Legacy (5.0)
+# StepMania 5 Legacy (SSC)
 
 The following project has been in-officially taken over by me (DarkBahamut162).
+And I also downgraded this theme as it more looks like how SM SSC looked than the slowly changing 5.0.x release.
 
 It's source is being displayed down below.
 
