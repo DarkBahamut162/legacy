@@ -4,7 +4,7 @@ return Def.ActorFrame {
 	InitCommand=function(self) self:Center() end;
 	-- Fade
 	Def.ActorFrame {
-		InitCommand=function(self) self:() end;
+		--InitCommand=function(self) self:() end;
 		Def.Quad {
 			InitCommand=function(self) self:scaletoclipped(SCREEN_WIDTH,SCREEN_HEIGHT) end;
 			OnCommand=function(self) self:diffuse(Color.Black):diffusealpha(0):linear(0.5):diffusealpha(0.25):sleep(timer_seconds/2):  linear(timer_seconds/2-0.5):diffusealpha(0.8) end;
