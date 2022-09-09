@@ -88,6 +88,6 @@ for idx,diff in pairs(Difficulty) do
 					:diffuse(CustomDifficultyToColor( sDifficulty )) end,
 			}
 		}
-	end;
+	end
 end
 return t

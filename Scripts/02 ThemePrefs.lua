@@ -12,7 +12,7 @@ local Prefs =
 		Choices = { OptionNameString('Off'), OptionNameString('On') },
 		Values = { false, true }
 	},
-	GameplayShowStepsDisplay = 
+	GameplayShowStepsDisplay =
 	{
 		Default = true,
 		Choices = { OptionNameString('Off'), OptionNameString('On') },

@@ -1,10 +1,9 @@
-if PREFSMAN:GetPreference( "ShowSongOptions" ) ~= "Maybe_Ask" then
-	return loadfile( THEME:GetPathB("Screen", "out") )()
+if PREFSMAN:GetPreference("ShowSongOptions") ~= "Maybe_Ask" then
+	return loadfile(THEME:GetPathB("Screen", "out"))
 end
 
 return Def.ActorFrame {
-	loadfile( THEME:GetPathB("Screen", "out") )(),
-
+	loadfile(THEME:GetPathB("Screen", "out")),
 	Def.BitmapText{
 		Font= "common normal",
 		InitCommand=function(self)
@@ -19,8 +18,8 @@ return Def.ActorFrame {
 			:linear(0.15)
 			:diffusealpha(0)
 			:zoomy(0)
-		 end,
-		GoToOptionsCommand=function(self) self:visible(false) end,
+		end,
+		GoToOptionsCommand=function(self) self:visible(false) end
 	},
 	Def.BitmapText{
 		Font= "common normal",
@@ -35,7 +34,7 @@ return Def.ActorFrame {
 			:linear(0.15)
 			:diffusealpha(0)
 			:zoomy(0)
-		 end,
-		GoToOptionsCommand=function(self) self:visible(true) end,
+		end,
+		GoToOptionsCommand=function(self) self:visible(true) end
 	}
 }

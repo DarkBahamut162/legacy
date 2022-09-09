@@ -18,11 +18,11 @@
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:template>
-	
-	
-	
+
+
+
 	<!-- Totals -->
-	
+
 	<xsl:template match="/Catalog/Totals">
 		<xsl:call-template name="CollapsibleTopSection">
 			<xsl:with-param name="title">
@@ -36,16 +36,16 @@
 						<xsl:with-param name="nodeset" select="*[text()]" />
 					</xsl:call-template>
 				</table>
-				
+
 			</xsl:with-param>
 		</xsl:call-template>
-					
-	</xsl:template>		
+
+	</xsl:template>
 
 
 
 	<!-- TopScores for SongScores and CourseScores -->
-	
+
 	<xsl:template match="/Catalog/Songs | /Catalog/Courses">
 		<xsl:variable name="Type" select="name()" />
 		<xsl:variable name="SubType">
@@ -60,7 +60,7 @@
 				<xsl:apply-templates select="Song | Course" />
 			</xsl:with-param>
 		</xsl:call-template>
-	</xsl:template>		
+	</xsl:template>
 
 	<xsl:template match="Song | Course">
 		<xsl:variable name="Dir" select="@Dir" />
@@ -75,15 +75,15 @@
 				<xsl:apply-templates select="Steps | Trail" />
 			</xsl:with-param>
 		</xsl:call-template>
-	</xsl:template>		
-	
+	</xsl:template>
+
 	<xsl:template match="Steps | Trail">
 		<xsl:call-template name="SubSectionCompact">
 			<xsl:with-param name="title">
 				<xsl:apply-templates select="." mode="AttributeTitleGenerator" />
 			</xsl:with-param>
 			<xsl:with-param name="text">
-				
+
 				<table class="EntityTableAttr">
 					<xsl:call-template name="DataTableGenerator">
 						<xsl:with-param name="cols" select="1" />
@@ -93,13 +93,13 @@
 
 			</xsl:with-param>
 		</xsl:call-template>
-	</xsl:template>		
+	</xsl:template>
 
-	
+
 	<!-- Main Categories End - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
 
 	<!-- That's it -->
-	
+
 </xsl:stylesheet>
 

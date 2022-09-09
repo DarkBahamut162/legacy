@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	
+
 	<!-- Global Definitions -->
-	
+
 	<xsl:output method="html" omit-xml-declaration="no" encoding="iso-8859-1" indent="no"/>
 
 	<xsl:strip-space elements="*" />
-	
+
 	<xsl:attribute-set name="ToggleLinkAttr">
 		<xsl:attribute name="onClick">JavaScript: toggleLinkClicked(event);</xsl:attribute>
 		<xsl:attribute name="onSelectStart">JavaScript: return false;</xsl:attribute>
 		<xsl:attribute name="onMouseOver">JavaScript: toggleLinkOnMouseOver(event);</xsl:attribute>
 		<xsl:attribute name="onMouseOut">JavaScript: toggleLinkOnMouseOut(event);</xsl:attribute>
-		<xsl:attribute name="style">cursor: hand;</xsl:attribute>		
+		<xsl:attribute name="style">cursor: hand;</xsl:attribute>
 	</xsl:attribute-set>
 
 
@@ -41,7 +41,7 @@
 
 					var imgOpenedSymbol = "images/arrow_down.gif";
 					var imgClosedSymbol = "images/arrow_right.gif";
-					
+
 					function setDisplayAll( image ) {
 						var elems = document.getElementsByName("toggleImage");
 						for ( var i = 0; i &lt; elems.length; i++ ) {
@@ -58,7 +58,7 @@
 						else if (e.srcElement) tg = e.srcElement;
 						if (tg.nodeType == 3) // defeat Safari bug
 							tg = targ.parentNode;
-	
+
 						var obj = tg;
 						if ( obj.name != "toggleImage" ) {
 							obj = obj.childNodes.item('toggleImage');
@@ -68,12 +68,12 @@
 					}
 					function toggleImageChanged(img) {
 						var tg = img;
-	
+
 						var disp;
 						tg.src.search(imgOpenedSymbol) > -1 ? disp = "" : disp = "none";
 						var obj = tg.parentNode.parentNode.parentNode.parentNode;
 						obj.rows[1].style.display = disp;
-						
+
 						var cell = img.parentNode;
 						var spanOpen = cell.childNodes[1];
 						spanOpen.style.display = disp;
@@ -87,7 +87,7 @@
 						else if (e.srcElement) tg = e.srcElement;
 						if (tg.nodeType == 3) // defeat Safari bug
 							tg = targ.parentNode;
-	
+
 						var obj = tg;
 						obj.tagName == 'IMG' ? obj = obj.parentNode : null;
 						obj.tagName == 'SPAN' ? obj = obj.parentNode : null;
@@ -104,7 +104,7 @@
 						else if (e.srcElement) tg = e.srcElement;
 						if (tg.nodeType == 3) // defeat Safari bug
 							tg = targ.parentNode;
-	
+
 						var obj = tg;
 						obj.tagName == 'IMG' ? obj = obj.parentNode : null;
 						obj.tagName == 'SPAN' ? obj = obj.parentNode : null;
@@ -265,7 +265,7 @@ hr	{
 .HeaderContainer	{
 	background: #FFFFFF;
 }
-			</style>  
+			</style>
 
 			</head>
 
@@ -284,7 +284,7 @@ hr	{
 							</table>
 						</td>
 					</tr>
-					
+
 					<tr>
 						<td width="100%" height="100%" valign="top" class="MasterContainer">
 							<br />
@@ -302,7 +302,7 @@ hr	{
 													<xsl:attribute name="value">Internet Ranking</xsl:attribute>
 													<xsl:attribute name="name">navButton</xsl:attribute>
 													<xsl:attribute name="onClick">JavaScript: window.location = '<xsl:value-of select="$Catalog/InternetRankingHomeUrl" />';</xsl:attribute>
-												</xsl:element> 
+												</xsl:element>
 											</xsl:if>
 											<xsl:text> </xsl:text>
 											<xsl:if test="$Catalog/InternetRankingUploadUrl != ''">
@@ -311,7 +311,7 @@ hr	{
 													<xsl:attribute name="value">Upload Stats</xsl:attribute>
 													<xsl:attribute name="name">navButton</xsl:attribute>
 													<xsl:attribute name="onClick">JavaScript: window.location = '<xsl:value-of select="$Catalog/InternetRankingUploadUrl" />&amp;stats_xml=' + window.location;</xsl:attribute>
-												</xsl:element> 
+												</xsl:element>
 											</xsl:if>
 										</td>
 										<td align="right" nowrap="nowrap" valign="top">
@@ -332,8 +332,8 @@ hr	{
 									</td>
 								</tr>
 							</table>
-	
-						</td>		
+
+						</td>
 					</tr>
 
 					<tr>
@@ -360,12 +360,12 @@ hr	{
 
 
 	<!-- Main Categories End - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	
 
-	<!-- General Name Templates -->	
-	
+
+	<!-- General Name Templates -->
+
 	<xsl:template match="*" mode="name" priority="-1">
-		<!-- Strip the trailing 's' -->	
+		<!-- Strip the trailing 's' -->
 		<xsl:variable name="Type" select="substring(name(..),1,string-length(name(..))-1)" />
 		<xsl:call-template name="Translate">
 			<xsl:with-param name="Type" select="$Type" />
@@ -379,21 +379,21 @@ hr	{
 			<xsl:with-param name="Value" select="." />
 		</xsl:call-template>
 	</xsl:template>
-	
+
 	<xsl:template match="LastDifficulty">
 		<xsl:call-template name="Translate">
 			<xsl:with-param name="Type" select="'Difficulty'" />
 			<xsl:with-param name="Value" select="." />
 		</xsl:call-template>
 	</xsl:template>
-	
+
 	<xsl:template match="LastCourseDifficulty">
 		<xsl:call-template name="Translate">
 			<xsl:with-param name="Type" select="'CourseDifficulty'" />
 			<xsl:with-param name="Value" select="." />
 		</xsl:call-template>
 	</xsl:template>
-	
+
 	<xsl:template name="Translate">
 		<xsl:param name="Type" />
 		<xsl:param name="Value" />
@@ -457,7 +457,7 @@ hr	{
 	<xsl:template match="PercentDP | @PercentDP">
 		<xsl:apply-templates mode="percentage" select="." />
 	</xsl:template>
-	
+
 	<xsl:template mode="percentage" match="//*">
 		<xsl:call-template name="PrintPercentage">
 			<xsl:with-param name="num" select="." />
@@ -474,7 +474,7 @@ hr	{
 			<xsl:with-param name="num" select="." />
 		</xsl:call-template>
 	</xsl:template>
-	
+
 	<xsl:template name="PrintDecimal">
 		<xsl:param name="num" />
 		<xsl:value-of select="format-number($num,'#,##0')" />
@@ -485,7 +485,7 @@ hr	{
 			<xsl:with-param name="num" select="." />
 		</xsl:call-template>
 	</xsl:template>
-	
+
 	<xsl:template name="PrintCalories">
 		<xsl:param name="num" />
 		<xsl:value-of select="format-number($num,'#,##0.0')" />
@@ -496,14 +496,14 @@ hr	{
 			<xsl:with-param name="num" select="." />
 		</xsl:call-template>
 	</xsl:template>
-	
+
 	<xsl:template name="PrintSeconds">
 		<xsl:param name="num" />
-		
+
 		<xsl:variable name="seconds" select="floor($num mod 60)" />
 		<xsl:variable name="minutes" select="floor(($num div 60) mod 60)" />
 		<xsl:variable name="hours"  select="floor(($num div 3600))" />
-		
+
 		<xsl:value-of select="format-number($hours,'#,##0')" />
 		<xsl:text>:</xsl:text>
 		<xsl:value-of select="format-number($minutes,'00')" />
@@ -516,7 +516,7 @@ hr	{
 			<xsl:with-param name="num" select="." />
 		</xsl:call-template>
 	</xsl:template>
-	
+
 	<xsl:template match="//*[contains(name(),'Is') or contains(name(),'Using')]">
 		<xsl:if test=".!='0'">
 			true
@@ -542,18 +542,18 @@ hr	{
 			<xsl:value-of select="." />
 		</xsl:if>
 	</xsl:template>
-	
-	
-	
+
+
+
 
 
 	<!-- DataTable Elements -->
-	
+
 	<xsl:template match="*" mode="DataTableElement" priority="-1">
 		<xsl:param name="nowrap" />
 		<tr>
 			<xsl:element name="td">
-				<xsl:attribute name="class">valuename</xsl:attribute>										
+				<xsl:attribute name="class">valuename</xsl:attribute>
 				<xsl:if test="$nowrap != ''">
 					<xsl:attribute name="nowrap">nowrap</xsl:attribute>
 				</xsl:if>
@@ -561,7 +561,7 @@ hr	{
 			</xsl:element>
 			<td>&#160;</td>
 			<xsl:element name="td">
-				<xsl:attribute name="class">dyndata</xsl:attribute>										
+				<xsl:attribute name="class">dyndata</xsl:attribute>
 				<xsl:if test="$nowrap != ''">
 					<xsl:attribute name="nowrap">nowrap</xsl:attribute>
 				</xsl:if>
@@ -571,7 +571,7 @@ hr	{
 		</tr>
 	</xsl:template>
 
-	
+
 	<xsl:template name="PrintHorizontalDataTable">
 		<xsl:param name="text" />
 		<table class="EntityTableAttr">
@@ -589,12 +589,12 @@ hr	{
 			<table class="DataTableAttr">
 				<tr>
 					<xsl:element name="td">
-						<xsl:attribute name="class">valuename</xsl:attribute>										
+						<xsl:attribute name="class">valuename</xsl:attribute>
 						<xsl:copy-of select="$name" />
 					</xsl:element>
 					<td>&#160;&#160;</td>
 					<xsl:element name="td">
-						<xsl:attribute name="class">dyndata</xsl:attribute>										
+						<xsl:attribute name="class">dyndata</xsl:attribute>
 						<xsl:copy-of select="$value" />
 					</xsl:element>
 				</tr>
@@ -622,19 +622,19 @@ hr	{
 		<tr>
 			<xsl:if test="$rank != ''">
 				<xsl:element name="td">
-					<xsl:attribute name="class">valuename</xsl:attribute>										
+					<xsl:attribute name="class">valuename</xsl:attribute>
 					<xsl:copy-of select="$rank" />
 				</xsl:element>
 				<td>&#160;&#160;</td>
 			</xsl:if>
 			<xsl:element name="td">
-				<xsl:attribute name="class">valuename</xsl:attribute>										
+				<xsl:attribute name="class">valuename</xsl:attribute>
 				<xsl:copy-of select="$name" />
 			</xsl:element>
 			<xsl:if test="$value != ''">
 				<td>&#160;&#160;</td>
 				<xsl:element name="td">
-					<xsl:attribute name="class">dyndata</xsl:attribute>										
+					<xsl:attribute name="class">dyndata</xsl:attribute>
 					<xsl:copy-of select="$value" />
 				</xsl:element>
 			</xsl:if>
@@ -696,12 +696,12 @@ hr	{
 			</xsl:apply-templates>
 		</xsl:if>
 	</xsl:template>
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 
 
 	<!-- Title Generator -->
@@ -736,11 +736,11 @@ hr	{
 			</xsl:call-template>
 		</xsl:if>
 	</xsl:template>
-	
-	
-	
+
+
+
 	<!-- CollapsibleTextTable -->
-		
+
 	<xsl:template name="CollapsibleTextTable">
 		<xsl:param name="title" />
 		<xsl:param name="text" />
@@ -757,8 +757,8 @@ hr	{
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:template>
-	
-	
+
+
 	<xsl:template name="CollapsibleSubSection">
 		<xsl:param name="title" />
 		<xsl:param name="text" />
@@ -777,7 +777,7 @@ hr	{
 			</tr>
 		</table>
 	</xsl:template>
-	
+
 	<xsl:template name="SubSectionCompact">
 		<xsl:param name="title" />
 		<xsl:param name="text" />
@@ -795,7 +795,7 @@ hr	{
 			</tr>
 		</table>
 	</xsl:template>
-	
+
 	<xsl:template name="CollapsibleTopSection">
 		<xsl:param name="title" />
 		<xsl:param name="text" />
@@ -816,14 +816,14 @@ hr	{
 	</xsl:template>
 
 
-	
+
 	<!-- Link for hiding & displaying data -->
-		
+
 	<xsl:template name="ToggleDisplayImage">
 		<img name="toggleImage" align="absmiddle" class="hidden" /><span>▼</span><span>►</span>
 	</xsl:template>
 
-	
+
 
 	<!-- That's it -->
 

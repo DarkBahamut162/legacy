@@ -38,7 +38,7 @@ return Def.ActorFrame{
 
 			local song = GAMESTATE:GetCurrentSong()
 			local timing
-			local step = GAMESTATE:GetCurrentSteps(pn);
+			local step = GAMESTATE:GetCurrentSteps(pn)
 			if song then
 				if step then
 					timing = step:GetTimingData()

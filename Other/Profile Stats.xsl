@@ -3,7 +3,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:import href="Common.xsl"/>
-	
+
 
 	<!-- Global Variables -->
 	<xsl:variable name="Stats" select="/Stats" />
@@ -35,11 +35,11 @@
 		</xsl:call-template>
 	</xsl:template>
 
-	
-	
-	
+
+
+
 	<!-- Instructions -->
-	
+
 	<xsl:template name="Instructions">
 		<xsl:call-template name="CollapsibleTopSection">
 			<xsl:with-param name="title">
@@ -55,9 +55,9 @@
 						</td>
 					</tr>
 				</table>
-				
+
 				<hr />
-				
+
 				<h2>Description of Files</h2>
 				<table class="EntityTableAttr">
 					<tr>
@@ -67,7 +67,7 @@
 							<xsl:call-template name="CollapsibleTextTable">
 								<xsl:with-param name="title">More Info</xsl:with-param>
 								<xsl:with-param name="text">
-									You can place up to 200 .edit files in this directory.  The edit file format is similar to an .sm file, except that it has only two tags: 
+									You can place up to 200 .edit files in this directory.  The edit file format is similar to an .sm file, except that it has only two tags:
 									<br />
 									#SONG:&lt;SongDirectory&gt;;
 									<br />
@@ -83,7 +83,7 @@
 							<xsl:call-template name="CollapsibleTextTable">
 								<xsl:with-param name="title">More Info</xsl:with-param>
 								<xsl:with-param name="text">
-									The stats on your memory card may fail to load because: 
+									The stats on your memory card may fail to load because:
 									<ul>
 										<li>The Stats.xml file or its digital signatures have become corrupt.</li>
 										<li>The Stats.xml file has been modified outside of the game. This will cause the digital signature check to fail.</li>
@@ -100,7 +100,7 @@
 							<xsl:call-template name="CollapsibleTextTable">
 								<xsl:with-param name="title">More Info</xsl:with-param>
 								<xsl:with-param name="text">
-									This directory contains all screenshots that you've captured while playing the game. The Screenshots section of Stats.xml shows thumbnails score details for all screens you've captured. 
+									This directory contains all screenshots that you've captured while playing the game. The Screenshots section of Stats.xml shows thumbnails score details for all screens you've captured.
 									<br />
 									The MD5 hash for a screenshot file can be used to verify that the screenshot has not been modified since it was first saved.
 									<br />
@@ -120,7 +120,7 @@
 							<xsl:call-template name="CollapsibleTextTable">
 								<xsl:with-param name="title">More Info</xsl:with-param>
 								<xsl:with-param name="text">
-									You can freely share Stats.xml and Stats.xml.sig with other players or submit these files for internet ranking. However, you should always keep DontShare.sig private. 
+									You can freely share Stats.xml and Stats.xml.sig with other players or submit these files for internet ranking. However, you should always keep DontShare.sig private.
 									Without the DontShare.sig, another player will not be able to load your saved data and pass it off as their own.
 								</xsl:with-param>
 							</xsl:call-template>
@@ -151,7 +151,7 @@
 						</td>
 					</tr>
 				</table>
-				
+
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:template>
@@ -160,8 +160,8 @@
 
 
 	<!-- GeneralData-->
-		
-		
+
+
 	<xsl:template match="/Stats/GeneralData">
 		<xsl:call-template name="CollapsibleTopSection">
 			<xsl:with-param name="title">
@@ -175,9 +175,9 @@
 						<xsl:with-param name="nodeset" select="*[text() and name() != 'NumExtraStagesPassed' and name() != 'NumExtraStagesFailed' and name() != 'NumToasties'] | Song | Course" />
 					</xsl:call-template>
 				</table>
-				
+
 				<hr/>
-				
+
 				<xsl:call-template name="CollapsibleSubSection">
 					<xsl:with-param name="title">Song Count by PlayMode</xsl:with-param>
 					<xsl:with-param name="text">
@@ -199,7 +199,7 @@
 						</xsl:call-template>
 					</xsl:with-param>
 				</xsl:call-template>
-				
+
 				<xsl:call-template name="CollapsibleSubSection">
 					<xsl:with-param name="title">Song Count by Style</xsl:with-param>
 					<xsl:with-param name="text">
@@ -221,7 +221,7 @@
 						</xsl:call-template>
 					</xsl:with-param>
 				</xsl:call-template>
-				
+
 				<xsl:call-template name="CollapsibleSubSection">
 					<xsl:with-param name="title">Song Count by Difficulty</xsl:with-param>
 					<xsl:with-param name="text">
@@ -243,7 +243,7 @@
 						</xsl:call-template>
 					</xsl:with-param>
 				</xsl:call-template>
-				
+
 				<xsl:call-template name="CollapsibleSubSection">
 					<xsl:with-param name="title">Song Count by Meter</xsl:with-param>
 					<xsl:with-param name="text">
@@ -265,7 +265,7 @@
 						</xsl:call-template>
 					</xsl:with-param>
 				</xsl:call-template>
-				
+
 				<xsl:call-template name="CollapsibleSubSection">
 					<xsl:with-param name="title">Stages Passed by Grade</xsl:with-param>
 					<xsl:with-param name="text">
@@ -287,7 +287,7 @@
 						</xsl:call-template>
 					</xsl:with-param>
 				</xsl:call-template>
-				
+
 				<xsl:call-template name="CollapsibleSubSection">
 					<xsl:with-param name="title">Stages Passed by PlayMode</xsl:with-param>
 					<xsl:with-param name="text">
@@ -312,15 +312,15 @@
 
 			</xsl:with-param>
 		</xsl:call-template>
-					
-	</xsl:template>		
-		
 
-	
-	
+	</xsl:template>
+
+
+
+
 
 	<!-- Popularity -->
-	
+
 	<xsl:template mode="Popularity" match="/Stats/SongScores | /Stats/CourseScores">
 		<xsl:variable name="Type" select="substring-before(name(),'Scores')" />
 		<xsl:variable name="TypePlural">
@@ -344,11 +344,11 @@
 					<xsl:with-param name="text">
 						<xsl:call-template name="PrintVerticalDataTable">
 							<xsl:with-param name="text">
-						
+
 								<xsl:variable name="TotalPlays" select="sum(*/*/HighScoreList/NumTimesPlayed)" />
 								<xsl:for-each select="Song | Course">
 									<xsl:sort select="sum(*/HighScoreList/NumTimesPlayed)" data-type="number" order="descending"/>
-								
+
 									<xsl:call-template name="PrintVerticalDataRow">
 										<xsl:with-param name="rank">
 											<xsl:value-of select="position()"/>
@@ -368,7 +368,7 @@
 						</xsl:call-template>
 					</xsl:with-param>
 				</xsl:call-template>
-			
+
 				<xsl:call-template name="CollapsibleSubSection">
 					<xsl:with-param name="title">Unplayed</xsl:with-param>
 					<xsl:with-param name="text">
@@ -386,22 +386,22 @@
 										</xsl:call-template>
 									</xsl:if>
 								</xsl:for-each>
-								
+
 							</xsl:with-param>
 						</xsl:call-template>
 					</xsl:with-param>
 				</xsl:call-template>
-			
+
 				<xsl:call-template name="CollapsibleSubSection">
 					<xsl:with-param name="title"><xsl:value-of select="$SubType" /> Ranking</xsl:with-param>
 					<xsl:with-param name="text">
 
 						<xsl:variable name="SubTypes" select="*/*" />
-					
+
 						<xsl:for-each select="$Catalog/Types/StepsType/StepsType">
 							<xsl:variable name="StepsType" select="." />
 							<xsl:variable name="TotalPlays" select="sum($SubTypes[@StepsType=$StepsType]/HighScoreList/NumTimesPlayed)" />
-					
+
 							<xsl:call-template name="CollapsibleSubSection">
 								<xsl:with-param name="title">
 									<xsl:apply-templates select="$StepsType" />
@@ -428,28 +428,28 @@
 														<xsl:call-template name="PrintPercentage" >
 															<xsl:with-param name="num" select="sum(HighScoreList/NumTimesPlayed) div $TotalPlays" />
 														</xsl:call-template>
-													</span>	
+													</span>
 												</td>
 											</tr>
 										</xsl:for-each>
 									</table>
 								</xsl:with-param>
 							</xsl:call-template>
-							
+
 						</xsl:for-each>
-						
+
 					</xsl:with-param>
 				</xsl:call-template>
-				
+
 			</xsl:with-param>
 		</xsl:call-template>
 	</xsl:template>
-	
-	
 
-	
+
+
+
 	<!-- TopScores for SongScores and CourseScores -->
-	
+
 	<xsl:template mode="TopScores" match="/Stats/SongScores | /Stats/CourseScores">
 		<xsl:variable name="Type" select="substring-before(name(),'Scores')" />
 		<xsl:variable name="SubType">
@@ -464,7 +464,7 @@
 				<xsl:apply-templates mode="TopScores" select="Song | Course" />
 			</xsl:with-param>
 		</xsl:call-template>
-	</xsl:template>		
+	</xsl:template>
 
 	<xsl:template match="Song | Course">
 		<xsl:variable name="Dir" select="@Dir" />
@@ -472,8 +472,8 @@
 		<xsl:variable name="MainTitle" select="$Catalog/*/*[@Dir=$Dir or @Path=$Path]/MainTitle" />
 		<xsl:variable name="SubTitle" select="$Catalog/*/*[@Dir=$Dir or @Path=$Path]/SubTitle" />
 		<xsl:value-of select="$MainTitle | $SubTitle" />
-	</xsl:template>		
-	
+	</xsl:template>
+
 	<xsl:template mode="TopScores" match="Song | Course">
 		<xsl:variable name="Dir" select="@Dir" />
 		<xsl:variable name="Path" select="@Path" />
@@ -487,8 +487,8 @@
 				<xsl:apply-templates select="Steps | Trail" />
 			</xsl:with-param>
 		</xsl:call-template>
-	</xsl:template>		
-	
+	</xsl:template>
+
 	<xsl:template match="Steps | Trail">
 		<xsl:call-template name="CollapsibleSubSection">
 			<xsl:with-param name="title">
@@ -498,9 +498,9 @@
 				<xsl:apply-templates select="HighScoreList" />
 			</xsl:with-param>
 		</xsl:call-template>
-	</xsl:template>		
+	</xsl:template>
 
-	
+
 	<xsl:template match="HighScoreList">
 		<table class="EntityTableAttr">
 			<xsl:call-template name="DataTableGenerator">
@@ -509,7 +509,7 @@
 			</xsl:call-template>
 		</table>
 		<xsl:apply-templates select="HighScore" />
-	</xsl:template>		
+	</xsl:template>
 
 	<xsl:template match="HighScore">
 		<xsl:call-template name="SubSectionCompact">
@@ -524,14 +524,14 @@
 					</xsl:call-template>
 				</table>
 			</xsl:with-param>
-		</xsl:call-template>		
-	</xsl:template>		
+		</xsl:call-template>
+	</xsl:template>
 
-	
-	
+
+
 
 	<!-- Completeness -->
-	
+
 	<xsl:template mode="Completeness" match="/Stats/SongScores | /Stats/CourseScores">
 		<xsl:variable name="ScoresName" select="translate(name(), ' ', ' ')" />
 		<xsl:variable name="Type" select="substring-before(name(),'Scores')" />
@@ -565,7 +565,7 @@
 
 							<xsl:variable name="ActualO" select="sum($Stats/*[name()=$ScoresName]/*/*[@StepsType=$StepsType]/HighScoreList/HighScore[1]/PercentDP)" />
 							<xsl:variable name="PossibleO" select="count($Catalog/*/*[name()=$Type]/*[@StepsType=$StepsType])" />
-							
+
 
 							<table class="EntityTableAttr">
 								<tr>
@@ -585,8 +585,8 @@
 									</td>
 								</tr>
 							</table>
-							
-							
+
+
 							<hr />
 
 
@@ -601,14 +601,14 @@
 										</td>
 									</xsl:for-each>
 								</tr>
-								
+
 								<tr>
 									<td>Actual</td>
 									<xsl:for-each select="$Catalog/Types/*[name()=$DifficultyName]/*[name()=$DifficultyName]">
 										<xsl:variable name="Difficulty" select="." />
 										<xsl:variable name="Actual" select="sum($Stats/*[name()=$ScoresName]/*/*[(@Difficulty=$Difficulty or @CourseDifficulty=$Difficulty) and @StepsType=$StepsType]/HighScoreList/HighScore[1]/PercentDP)" />
 										<xsl:variable name="Possible" select="count($Catalog/*/*[name()=$Type]/*[(@Difficulty=$Difficulty or @CourseDifficulty=$Difficulty) and @StepsType=$StepsType])" />
-										
+
 										<td>
 											<span class="dyndata">
 												<xsl:call-template name="PrintCalories">
@@ -616,7 +616,7 @@
 												</xsl:call-template>
 											</span>
 										</td>
-										
+
 									</xsl:for-each>
 								</tr>
 
@@ -626,7 +626,7 @@
 										<xsl:variable name="Difficulty" select="." />
 										<xsl:variable name="Actual" select="sum($Stats/*[name()=$ScoresName]/*/*[(@Difficulty=$Difficulty or @CourseDifficulty=$Difficulty) and @StepsType=$StepsType]/HighScoreList/HighScore[1]/PercentDP)" />
 										<xsl:variable name="Possible" select="count($Catalog/*/*[name()=$Type]/*[(@Difficulty=$Difficulty or @CourseDifficulty=$Difficulty) and @StepsType=$StepsType])" />
-										
+
 										<td>
 											<span class="dyndata">
 												<xsl:call-template name="PrintCalories">
@@ -634,7 +634,7 @@
 												</xsl:call-template>
 											</span>
 										</td>
-										
+
 									</xsl:for-each>
 								</tr>
 
@@ -644,7 +644,7 @@
 										<xsl:variable name="Difficulty" select="." />
 										<xsl:variable name="Actual" select="sum($Stats/*[name()=$ScoresName]/*/*[(@Difficulty=$Difficulty or @CourseDifficulty=$Difficulty) and @StepsType=$StepsType]/HighScoreList/HighScore[1]/PercentDP)" />
 										<xsl:variable name="Possible" select="count($Catalog/*/*[name()=$Type]/*[(@Difficulty=$Difficulty or @CourseDifficulty=$Difficulty) and @StepsType=$StepsType])" />
-										
+
 										<td>
 											<span class="dyndata">
 												<xsl:if test="$Possible = 0">
@@ -659,7 +659,7 @@
 												</xsl:if>
 											</span>
 										</td>
-										
+
 									</xsl:for-each>
 								</tr>
 
@@ -679,7 +679,7 @@
 										<td><xsl:apply-templates select="$Difficulty"/></td>
 									</xsl:for-each>
 								</tr>
-																
+
 								<xsl:for-each select="$Catalog/*[name()=$TypePlural]/*[name()=$Type]">
 									<xsl:variable name="Dir" select="@Dir" />
 									<xsl:variable name="Path" select="@Path" />
@@ -703,24 +703,24 @@
 										</xsl:for-each>
 									</tr>
 								</xsl:for-each>
-								
+
 							</table>
-				
+
 						</xsl:with-param>
-					</xsl:call-template>		
+					</xsl:call-template>
 				</xsl:for-each>
 			</xsl:with-param>
-		</xsl:call-template>		
+		</xsl:call-template>
 	</xsl:template>
-	
-	
+
+
 
 
 	<!-- RecentSongScores and RecentCourseScores -->
-	
+
 	<xsl:template match="/Stats/RecentSongScores | /Stats/RecentCourseScores">
 		<xsl:variable name="Type" select="substring-after(substring-before(name(),'Scores'),'Recent')" />
-		
+
 		<xsl:call-template name="CollapsibleTopSection">
 			<xsl:with-param name="title">
 				<xsl:value-of select="$Type" /> Recent Scores
@@ -733,9 +733,9 @@
 			</xsl:with-param>
 		</xsl:call-template>
 
-	</xsl:template>		
-	
-	
+	</xsl:template>
+
+
 	<xsl:template match="HighScoreForASongAndSteps | HighScoreForACourseAndTrail">
 		<xsl:call-template name="SubSectionCompact">
 			<xsl:with-param name="title">
@@ -745,15 +745,15 @@
 				<xsl:apply-templates select="HighScore" />
 			</xsl:with-param>
 		</xsl:call-template>
-	</xsl:template>		
-	
+	</xsl:template>
 
 
 
-	
+
+
 	<!-- ScreenshotData -->
-		
-		
+
+
 	<xsl:template match="/Stats/ScreenshotData">
 		<xsl:call-template name="CollapsibleTopSection">
 			<xsl:with-param name="title">
@@ -766,8 +766,8 @@
 				</xsl:for-each>
 			</xsl:with-param>
 		</xsl:call-template>
-	</xsl:template>		
-	
+	</xsl:template>
+
 	<xsl:template match="Screenshot">
 		<table class="EntityTableAttr">
 			<tr>
@@ -794,50 +794,50 @@
 				</td>
 			</tr>
 		</table>
-	</xsl:template>		
-	
+	</xsl:template>
 
-	
+
+
 	<!-- CoinData -->
-		
-		
+
+
 	<xsl:template match="/Stats/CoinData">
 		<xsl:call-template name="CollapsibleTopSection">
 			<xsl:with-param name="title">
 				Coin Counts
 			</xsl:with-param>
 			<xsl:with-param name="text">
-			
+
 				<xsl:for-each select="*">
-				
+
 					<xsl:call-template name="CollapsibleTopSection">
 						<xsl:with-param name="title">
 							<xsl:value-of select="name()" />
 						</xsl:with-param>
 						<xsl:with-param name="text">
-						
-				
+
+
 							<table class="EntityTableAttr">
 								<xsl:call-template name="DataTableGenerator">
 									<xsl:with-param name="cols" select="2" />
 									<xsl:with-param name="nodeset" select="./*[text()]" />
 								</xsl:call-template>
 							</table>
-					
+
 						</xsl:with-param>
 					</xsl:call-template>
-							
+
 				</xsl:for-each>
-			
+
 			</xsl:with-param>
 		</xsl:call-template>
-	</xsl:template>		
-	
+	</xsl:template>
 
-	
+
+
 	<!-- CalorieData -->
-		
-		
+
+
 	<xsl:template match="/Stats/CalorieData">
 
 		<xsl:call-template name="CollapsibleTopSection">
@@ -850,7 +850,7 @@
 					WARNING: Weight is not set. Calorie counts may be inaccurate.
 					<hr/>
 				</xsl:if>
-			
+
 				<xsl:variable name="Cals" select="../GeneralData/TotalCaloriesBurned" />
 				<xsl:variable name="NumSongs" select="sum(../GeneralData/NumSongsPlayedByPlayMode/*)" />
 				<xsl:variable name="GameplaySeconds" select="../GeneralData/TotalGameplaySeconds" />
@@ -893,7 +893,7 @@
 						</xsl:call-template>
 					</xsl:with-param>
 				</xsl:call-template>
-			
+
 				<hr/>
 
 				<h2>By Week</h2>
@@ -907,7 +907,7 @@
 						<td>Thu</td>
 						<td>Fri</td>
 						<td>Sat</td>
-					</tr>	
+					</tr>
 
 					<xsl:if test="count(/Stats/CalorieData/*) &gt; 0" >
 						<xsl:variable name="firstDateJulian">
@@ -926,7 +926,7 @@
 							</xsl:call-template>
 						</xsl:variable>
 						<xsl:variable name="lastDateJulianRoundedToWeek" select="$lastDateJulian - $lastDateDayOfWeek" />
-						
+
 						<xsl:call-template name="PrintWeeksRecursive">
 							<xsl:with-param name="beginDayJulian" select="$lastDateJulianRoundedToWeek" />
 							<xsl:with-param name="stopDayJulian" select="$firstDateJulian" />
@@ -936,16 +936,16 @@
 
 			</xsl:with-param>
 		</xsl:call-template>
-	</xsl:template>		
-	
-	
+	</xsl:template>
+
+
 	<xsl:template name="PrintWeeksRecursive">
 	    <xsl:param name="beginDayJulian" />
 	    <xsl:param name="stopDayJulian" />
 	    <xsl:variable name="endDayJulian" select="$beginDayJulian+6" />
 	    <tr>
 			<td>
-				Week of 
+				Week of
 				<xsl:call-template name="format-julian-day">
 					<xsl:with-param name="julian-day" select="$beginDayJulian" />
 				</xsl:call-template>
@@ -994,7 +994,7 @@
 			</xsl:call-template>
 	    </xsl:if>
 	</xsl:template>
-	
+
 	<xsl:template name="CaloriesForJulianDay">
 	    <xsl:param name="dayJulian" />
 		<xsl:variable name="date">
@@ -1009,14 +1009,14 @@
 			</xsl:call-template>
 	    </xsl:if>
 	</xsl:template>
-	
-	
+
+
 	<xsl:template name="calculate-julian-day2">
 	    <xsl:param name="date"/><!--2004-04-20-->
 
 		<xsl:variable name="year"><!--2004-->
 			<xsl:value-of select="substring-before($date,'-')"/>
-		</xsl:variable>	
+		</xsl:variable>
 		<xsl:variable name="month-day"><!--04-20-->
 			<xsl:value-of select="substring-after($date,'-')"/>
 		</xsl:variable>
@@ -1026,20 +1026,20 @@
 		<xsl:variable name="day"><!--20-->
 			<xsl:value-of select="substring-after($month-day,'-')"/>
 		</xsl:variable>
-		
+
 		<xsl:call-template name="calculate-julian-day">
 			<xsl:with-param name="year" select="$year"/>
 			<xsl:with-param name="month" select="$month"/>
 			<xsl:with-param name="day" select="$day"/>
 		</xsl:call-template>
-		
+
 	</xsl:template>
-		
+
 	<xsl:template name="calculate-julian-day">
 		<xsl:param name="year" /><!--2004-->
 		<xsl:param name="month" /><!--04-->
 		<xsl:param name="day" /><!--20-->
-		
+
 		<xsl:variable name="a" select="floor((14 - $month) div 12)"/>
 		<xsl:variable name="y" select="$year + 4800 - $a"/>
 		<xsl:variable name="m" select="$month + 12 * $a - 3"/>
@@ -1068,11 +1068,11 @@
 			<xsl:with-param name="day" select="$day"/>
 			<xsl:with-param name="format" select="$format"/>
 		</xsl:call-template>
-		
-	</xsl:template>
-	
 
-	
+	</xsl:template>
+
+
+
   <xsl:template name="calculate-day-of-the-week">
     <xsl:param name="year"/>
     <xsl:param name="month"/>
@@ -1089,7 +1089,7 @@
 
   <xsl:template name="calculate-day-of-the-week2">
 	<xsl:param name="date"/><!--2004-04-20-->
-	
+
 	<xsl:variable name="month-day"><!--04-20-->
 		<xsl:value-of select="substring-after($date,'-')"/>
 	</xsl:variable>
@@ -1101,7 +1101,7 @@
 	</xsl:variable>
 	<xsl:variable name="year"><!--2004-->
 		<xsl:value-of select="substring-before($date,'-')"/>
-	</xsl:variable>	
+	</xsl:variable>
 
     <xsl:variable name="a" select="floor((14 - $month) div 12)"/>
     <xsl:variable name="y" select="$year - $a"/>
@@ -1411,11 +1411,11 @@
     </xsl:if>
 
   </xsl:template>
-  
+
 	<!-- Main Categories End - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-	
+
 
 	<!-- That's it -->
-	
+
 </xsl:stylesheet>
 

@@ -10,7 +10,7 @@ It's source is being displayed down below.
 [StepMania 5 Legacy](https://github.com/Tiny-Foxes/sm5-legacy)
 ---
 
-**Description:** The legacy theme from StepMania 5.0.x with slight performance tweaks for OutFox. 
+**Description:** The legacy theme from StepMania 5.0.x with slight performance tweaks for OutFox.
 
 **Date:** Aug 19th 2020 - Feb 1st 2021
 
