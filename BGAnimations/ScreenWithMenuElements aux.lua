@@ -14,7 +14,6 @@ local function Clock()
 			self:y(-56)
 		end
 	end
-	-- clock
 	return Def.ActorFrame {
 		Name="Clock",
 		InitCommand=function(self) self:x(50):y(12):playcommand("Update") end,

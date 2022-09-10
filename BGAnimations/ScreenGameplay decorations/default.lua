@@ -13,13 +13,9 @@ local function CreateSegments(Player)
 
 	local fFrameWidth = 380
 	local fFrameHeight = 8
-	-- XXX: doesn't work in course mode -aj
 	if not GAMESTATE:IsCourseMode() then
-	-- Straight rip off NCRX
 		local song = GAMESTATE:GetCurrentSong()
 		local timingData = song:GetTimingData()
-		-- use the StepsSeconds, which will almost always be more proper
-		-- than a file with ITG2r21 compatibility.
 		if song then
 			local songLen = song:MusicLengthSeconds()
 			local firstBeatSecs = song:GetFirstSecond()
@@ -45,9 +41,7 @@ local function CreateSegments(Player)
 							InitCommand=function(self)
 								self:shadowlength(0)
 								self:shadowcolor(color(firstShadow))
-								-- set width
 								self:zoomto(math.max((secs/songLen)*fFrameWidth, 1), fFrameHeight)
-								-- find location
 								self:x((scale(beatTime,firstBeatSecs,lastBeatSecs,-fFrameWidth/2,fFrameWidth/2)))
 							end,
 							OnCommand=function(self)
@@ -57,15 +51,11 @@ local function CreateSegments(Player)
 								self:diffusealpha(0)
 							end
 						},
-						-- there's a cool effect that can't happen because we don't fade out like we did before
 						Def.Quad {
 							InitCommand=function(self)
-								--self:diffuse(HSVA(192,1,0.8,0.8))
 								self:shadowlength(0)
 								self:shadowcolor(color(secondShadow))
-								-- set width
 								self:zoomto(math.max((secs/songLen)*fFrameWidth, 1),fFrameHeight)
-								-- find location
 								self:x((scale(beatTime,firstBeatSecs,lastBeatSecs,-fFrameWidth/2,fFrameWidth/2)))
 							end,
 							OnCommand=function(self)
@@ -75,7 +65,6 @@ local function CreateSegments(Player)
 								self:effectcolor2(color(secondEffect))
 								self:effectclock('beat')
 								self:effectperiod(1/8)
-								--
 								self:diffusealpha(0)
 								self:sleep(beatTime+1)
 								self:diffusealpha(1)
@@ -107,7 +96,6 @@ local function CreateSegments(Player)
 				end
 
 				for i=1,#speeds do
-					-- TODO: Turn beats into seconds for this calculation?
 					speedFrame[#speedFrame+1] = CreateLine(speeds[i][1], 0,
 						"#ADFF2F77", "#ADFF2F77", "#ADFF2F77", "#7CFC0077", "#FF000077")
 				end
@@ -180,9 +168,7 @@ for pn in ivalues(PlayerNumber) do
 			Tip=LoadActor( THEME:GetPathG( 'SongMeterDisplay', 'tip ' .. PlayerNumberToString(pn) ) ) .. { InitCommand=function(self) self:visible(false) end }
 		}
 	}
-	--if ThemePrefs.Get("TimingDisplay") == true then
-		songMeterDisplay[#songMeterDisplay+1] = CreateSegments(pn)
-	--end
+	songMeterDisplay[#songMeterDisplay+1] = CreateSegments(pn)
 	t[#t+1] = songMeterDisplay
 end
 
@@ -198,7 +184,6 @@ for pn in ivalues(PlayerNumber) do
 end
 
 t[#t+1] = StandardDecorationFromFileOptional("BPMDisplay","BPMDisplay")
---t[#t+1] = StandardDecorationFromFileOptional("StageDisplay","StageDisplay")
 t[#t+1] = StandardDecorationFromFileOptional("SongTitle","SongTitle")
 
 return t

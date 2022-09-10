@@ -117,8 +117,6 @@ t[#t+1] = StandardDecorationFromFileOptional("DifficultyList","DifficultyList")
 t[#t+1] = StandardDecorationFromFileOptional("BPMDisplay","BPMDisplay")
 t[#t+1] = StandardDecorationFromFileOptional("BPMLabel","BPMLabel")
 t[#t+1] = StandardDecorationFromFileOptional("SegmentDisplay","SegmentDisplay")
---t[#t+1] = StandardDecorationFromFileOptional("NegativeDisplay","NegativeDisplay") .. {}
-
 t[#t+1] = StandardDecorationFromFileOptional("SongTime","SongTime") .. {
 	SetCommand=function(self)
 		local curSelection = nil
@@ -204,7 +202,6 @@ if not GAMESTATE:IsCourseMode() then
 			end
 		end
 	}
-	--t[#t+1] = StandardDecorationFromFileOptional("StageDisplay","StageDisplay")
 end
 
 if GAMESTATE:IsCourseMode() then

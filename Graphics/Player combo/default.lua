@@ -17,7 +17,6 @@ local ShowFlashyCombo = ThemePrefs.Get("FlashyCombo")
 
 return Def.ActorFrame {
 	InitCommand=function(self) self:vertalign(bottom) end,
-	-- flashy combo elements:
  	loadfile(THEME:GetPathG("Combo","100Milestone"))() .. {
 		Name="OneHundredMilestone",
 		InitCommand=function(self) self:visible(ShowFlashyCombo) end,
@@ -28,7 +27,6 @@ return Def.ActorFrame {
 		InitCommand=function(self) self:visible(ShowFlashyCombo) end,
 		ToastyAchievedMessageCommand=function(self) self:playcommand("Milestone") end,
 	},
-	-- normal combo elements:
 	Def.ActorFrame {
 		Name="ComboFrame",
 		Def.BitmapText{
@@ -54,34 +52,11 @@ return Def.ActorFrame {
 		cf.ComboLabel:visible(false)
 		cf.MissLabel:visible(false)
 	end,
-	-- Milestones:
-	-- 25,50,100,250,600 Multiples
---[[ 		if (iCombo % 100) == 0 then
-			c.OneHundredMilestone:playcommand("Milestone")
-		elseif (iCombo % 250) == 0 then
-			-- It should really be 1000 but thats slightly unattainable, since
-			-- combo doesnt save over now.
-			c.OneThousandMilestone:playcommand("Milestone")
-		else
-			return
-		end, --]]
  	TwentyFiveMilestoneCommand=function(self,parent)
 		if ShowFlashyCombo then
 			self:finishtweening():addy(-4):bounceend(0.125):addy(4)
 		end
 	end,
-	--]]
-	--[[
-	ToastyAchievedMessageCommand=function(self,params)
-		if params.PlayerNumber == player then
-			c.ComboFrame:thump(2):effectclock('beat')
-		end
-	end,
-	ToastyDroppedMessageCommand=function(self,params)
-		if params.PlayerNumber == player then
-			c.ComboFrame:stopeffect()
-		end
-	end, --]]
 	ComboCommand=function(self, param)
 		local iCombo = param.Misses or param.Combo
 		if not iCombo or iCombo < ShowComboAt then
@@ -111,7 +86,6 @@ return Def.ActorFrame {
 		cf.Number:visible(true)
 		cf.Number:settext( string.format("%i", iCombo) )
         cf.Number:textglowmode("TextGlowMode_Stroke")
-		-- FullCombo Rewards
 		if param.FullComboW1 then
 			cf.Number:diffuse( GameColor.Judgment["JudgmentLine_W1"] )
 			cf.Number:strokecolor( GameColor.Judgment["JudgmentLine_W1"] )
@@ -128,9 +102,6 @@ return Def.ActorFrame {
             cf.Number:textglowmode("TextGlowMode_Stroke")
 			cf.Number:glowshift()
 		elseif param.Combo then
-			-- Player 1's color is Red, which conflicts with the miss combo.
-			-- instead, just diffuse to white for now. -aj
-			--c.Number:diffuse(PlayerColor(player))
 			cf.Number:diffuse(Color("White"))
 			cf.Number:strokecolor(Color("Stealth"))
 			cf.Number:stopeffect()
@@ -138,22 +109,11 @@ return Def.ActorFrame {
 			cf.Number:diffuse(color("#ff0000"))
 			cf.Number:stopeffect()
 		end
-		-- Pulse
 		Pulse( cf.Number, param )
 		if param.Combo then
 			PulseLabel( cf.ComboLabel, param )
 		else
 			PulseLabel( cf.MissLabel, param )
 		end
-		-- Milestone Logic
-	end,
---[[ 	ScoreChangedMessageCommand=function(self,param)
-		local iToastyCombo = param.ToastyCombo
-		if iToastyCombo and (iToastyCombo > 0) then
--- 			c.Number:thump():effectmagnitude(1,1.2,1):effectclock('beat')
--- 			c.Number:thump():effectmagnitude(1,1.2,1):effectclock('beat')
-		else
--- 			c.Number:stopeffect()
-		end
-	end --]]
+	end
 }

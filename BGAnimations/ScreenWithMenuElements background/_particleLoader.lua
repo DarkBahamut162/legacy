@@ -36,7 +36,6 @@ for i=1,Params.NumParticles do
 			self:basezoom(tParticleInfo[i].Zoom)
 			self:x(math.random(SCREEN_LEFT+(self:GetWidth()/2),SCREEN_RIGHT-(self:GetWidth()/2)))
 			self:y(math.random(SCREEN_TOP+(self:GetHeight()/2),SCREEN_BOTTOM-(self:GetHeight()/2)))
-			--self:z(math.random(-64,0))
 		end,
 		OnCommand=function(self) self:diffuse(ColorLightTone(color("#ffd400"))):diffusealpha(0.8) end
 	}
@@ -53,7 +52,6 @@ local function UpdateParticles(self,DeltaTime)
 		p:x(p:GetX() + (vX * DeltaTime))
 		p:y(p:GetY() + (vY * DeltaTime))
 		p:z(p:GetZ() + (vZ * DeltaTime))
---		p:zoom( 1 + math.cos((tParticleInfo[i].Age * math.pi*2))	* 0.125 )
 		if p:GetX() > SCREEN_RIGHT + (p:GetWidth()/2 - p:GetZ()) then
 			p:x(SCREEN_LEFT - (p:GetWidth()/2))
 		elseif p:GetX() < SCREEN_LEFT - (p:GetWidth()/2 - p:GetZ()) then

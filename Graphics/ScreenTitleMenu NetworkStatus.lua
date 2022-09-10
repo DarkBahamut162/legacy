@@ -1,6 +1,4 @@
 local netConnected = IsNetConnected()
---local loggedOnSMO = IsNetSMOnline()
-
 local t = Def.ActorFrame{
 	Def.Quad {
 		InitCommand=function(self)
@@ -18,7 +16,6 @@ local t = Def.ActorFrame{
 		Font= "Common Normal",
 		InitCommand=function(self) self:uppercase(true):zoom(0.75):shadowlength(1):horizalign(left) end,
 		BeginCommand=function(self)
-			-- check network status
 			if netConnected then
 				self:diffuse( color("0.95,0.975,1,1") )
 				self:diffusebottomedge( color("0.72,0.89,1,1") )

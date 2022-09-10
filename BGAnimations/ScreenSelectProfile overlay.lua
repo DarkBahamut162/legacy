@@ -4,10 +4,6 @@ function GetLocalProfiles()
 	for p = 0,PROFILEMAN:GetNumLocalProfiles()-1 do
 		local profile=PROFILEMAN:GetLocalProfileFromIndex(p)
 		table.insert( ret, Def.ActorFrame {
---[[ 			Def.Quad {
-				InitCommand=function(self) self:zoomto(200,1):y(40/2) end,
-				OnCommand=function(self) self:diffuse(Color('Outline')) end,
-			}, --]]
 			Def.BitmapText{
 				Font= "Common Normal",
 				Text=profile:GetDisplayName(),
@@ -42,20 +38,9 @@ function LoadPlayerStuff(Player)
 	local pn = (Player == PLAYER_1) and 1 or 2
 
 	return {
---[[ 	loadfile(THEME:GetPathB('', '_frame 3x3'))( 'metal', 200, 230) .. {
-			Name = 'BigFrame'
-		}, --]]
 		Def.ActorFrame {
 			Name = 'JoinFrame',
 			LoadCard(Color('Orange')),
-	--[[ 		Def.Quad {
-				InitCommand=function(self) self:zoomto(200+4,230+4) end,
-				OnCommand=function(self) self:shadowlength(1):diffuse(color("0,0,0,0.5")) end,
-			},
-			Def.Quad {
-				InitCommand=function(self) self:zoomto(200,230) end,
-				OnCommand=function(self) self:diffuse(Color('Orange')):diffusealpha(0.5) end,
-			}, --]]
 			Def.BitmapText{
 				Font= "Common Normal",
 				Text=THEME:GetString("ScreenSelectProfile","PressStart"),
@@ -63,21 +48,12 @@ function LoadPlayerStuff(Player)
 				OnCommand=function(self) self:diffuseshift():effectcolor1(Color('White')):effectcolor2(color("0.5,0.5,0.5")) end,
 			}
 		},
-
 		Def.ActorFrame {
 			Name = 'BigFrame',
 			LoadCard(PlayerColor(Player))
 		},
-
-	--[[ 	loadfile(THEME:GetPathB('', '_frame 3x3'))( 'metal', 170, 20) .. {
-			Name = 'SmallFrame'
-		}, --]]
 		Def.ActorFrame {
 			Name = 'SmallFrame',
---[[ 			Def.Quad {
-				InitCommand=function(self) self:zoomto(170+4,32+4) end,
-				OnCommand=function(self) self:shadowlength(1) end,
-			}, --]]
 			InitCommand=function(self) self:y(-2) end,
 			Def.Quad {
 				InitCommand=function(self) self:zoomto(200-10,40+2) end,
@@ -102,42 +78,21 @@ function LoadPlayerStuff(Player)
 		Def.ActorScroller{
 			Name = 'ProfileScroller',
 			NumItemsToDraw=6,
--- 			InitCommand=function(self) self:y(-230/2+20) end,
 			OnCommand=function(self) self:y(1):SetFastCatchup(true):SetMask(200,58):SetSecondsPerItem(0.15) end,
 			TransformFunction=function(self, offset, itemIndex, numItems)
 				local focus = scale(math.abs(offset),0,2,1,0)
 				self:visible(false)
 				self:y(math.floor( offset*40 ))
-	-- 			self:zoomy( focus )
-	-- 			self:z(-math.abs(offset))
-	-- 			self:zoom(focus)
 			end,
 			children = GetLocalProfiles()
 		},
 
 		Def.ActorFrame {
 			Name = "EffectFrame",
-		--[[ 		Def.Quad {
-					InitCommand=function(self)
-						self:y(-230/2):vertalign(top):zoomto(200,8):fadebottom(1) end,
-					OnCommand=function(self) self:diffuse(Color("Black")):diffusealpha(0.25) end,
-				},
-				Def.Quad {
-					InitCommand=function(self)
-						self:y(230/2):vertalign(bottom):zoomto(200,8):fadetop(1) end,
-					OnCommand=function(self) self:diffuse(Color("Black")):diffusealpha(0.25) end,
-				} --]]
 		},
-	--[[ 	Def.BitmapText {
-			OnCommand = function(self) self:y(160) end,
-			Name = 'SelectedProfileText',
-			Font = "Common Normal",
-			Text = 'No profile'
-		}, --]]
 		Def.BitmapText{
 			Font= "Common Normal",
 			Name = 'SelectedProfileText',
-			--InitCommand=function(self) self:y(160):shadowlength(1):diffuse(PlayerColor(Player)) end,
 			InitCommand=function(self) self:y(160):shadowlength(1) end,
 		}
 	}
@@ -155,7 +110,6 @@ function UpdateInternal3(self, Player)
 	if GAMESTATE:IsHumanPlayer(Player) then
 		frame:visible(true)
 		if MEMCARDMAN:GetCardState(Player) == 'MemoryCardState_none' then
-			--using profile if any
 			joinframe:visible(false)
 			smallframe:visible(true)
 			bigframe:visible(true)
@@ -178,7 +132,6 @@ function UpdateInternal3(self, Player)
 				end
 			end
 		else
-			--using card
 			smallframe:visible(false)
 			scroller:visible(false)
 			seltext:settext('CARD')
@@ -193,7 +146,6 @@ function UpdateInternal3(self, Player)
 	end
 end
 
--- Will be set to the main ActorFrame for the screen in its OnCommand.
 local main_frame= false
 
 local function input(event)
@@ -298,7 +250,6 @@ return Def.ActorFrame {
 			end,
 			children = LoadPlayerStuff(PLAYER_2),
 		},
-		-- sounds
 		Def.Sound{
 			File= THEME:GetPathS("Common","start"),
 			IsAction= true,

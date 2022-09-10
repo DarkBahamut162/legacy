@@ -32,8 +32,6 @@ local numbered_stages= {
 function thified_curstage_index(on_eval)
 	local cur_stage= GAMESTATE:GetCurrentStage()
 	local adjust= 1
-	-- hack: ScreenEvaluation shows the current stage, but it needs to show
-	-- the last stage instead.  Adjust the amount.
 	if on_eval then
 		adjust= 0
 	end

@@ -36,7 +36,6 @@ for i, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do
 				{-cursor_spacing_value, cursor_spacing_value}, {0, cursor_spacing_value},   {cursor_spacing_value, cursor_spacing_value},
 				{-cursor_spacing_value, cursor_spacing_value*2}, {0, cursor_spacing_value*2},   {cursor_spacing_value, cursor_spacing_value*2}},
 			cursor = Def.ActorFrame {
-				-- Move whole container
 				MoveCommand=function(self, param)
 					self:stoptweening()
 					self:decelerate(0.15)
@@ -45,7 +44,6 @@ for i, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do
 						self:z(param[3])
 					end
 				end,
-				--
 				loadfile( THEME:GetPathG("_frame", "1D"))(
 					{ 2/18, 14/18, 2/18 },
 					Def.Sprite{ Texture= THEME:GetPathB("_frame", "cursors/rounded fill") }
@@ -117,7 +115,6 @@ local function timer_update(self)
 end
 
 local args= {
-	--
 	Def.ActorFrame{
 		Name= "timer",
 		InitCommand= function(self)

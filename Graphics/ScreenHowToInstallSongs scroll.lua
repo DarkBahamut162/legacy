@@ -1,5 +1,5 @@
 local gc = Var("GameCommand")
-local squareSize = 8 -- was 18
+local squareSize = 8
 
 return Def.ActorFrame {
 	Def.Quad{

@@ -116,9 +116,7 @@ return Def.ActorFrame{
 	Def.BitmapText{
 		Font="Common normal",
 		Name="Explanation",
-		--Text="The quick brown fox jumps over the lazy dog ".. Index .." times.",
 		Text=Screen.String("Explanation-"..Name),
-		-- was x(-(SCREEN_CENTER_X*0.4)):y(SCREEN_CENTER_Y*0.525)
 		InitCommand=function(self) self:x(-(SCREEN_CENTER_X*0.8)):y(SCREEN_CENTER_Y*0.8):halign(0):valign(0):zoom(0.65):wrapwidthpixels((SCREEN_WIDTH*0.55)*1.75):NoStroke():shadowlength(1) end,
 		GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
 		LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,

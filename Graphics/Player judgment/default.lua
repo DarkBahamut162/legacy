@@ -144,10 +144,8 @@ return Def.ActorFrame {
 		end,
 
 		JudgmentMessageCommand=function(self, param)
-			-- Fix Player Combo animating when player successfully avoids a mine.
 			local msgParam = param
 			MESSAGEMAN:Broadcast("TestJudgment",msgParam)
-			--
 			if param.Player ~= player then return end
 			if param.HoldNoteScore then return end
 
@@ -174,14 +172,11 @@ return Def.ActorFrame {
 				fTapNoteOffset = 1
 				bUseNegative = true
 			else
-	-- 			fTapNoteOffset = fTapNoteOffset
 				bUseNegative = false
 			end
 
 			if fTapNoteOffset ~= 1 then
-				-- we're safe, you can push the values
 				tTotalJudgments[#tTotalJudgments+1] = math.abs(fTapNoteOffset)
-	--~ 			tTotalJudgments[#tTotalJudgments+1] = bUseNegative and fTapNoteOffset or math.abs( fTapNoteOffset )
 			end
 
 			self:playcommand("Reset")
@@ -209,7 +204,6 @@ return Def.ActorFrame {
 			c.ProtimingGraphFill:visible( bShowProtiming )
 			c.ProtimingGraphFill:finishtweening()
 			c.ProtimingGraphFill:decelerate(1/60)
-	-- 		c.ProtimingGraphFill:zoomtowidth( clamp(fTapNoteOffset * 188,-188/2,188/2) )
 			c.ProtimingGraphFill:zoomtowidth( clamp(
 					scale(
 					fTapNoteOffset,
@@ -225,7 +219,6 @@ return Def.ActorFrame {
 					0,ProtimingWidth-4),
 				0,ProtimingWidth-4)
 			)
-	-- 		c.ProtimingGraphAverage:zoomtowidth( clamp(MakeAverage( tTotalJudgments ) * 1880,0,188) )
 			c.ProtimingGraphCenter:visible( bShowProtiming )
 			c.ProtimingGraphBG:sleep(2):linear(0.5):diffusealpha(0)
 			c.ProtimingGraphUnderlay:sleep(2):linear(0.5):diffusealpha(0)
@@ -236,8 +229,5 @@ return Def.ActorFrame {
 			c.ProtimingGraphAverage:sleep(2):linear(0.5):diffusealpha(0)
 			c.ProtimingGraphCenter:sleep(2):linear(0.5):diffusealpha(0)
 		end
-
 	}
-
-
 }

@@ -1,6 +1,5 @@
 local bOpen = false
 local function GetTime(self)
-  -- Painfully ugly, sorry.
   local c = self:GetChildren()
   local tTime = { Hour = nil, Minute = nil, Second = nil, Append = nil}
 
@@ -32,7 +31,6 @@ return Def.ActorFrame{
         Name="Time",
         InitCommand=function(self) self:zoom(0.675) end,
       },
-      --
       BeginCommand=function(self)
         self:SetUpdateFunction( GetTime )
         self:SetUpdateRate( 1/30 )

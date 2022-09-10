@@ -1,9 +1,7 @@
--- StepMania 5 Default Theme Preferences Handler
 local function OptionNameString(str)
 	return THEME:GetString('OptionNames',str)
 end
 
--- Example usage of new system (not fully implemented yet)
 local Prefs =
 {
 	AutoSetStyle =
@@ -90,14 +88,12 @@ function InitUserPrefs()
 		UserPrefProtimingP2 = false,
 	}
 	for k, v in pairs(Prefs) do
-		-- kind of xxx
 		local GetPref = type(v) == "boolean" and GetUserPrefB or GetUserPref
 		if GetPref(k) == nil then
 			SetUserPref(k, v)
 		end
 	end
 
-	-- screen filter
 	setenv("ScreenFilterP1",0)
 	setenv("ScreenFilterP2",0)
 end
@@ -112,9 +108,6 @@ function GetProTiming(pn)
 	end
 end
 
---[[ option rows ]]
-
--- screen filter
 function OptionRowScreenFilter()
 	return {
 		Name="ScreenFilter",
@@ -150,7 +143,6 @@ function OptionRowScreenFilter()
 	}
 end
 
--- protiming
 function OptionRowProTiming()
 	return {
 		Name = "ProTiming",
@@ -180,5 +172,3 @@ function OptionRowProTiming()
 		end
 	}
 end
-
---[[ end option rows ]]

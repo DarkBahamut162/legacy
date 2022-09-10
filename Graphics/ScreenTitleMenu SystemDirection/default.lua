@@ -27,7 +27,6 @@ local function MakeIcon( sTarget )
 			Text=sTarget[2],
 			InitCommand=function(self) self:y(24+2):zoom(0.5):shadowlength(1) end,
 		},
-		--
 		Def.BitmapText{
 			Font= "Common Normal",
 			Text="0",
@@ -37,7 +36,6 @@ local function MakeIcon( sTarget )
 			Condition=sTarget[1] == "EventMode"
 		},
 		Def.ActorFrame {
-			-- Life goes up to 1-5
 			Def.ActorFrame {
 				InitCommand=function(self) self:y(12) end,
 				MakeDisplayBar( 6, 5 ) .. {
@@ -59,7 +57,6 @@ local function MakeIcon( sTarget )
 			Condition=sTarget[1] == "LifeDifficulty"
 		},
 		Def.ActorFrame {
-			-- Timing goes up to 1-8
 			Def.ActorFrame {
 				InitCommand=function(self) self:y(12) end,
 				MakeDisplayBar( 4, 5 ) .. {
@@ -88,13 +85,7 @@ local function MakeIcon( sTarget )
 				}
 			},
 			Condition=sTarget[1] == "TimingDifficulty"
-		},
-		--
---[[ 		for i=1,8 do
-			t[#t+1] = Def.Quad {
-				InitCommand=function(self) self:vertalign(bottom):zoomto(4,10+(i*4)) end,
-			}
-		end --]]
+		}
 	}
 	return t
 end

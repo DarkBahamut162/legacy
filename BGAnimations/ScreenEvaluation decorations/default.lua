@@ -67,8 +67,6 @@ end
 
 local t = LoadFallbackB()
 
---t[#t+1] = StandardDecorationFromFileOptional("StageDisplay","StageDisplay")
-
 if ShowStandardDecoration("GraphDisplay") and GAMESTATE:GetPlayMode() ~= "PlayMode_Rave" then
 	for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 		t[#t+1] = StandardDecorationFromTable( "GraphDisplay" .. ToEnumShortString(pn), GraphDisplay(pn) )
@@ -200,15 +198,12 @@ t[#t+1] = StandardDecorationFromFileOptional("SongInformation","SongInformation"
 				c.TextArtist:visible(true)
 				c.TextArtist:y(18)
 			end
--- 			self:playcommand("Tick")
 		elseif GAMESTATE:GetCurrentCourse() then
 			SongOrCourse = GAMESTATE:GetCurrentCourse()
 
 			c.TextTitle:settext( SongOrCourse:GetDisplayMainTitle() or nil )
 			c.TextSubtitle:settext( SongOrCourse:GetDisplaySubTitle() or nil )
 			c.TextArtist:settext( SongOrCourse:GetDisplayArtist() or nil )
-
--- 			self:playcommand("Tick")
 		else
 			SongOrCourse = nil
 
@@ -219,14 +214,12 @@ t[#t+1] = StandardDecorationFromFileOptional("SongInformation","SongInformation"
 			self:playcommand("Hide")
 		end
 	end,
--- 	OnCommand=function(self) self:playcommand("Set") end,
 	CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
 	CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end,
 	DisplayLanguageChangedMessageCommand=function(self) self:playcommand("Set") end
 }
 t[#t+1] = StandardDecorationFromFileOptional("LifeDifficulty","LifeDifficulty")
 t[#t+1] = StandardDecorationFromFileOptional("TimingDifficulty","TimingDifficulty")
---t[#t+1] = StandardDecorationFromFileOptional("GameType","GameType")
 t[#t+1] = Def.ActorFrame {
 	Condition=GAMESTATE:HasEarnedExtraStage() and GAMESTATE:IsExtraStage() and not GAMESTATE:IsExtraStage2(),
 	InitCommand=function(self) self:draworder(105) end,

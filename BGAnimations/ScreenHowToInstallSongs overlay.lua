@@ -1,5 +1,3 @@
--- how does installed song??? let's find out
-
 return Def.ActorFrame{
 	Def.BitmapText{
 		Font= "Common Normal",

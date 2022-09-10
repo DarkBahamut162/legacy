@@ -25,7 +25,6 @@ return Def.ActorFrame {
 		Def.Sprite{
 			Texture= THEME:GetPathG("ScreenSelectPlayMode", "Icon/_cutout"),
 		},
-
 		-- todo: generate a better font for these.
 		Def.BitmapText{
 			Font= "_helveticaneuelt std extblk cn 42px",

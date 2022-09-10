@@ -9,7 +9,6 @@ local function format_bpm(bpm)
 	return ("%.0f"):format(bpm)
 end
 
--- Courses don't have GetDisplayBpms.
 if GAMESTATE:GetCurrentSong() then
 	song_bpms= GAMESTATE:GetCurrentSong():GetDisplayBpms()
 	song_bpms[1]= math.round(song_bpms[1])

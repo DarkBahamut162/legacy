@@ -26,7 +26,7 @@ local function GetEdits( in_Song, in_StepsType )
 		return 0
 	end
 end
---
+
 local tLocation = {
 	Beginner	= 32*-1.25,
 	Easy 		= 32*-0.25,
@@ -41,8 +41,6 @@ for idx,diff in pairs(Difficulty) do
 		t[#t+1] = Def.ActorFrame {
 			SetCommand=function(self)
 				local c = self:GetChildren()
-				--local Bar = self:GetChild("Bar")
-				--local Meter = self:GetChild("Meter")
 				local song = GAMESTATE:GetCurrentSong()
 				local bHasStepsTypeAndDifficulty = false
 				local meter = ""
@@ -53,7 +51,6 @@ for idx,diff in pairs(Difficulty) do
 					if steps then
 						meter = steps:GetMeter()
 						append = ""
-						--
 						if diff == 'Difficulty_Edit' then
 							meter = GetEdits( song, st )
 							append = ( GetEdits( song, st ) > 1 ) and "Edits" or "Edit"
@@ -65,7 +62,6 @@ for idx,diff in pairs(Difficulty) do
 				self:playcommand( bHasStepsTypeAndDifficulty and "Show" or "Hide" )
 			end,
 			CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-			--
 			Def.Sprite{
 				Texture= THEME:GetPathG("ScreenSelectMusic","DifficultyDisplay/_barpeice " .. sDifficulty),
 				Name="BarPeice",

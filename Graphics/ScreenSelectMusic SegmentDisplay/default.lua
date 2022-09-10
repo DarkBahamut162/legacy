@@ -1,4 +1,3 @@
--- segment display: tells the player about various gimmicks used in the song timing.
 local iconPath = "_timingicons"
 local colX = -138
 
@@ -6,13 +5,6 @@ local showCmd = function(self) self:stoptweening():accelerate(0.1):diffusealpha(
 local hideCmd = function(self) self:stoptweening():accelerate(0.1):diffusealpha(0) end
 
 local SegmentTypes = {
-	--Stops		=	{ Frame = 0, xPos = leftColX, yPos = 0 },
-	--Warps		=	{ Frame = 2, xPos = leftColX, yPos = -16 },
-	--Delays	=	{ Frame = 1, xPos = leftColX, yPos = -32 },
-	--Attacks	=	{ Frame = 6, xPos = leftColX, yPos = 16 },
-	--Scrolls	=	{ Frame = 3, xPos = rightColX, yPos = -32 },
-	--Speeds	=	{ Frame = 4, xPos = rightColX, yPos = -17 },
-	--Fakes		=	{ Frame = 5, xPos = rightColX, yPos = -2 },
 	Stops	=	{ Frame = 0, xPos = colX-15, yPos = -2.5+16*(0-2) },
 	Delays	=	{ Frame = 1, xPos = colX-15, yPos = -2.5+16*(1-2) },
 	Warps	=	{ Frame = 2, xPos = colX-15, yPos = -2.5+16*(2-2) },
@@ -24,8 +16,6 @@ local SegmentTypes = {
 
 return Def.ActorFrame{
 	BeginCommand=function(self) self:playcommand("SetIcons",{Player = GAMESTATE:GetEnabledPlayers()}) end,
-	--OffCommand=function(self) self:RunCommandsOnChildren(function(child) child:playcommand("Hide") end) end,
-
 	SetIconsCommand=function(self,param)
 		for i, pn in ipairs(param.Player) do
 			local stops = self:GetChild("StopsIcon"..ToEnumShortString(pn))
@@ -84,8 +74,6 @@ return Def.ActorFrame{
 			end
 		end
 	end,
-
-	-- PLAYER 1
 	Def.Sprite{
 		Texture= THEME:GetPathG("ScreenSelectMusic","SegmentDisplay/"..iconPath),
 		Name="StopsIconP1",
@@ -135,8 +123,6 @@ return Def.ActorFrame{
 		ShowCommand=showCmd,
 		HideCommand=hideCmd
 	},
-
-	-- PLAYER 2
 	Def.Sprite{
 		Texture= THEME:GetPathG("ScreenSelectMusic","SegmentDisplay/"..iconPath),
 		Name="StopsIconP2",

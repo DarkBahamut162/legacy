@@ -19,13 +19,6 @@ return Def.ActorFrame{
 			end,
 			StartCommand=function(self) self:faderight(1):diffusealpha(0):linear(0.5):faderight(0):diffusealpha(1):sleep(1.5):linear(0.5):diffusealpha(0) end
 		},
-		--[[
-		LoadFont("Common Normal") .. {
-			Text=GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse():GetCourseType() or GAMESTATE:GetCurrentSong():GetDisplayArtist(),
-			InitCommand=function(self) self:strokecolor(Color("Outline")):zoom(0.75) end,
-			OnCommand=function(self) self:faderight(1):diffusealpha(0):linear(0.5):faderight(0):diffusealpha(1):sleep(1.5):linear(0.5):diffusealpha(0) end
-		},
-		--]]
 		LoadFont("Common Normal") .. {
 			InitCommand=function(self) self:strokecolor(Color("Outline")):diffuse(Color("Orange")):diffusebottomedge(Color("Yellow")):zoom(0.75):y(10) end,
 			BeforeLoadingNextCourseSongMessageCommand=function(self)

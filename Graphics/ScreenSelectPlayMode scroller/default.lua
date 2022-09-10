@@ -16,8 +16,6 @@ local string_expl = THEME:GetString(Var "LoadingScreen", gc:GetName() .. "Explan
 return Def.ActorFrame {
 	GainFocusCommand=function(self) self:finishtweening():visible(true):zoom(1.1):decelerate(0.25):zoom(1) end,
 	LoseFocusCommand=function(self) self:finishtweening():visible(false):zoom(1) end,
-
-	-- Background!
 	Def.ActorFrame {
 		Def.Sprite{
 			Texture= THEME:GetPathG("ScreenSelectPlayMode","BackgroundFrame"),
@@ -35,12 +33,9 @@ return Def.ActorFrame {
 				self:finishtweening():glow(Color("White")):decelerate(1):glow(Color("Invisible")) end,
 		}
 	},
-
-	-- Emblem Frame
 	Def.ActorFrame {
 		FOV=90,
 		InitCommand=function(self) self:x(-192):zoom(0.9) end,
-		-- Main Emblem
 		Def.Sprite{
 			Texture= THEME:GetPathG("ScreenSelectPlayMode","scroller/"..gc:GetName()),
 			InitCommand=function(self) self:diffusealpha(0):zoom(0.75) end,
@@ -56,8 +51,6 @@ return Def.ActorFrame {
 				:rotationy(360):glow(Color("Invisible")) end,
 		}
 	},
-
-	-- Text Frame
 	Def.ActorFrame {
 		InitCommand=function(self) self:x(-192/2):y(-10) end,
 		Def.BitmapText{
@@ -94,5 +87,4 @@ return Def.ActorFrame {
 			LoseFocusCommand=function(self) self:stoptweening():linear(0.1):diffusealpha(0) end,
 		}
 	}
-
 }

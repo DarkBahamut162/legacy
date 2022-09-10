@@ -108,9 +108,7 @@ local function CreatePaneDisplayGraph( _pnPlayer, _sLabel, _rcRadarCategory )
 end
 
 return Def.ActorFrame {
-	--[[ Numbers ]]
 	Def.ActorFrame{
-		-- Left
 		CreatePaneDisplayItem( iPN, "Taps", 'RadarCategory_TapsAndHolds' ) .. {
 			InitCommand=function(self) self:x(-128+16+8):y(-14) end,
 		},
@@ -123,7 +121,6 @@ return Def.ActorFrame {
 		CreatePaneDisplayItem( iPN, "Mines", 'RadarCategory_Mines' ) .. {
 			InitCommand=function(self) self:x(-128+16+8):y(-14+16*3) end,
 		},
-		-- Center
 		CreatePaneDisplayItem( iPN, "Hands", 'RadarCategory_Hands' ) .. {
 			InitCommand=function(self) self:x(-128+16+8+74):y(-14) end,
 		},
@@ -136,7 +133,6 @@ return Def.ActorFrame {
 		CreatePaneDisplayItem( iPN, "Fakes", 'RadarCategory_Fakes' ) .. {
 			InitCommand=function(self) self:x(-128+16+8+74):y(-14+16*3) end,
 		},
-		-- Right
 		CreatePaneDisplayGraph( iPN, "S", 'RadarCategory_Stream' ) .. {
 			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14) end,
 		},

@@ -31,7 +31,6 @@ return Def.ActorFrame {
 						self:zoom(1)
 					end
 				end
-				-- StepMania is being stupid so we have to do this here
 				self:diffuse(StageToColor(curStage))
 				self:diffusetopedge(ColorLightTone(StageToColor(curStage)))
 			end

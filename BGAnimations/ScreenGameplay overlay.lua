@@ -15,7 +15,6 @@ local function UpdateTime(self)
 end
 if GAMESTATE:GetCurrentCourse() then
 	if GAMESTATE:GetCurrentCourse():GetCourseType() == "CourseType_Survival" then
-		-- RemainingTime
 		for pn in ivalues(PlayerNumber) do
 			local MetricsName = "RemainingTime" .. PlayerNumberToString(pn)
 			t[#t+1] = loadfile( THEME:GetPathG( Var "LoadingScreen", "RemainingTime"))( pn ) .. {
@@ -38,5 +37,5 @@ if GAMESTATE:GetCurrentCourse() then
 		end
 	end
 end
---t[#t+1]= LoadActor(THEME:GetPathG("", "pause_menu"))
+
 return t

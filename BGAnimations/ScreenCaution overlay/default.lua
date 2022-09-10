@@ -1,5 +1,4 @@
 return Def.ActorFrame {
-	-- Fade
 	Def.ActorFrame {
 		InitCommand=function(self) self:Center() end,
 		Def.Quad {
@@ -8,7 +7,6 @@ return Def.ActorFrame {
 			OffCommand=function(self) self:linear(0.25):diffusealpha(0) end
 		}
 	},
-	-- Emblem
 	Def.ActorFrame {
 		InitCommand=function(self) self:Center() end,
 		OnCommand=function(self) self:diffusealpha(0.5) end,
@@ -21,11 +19,9 @@ return Def.ActorFrame {
 			}
 		}
 	},
-	-- Text
 	Def.ActorFrame {
 		InitCommand=function(self) self:Center() end,
 		OnCommand=function(self) self:addy(-96) end,
-		-- Underline
 		Def.Quad {
 			InitCommand=function(self) self:y(24):zoomto(256,2) end,
 			OnCommand=function(self) self:diffuse(color("#ffd400")):shadowcolor(BoostColor(color("#ffd40077"),0.25)):linear(0.25):zoomtowidth(256):fadeleft(0.25):faderight(0.25) end

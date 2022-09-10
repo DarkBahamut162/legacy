@@ -2,11 +2,9 @@ return Def.ActorFrame {
 	CurrentSongChangedMessageCommand=function(self)
 		local song = GAMESTATE:GetCurrentSong()
 		if song then
--- 			self:setaux(0)
 			self:finishtweening()
 			self:playcommand("TweenOn")
 		elseif not song and self:GetZoomX() == 1 then
--- 			self:setaux(1)
 			self:finishtweening()
 			self:playcommand("TweenOff")
 		end
