@@ -37,6 +37,6 @@ return Def.ActorFrame {
 				self:setstate( clamp(param.LivesLeft-1,0,9) )
 			end
 		end,
-		FinishCommand=function(self) self:playcommand("Start") end,
+		FinishCommand=function(self) self:playcommand("Start") end
 	}
 }

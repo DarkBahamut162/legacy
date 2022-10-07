@@ -20,12 +20,12 @@ return Def.ActorFrame {
  	loadfile(THEME:GetPathG("Combo","100Milestone"))() .. {
 		Name="OneHundredMilestone",
 		InitCommand=function(self) self:visible(ShowFlashyCombo) end,
-		FiftyMilestoneCommand=function(self) self:playcommand("Milestone") end,
+		FiftyMilestoneCommand=function(self) self:playcommand("Milestone") end
 	},
 	loadfile(THEME:GetPathG("Combo","1000Milestone"))() .. {
 		Name="OneThousandMilestone",
 		InitCommand=function(self) self:visible(ShowFlashyCombo) end,
-		ToastyAchievedMessageCommand=function(self) self:playcommand("Milestone") end,
+		ToastyAchievedMessageCommand=function(self) self:playcommand("Milestone") end
 	},
 	Def.ActorFrame {
 		Name="ComboFrame",

@@ -1,1 +1,1 @@
-return loadfile(THEME:GetPathB("ScreenWithMenuElements","background"))()
+return loadfile(THEME:GetPathB("ScreenWithMenuElements","background"))

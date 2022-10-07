@@ -3,7 +3,7 @@ local cursor_spacing_value = 30
 
 local heart_xs= {
 	[PLAYER_1]= SCREEN_CENTER_X * 0.625,
-	[PLAYER_2]= SCREEN_CENTER_X * 1.375,
+	[PLAYER_2]= SCREEN_CENTER_X * 1.375
 }
 
 local heart_entries= {}
@@ -19,7 +19,7 @@ for i, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do
 				OnCommand=function(self) self:zoom(0.75):diffuse(PlayerColor(pn)):strokecolor(ColorDarkTone(PlayerColor(pn))) end,
 				SetCommand=function(self, param)
 					self:settext(param[1])
-				end,
+				end
 			},
 			button = Def.BitmapText{
 				Font= "Common Normal",
@@ -51,7 +51,7 @@ for i, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do
 					OnCommand=function(self) self:diffuse(PlayerDarkColor(pn)) end,
 					FitCommand=function(self, param)
 						self:playcommand("SetSize",{ Width=param:GetWidth()+cursor_width_padding, tween=function(self) self:stoptweening():decelerate(0.15) end})
-					end,
+					end
 				},
 				loadfile( THEME:GetPathG("_frame", "1D"))(
 					{ 2/18, 14/18, 2/18 },
@@ -60,7 +60,7 @@ for i, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do
 					OnCommand=function(self) self:diffuse(PlayerColor(pn)) end,
 					FitCommand=function(self, param)
 						self:playcommand("SetSize",{ Width=param:GetWidth()+cursor_width_padding, tween=function(self) self:stoptweening():decelerate(0.15) end})
-					end,
+					end
 				}
 			},
 			cursor_draw= "first",
@@ -70,10 +70,10 @@ for i, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do
 				Text=THEME:GetString("ScreenHeartEntry", "Heart Rate"),
 				InitCommand=function(self) self:xy(0,-96) end,
 				OnCommand=function(self)
-					self:shadowlength(1):skewx(-0.125):diffusebottomedge(color("#DDDDDD")):strokecolor(Color.Outline) end,
+					self:shadowlength(1):skewx(-0.125):diffusebottomedge(color("#DDDDDD")):strokecolor(Color.Outline) end
 			},
 			max_value= 300,
-			auto_done_value= 100,
+			auto_done_value= 100
 		}
 	end
 end

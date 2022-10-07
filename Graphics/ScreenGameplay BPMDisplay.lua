@@ -14,7 +14,7 @@ local displaySingle = Def.ActorFrame{
 	Def.BitmapText{
 		Font= THEME:GetPathF("BPMDisplay", "bpm"),
 		Name="BPMDisplay",
-		InitCommand=function(self) self:zoom(0.675):shadowlength(1) end,
+		InitCommand=function(self) self:zoom(0.675):shadowlength(1) end
 	}
 }
 
@@ -60,12 +60,12 @@ else
 		Def.BitmapText{
 			Font= THEME:GetPathF("BPMDisplay", "bpm"),
 			Name="DisplayP1",
-			InitCommand=function(self) self:x(-playerOffset):zoom(0.6):shadowlength(1) end,
+			InitCommand=function(self) self:x(-playerOffset):zoom(0.6):shadowlength(1) end
 		},
 		Def.BitmapText{
 			Font= THEME:GetPathF("BPMDisplay", "bpm"),
 			Name="DisplayP2",
-			InitCommand=function(self) self:x(playerOffset):zoom(0.6):shadowlength(1) end,
+			InitCommand=function(self) self:x(playerOffset):zoom(0.6):shadowlength(1) end
 		}
 	}
 end

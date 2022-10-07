@@ -9,7 +9,7 @@ return Def.ActorFrame {
 		OnCommand= function(self)
 			label_text= self
 			self:shadowlength(1):settextf(Screen.String("LifeDifficulty"), "")
-		end,
+		end
 	},
 	Def.BitmapText{
 		Font= "Common Normal",
@@ -18,6 +18,6 @@ return Def.ActorFrame {
 		InitCommand=function(self) self:zoom(0.675):halign(0) end,
 		OnCommand= function(self)
 			self:shadowlength(1):skewx(-0.125):x(label_text:GetZoomedWidth()+8)
-		end,
+		end
 	}
 }

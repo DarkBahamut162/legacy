@@ -18,12 +18,12 @@ return Def.ActorFrame {
 		},
 		Def.Quad {
 			InitCommand=function(self) self:Center():scaletoclipped(SCREEN_WIDTH+1,SCREEN_HEIGHT) end,
-			OnCommand=function(self) self:diffuse(color("#FFCB05")):diffusebottomedge(color("#F0BA00")):diffusealpha(0.45) end,
+			OnCommand=function(self) self:diffuse(color("#FFCB05")):diffusebottomedge(color("#F0BA00")):diffusealpha(0.45) end
 		},
 		Def.Sprite{
 			Texture= THEME:GetPathB("ScreenWithMenuElements","background/_bg top"),
 			InitCommand=function(self) self:Center():scaletoclipped(SCREEN_WIDTH+1,SCREEN_HEIGHT) end,
-			OnCommand=function(self) self:diffusealpha(0.5) end,
+			OnCommand=function(self) self:diffusealpha(0.5) end
 		}
 	}
 }

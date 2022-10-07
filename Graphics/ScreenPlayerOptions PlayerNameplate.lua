@@ -22,10 +22,10 @@ end
 
 return Def.ActorFrame {
 	loadfile(THEME:GetPathB("_frame","3x1"))("rounded fill", 192-8) .. {
-		OnCommand=function(self) self:diffuse(color("#333333")):diffusealpha(0.875) end,
+		OnCommand=function(self) self:diffuse(color("#333333")):diffusealpha(0.875) end
 	},
 	loadfile(THEME:GetPathB("_frame","3x1"))("rounded gloss", 192-8) .. {
-		OnCommand=function(self) self:diffusealpha(0.125) end,
+		OnCommand=function(self) self:diffusealpha(0.125) end
 	},
 	Def.BitmapText{
 		Font="Common Normal",

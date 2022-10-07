@@ -11,7 +11,7 @@ local SegmentTypes = {
 	Scrolls	=	{ Frame = 3, xPos = colX, yPos = -2.5+16*(0-2) },
 	Speeds	=	{ Frame = 4, xPos = colX, yPos = -2.5+16*(1-2) },
 	Fakes	=	{ Frame = 5, xPos = colX, yPos = -2.5+16*(2-2) },
-	Attacks	=	{ Frame = 6, xPos = colX, yPos = -2.5+16*(3-2) },
+	Attacks	=	{ Frame = 6, xPos = colX, yPos = -2.5+16*(3-2) }
 }
 
 return Def.ActorFrame{

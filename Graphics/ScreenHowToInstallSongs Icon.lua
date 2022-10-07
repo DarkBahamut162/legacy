@@ -13,7 +13,7 @@ local function TitleMenuItem(text,focused)
 		Text=text,
 		InitCommand=function(self) self:zoom(0.45):strokecolor(Color("Outline")):diffuse(textColor) end,
 		GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-		LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+		LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 	}
 end
 
@@ -23,7 +23,7 @@ local previews = {
 			Texture= THEME:GetPathG("_howto","find"),
 			InitCommand=function(self) self:zoomto(previewWidth,previewHeight) end,
 			GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 		}
 	},
 	HowToInstall = Def.ActorFrame{
@@ -31,19 +31,19 @@ local previews = {
 			Texture= THEME:GetPathG("_howto","install"),
 			InitCommand=function(self) self:zoomto(previewWidth,previewHeight) end,
 			GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 		}
 	},
 	AdditionalFolders = Def.ActorFrame{
 		Def.Quad{
 			InitCommand=function(self) self:zoomto(previewWidth,previewHeight) end,
 			GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 		},
 		Def.Quad{
 			InitCommand=function(self) self:y(-previewHeight*0.45):diffuse(color("#E0F0F0")):zoomto(previewWidth,previewHeight*0.1) end,
 			GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 		},
 		Def.BitmapText{
 			Font= "Common normal",
@@ -53,14 +53,14 @@ local previews = {
 				self:settext(text)
 			end,
 			GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 		},
 		Def.BitmapText{
 			Font= "Common normal",
 			Text="[Options]\nAdditionalCourseFolders=\nAdditionalFolders=\nAdditionalSongFolders=",
 			InitCommand=function(self) self:x(-(SCREEN_CENTER_X*0.4)):y(-(SCREEN_CENTER_Y*0.35)):zoom(0.75):halign(0):valign(0):diffuse(color("#000000")) end,
 			GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 		}
 	},
 	ReloadSongs = Def.ActorFrame{
@@ -68,7 +68,7 @@ local previews = {
 			Texture = THEME:GetPathB("ScreenTitleMenu","background/_bg"),
 			InitCommand=function(self) self:zoomto(previewWidth,previewHeight):halign(0.5):valign(0.5) end,
 			GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 		},
 		Def.BitmapText{
 			Font= "Common normal",
@@ -78,7 +78,7 @@ local previews = {
 				self:settext("Loading songs...\n"..song:GetGroupName().."\n"..song:GetDisplayFullTitle())
 			end,
 			GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 		}
 	},
 	Exit = Def.ActorFrame{
@@ -86,24 +86,24 @@ local previews = {
 			Texture = THEME:GetPathB("ScreenTitleMenu","background/_bg"),
 			InitCommand=function(self) self:zoomto(previewWidth,previewHeight):halign(0.5):valign(0.5) end,
 			GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 		},
 		loadfile(THEME:GetPathG("ScreenTitleMenu","logo"))()..{
 			InitCommand=function(self) self:y(-28):zoom(0.35):propagate(true) end,
 			GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+			LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 		},
 		TitleMenuItem("Game Start",true)..{
-			InitCommand=function(self) self:y(20) end,
+			InitCommand=function(self) self:y(20) end
 		},
 		TitleMenuItem("Options")..{
-			InitCommand=function(self) self:y(32) end,
+			InitCommand=function(self) self:y(32) end
 		},
 		TitleMenuItem("Edit/Share")..{
-			InitCommand=function(self) self:y(44) end,
+			InitCommand=function(self) self:y(44) end
 		},
 		TitleMenuItem("Exit")..{
-			InitCommand=function(self) self:y(56) end,
+			InitCommand=function(self) self:y(56) end
 		}
 	}
 }
@@ -119,6 +119,6 @@ return Def.ActorFrame{
 		Text=Screen.String("Explanation-"..Name),
 		InitCommand=function(self) self:x(-(SCREEN_CENTER_X*0.8)):y(SCREEN_CENTER_Y*0.8):halign(0):valign(0):zoom(0.65):wrapwidthpixels((SCREEN_WIDTH*0.55)*1.75):NoStroke():shadowlength(1) end,
 		GainFocusCommand=function(self) self:stoptweening():decelerate(0.5):diffusealpha(1) end,
-		LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end,
+		LoseFocusCommand=function(self) self:stoptweening():accelerate(0.5):diffusealpha(0) end
 	}
 }

@@ -1,5 +1,5 @@
 local t = Def.ActorFrame {
-	InitCommand=function(self) self:SetUpdateFunction(UpdateTime) end,
+	InitCommand=function(self) self:SetUpdateFunction(UpdateTime) end
 }
 local function UpdateTime(self)
 	local c = self:GetChildren()

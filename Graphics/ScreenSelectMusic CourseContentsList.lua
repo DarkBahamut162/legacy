@@ -18,11 +18,10 @@ return Def.CourseContentsList {
 	end,
 	CurrentTrailP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
 	CurrentTrailP2ChangedMessageCommand=function(self) self:playcommand("Set") end,
-
 	Display = Def.ActorFrame {
 		InitCommand=function(self) self:setsize(270,44) end,
-
-		Def.Sprite{ Texture= THEME:GetPathG("CourseEntryDisplay","bar"),
+		Def.Sprite{
+			Texture= THEME:GetPathG("CourseEntryDisplay","bar"),
 			SetSongCommand=function(self, params)
 				if params.Difficulty then
 					self:diffuse( CustomDifficultyToColor(params.Difficulty) )
@@ -34,7 +33,6 @@ return Def.CourseContentsList {
 				:diffusealpha(1):linear(0.05):glow(color("1,1,1,0.5")):decelerate(0.1):glow(color("1,1,1,0"))
 			end
 		},
-
 		Def.TextBanner {
 			InitCommand=function(self) self:x(-128):y(1):Load("TextBanner"):SetFromString("", "", "", "", "", "") end,
 			SetSongCommand=function(self, params)
@@ -58,12 +56,12 @@ return Def.CourseContentsList {
 					self:SetFromString( "??????????", "??????????", "", "", "", "" )
 					self:diffuse( color("#FFFFFF") )
 				end
-
 				self:finishtweening():zoomy(0):sleep(0.125*params.Number):linear(0.125)
 				:zoomy(1.1):linear(0.05):zoomx(1.1):decelerate(0.1):zoom(1)
 			end
 		},
-		Def.BitmapText{ Font= THEME:GetPathF("CourseEntryDisplay","difficulty"),
+		Def.BitmapText{
+			Font= THEME:GetPathF("CourseEntryDisplay","difficulty"),
 			Text="0",
 			InitCommand=function(self) self:x(114):y(0):zoom(0.75):shadowlength(1) end,
 			SetSongCommand=function(self, params)

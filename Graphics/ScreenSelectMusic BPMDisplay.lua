@@ -3,5 +3,5 @@ return Def.BPMDisplay {
 	Name="BPMDisplay",
 	SetCommand=function(self) self:SetFromGameState() end,
 	CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-	CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end,
+	CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end
 }

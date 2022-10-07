@@ -19,7 +19,6 @@ return Def.ActorFrame {
 	},
 	Def.StepsDisplayList {
 		Name="StepsDisplayListRow",
-
 		CursorP1 = Def.ActorFrame {
 			InitCommand=function(self) self:x(-128+16):player(PLAYER_1) end,
 			PlayerJoinedMessageCommand=function(self, params)
@@ -36,18 +35,18 @@ return Def.ActorFrame {
 			end,
 			Def.Sprite{
 				Texture= THEME:GetPathG("_StepsDisplayListRow","Cursor"),
-				InitCommand=function(self) self:diffuse(PlayerColor(PLAYER_1)):x(8):zoom(0.75) end,
+				InitCommand=function(self) self:diffuse(PlayerColor(PLAYER_1)):x(8):zoom(0.75) end
 			},
 			Def.Sprite{
 				Texture= THEME:GetPathG("_StepsDisplayListRow","arrow"),
 				InitCommand=function(self) self:x(20):diffuse(PlayerColor(PLAYER_1)) end,
-				OnCommand=function(self) self:thump(1):effectmagnitude(1,1.25,1):effectclock('beat') end,
+				OnCommand=function(self) self:thump(1):effectmagnitude(1,1.25,1):effectclock('beat') end
 			},
 			Def.BitmapText{
 				Font= "Common Normal",
 				Text="P1",
 				InitCommand=function(self) self:x(2):diffuse(PlayerColor(PLAYER_1)):shadowlength(1) end,
-				OnCommand=function(self) self:zoom(0.75) end,
+				OnCommand=function(self) self:zoom(0.75) end
 			}
 		},
 		CursorP2 = Def.ActorFrame {
@@ -65,24 +64,24 @@ return Def.ActorFrame {
 				end
 			end,
 			Def.Sprite{ Texture= THEME:GetPathG("_StepsDisplayListRow","Cursor"),
-				InitCommand=function(self) self:diffuse(PlayerColor(PLAYER_2)):x(-8):zoom(0.75):zoomx(-0.75) end,
+				InitCommand=function(self) self:diffuse(PlayerColor(PLAYER_2)):x(-8):zoom(0.75):zoomx(-0.75) end
 			},
 			Def.Sprite{ Texture= THEME:GetPathG("_StepsDisplayListRow","arrow"),
 				InitCommand=function(self) self:x(-20):diffuse(PlayerColor(PLAYER_2)):zoomx(-1) end,
-				OnCommand=function(self) self:thump(1):effectmagnitude(1,1.25,1):effectclock('beat') end,
+				OnCommand=function(self) self:thump(1):effectmagnitude(1,1.25,1):effectclock('beat') end
 			},
 			Def.BitmapText{
 				Font= "Common Normal",
 				Text="P2",
 				InitCommand=function(self) self:x(-2):diffuse(PlayerColor(PLAYER_2)):shadowlength(1) end,
-				OnCommand=function(self) self:zoom(0.75) end,
+				OnCommand=function(self) self:zoom(0.75) end
 			}
 		},
 		CursorP1Frame = Def.Actor{
-			ChangeCommand=function(self) self:stoptweening():decelerate(0.05) end,
+			ChangeCommand=function(self) self:stoptweening():decelerate(0.05) end
 		},
 		CursorP2Frame = Def.Actor{
-			ChangeCommand=function(self) self:stoptweening():decelerate(0.05) end,
+			ChangeCommand=function(self) self:stoptweening():decelerate(0.05) end
 		}
 	}
 }

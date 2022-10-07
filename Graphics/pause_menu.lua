@@ -3,7 +3,7 @@ course_stopped_by_pause_menu= false
 local prompt_text= {
 	Start= THEME:GetString("ScreenGameplay", "GiveUpStartText"),
 	Select= THEME:GetString("ScreenGameplay", "GiveUpSelectText"),
-	Back= THEME:GetString("ScreenGameplay", "GiveUpBackText"),
+	Back= THEME:GetString("ScreenGameplay", "GiveUpBackText")
 }
 local prompt_actor= false
 
@@ -13,14 +13,14 @@ local menu_frames= {}
 local menu_choices= {
 	"continue_playing",
 	"restart_song",
-	"forfeit_song",
+	"forfeit_song"
 }
 if GAMESTATE:IsCourseMode() then
 	menu_choices= {
 		"continue_playing",
 		"skip_song",
 		"forfeit_course",
-		"end_course",
+		"end_course"
 	}
 end
 local menu_spacing= 32
@@ -45,7 +45,7 @@ local function create_menu_item(pn, x, y, item_name)
 		end,
 		GainFocusCommand= function(self)
 			self:wag():effectperiod(2):effectmagnitude(0, 0, 5)
-		end,
+		end
 	}
 end
 
@@ -67,8 +67,8 @@ local function create_menu_frame(pn, x, y)
 					:y(-menu_spacing):vertalign(top)
 					:diffuse{0, 0, 0, .25}
 					:playcommand("Hide")
-			end,
-		},
+			end
+		}
 	}
 	for i, choice in ipairs(menu_choices) do
 		frame[#frame+1]= create_menu_item(pn, 0, (i-1)*menu_spacing, choice)
@@ -125,7 +125,7 @@ local choice_actions= {
 	end_course= function(pn)
 		course_stopped_by_pause_menu= true
 		screen_gameplay:PostScreenMessage("SM_NotesEnded", 0)
-	end,
+	end
 }
 
 local menu_actions= {
@@ -148,7 +148,7 @@ local menu_actions= {
 			current_menu_choice[pn]= current_menu_choice[pn] + 1
 			menu_items[pn][current_menu_choice[pn]]:playcommand("GainFocus")
 		end
-	end,
+	end
 }
 menu_actions.Up= menu_actions.Left
 menu_actions.Down= menu_actions.Right
@@ -226,8 +226,8 @@ local frame= Def.ActorFrame{
 		end,
 		HideCommand= function(self)
 			self:stoptweening():decelerate(.25):diffusealpha(0)
-		end,
-	},
+		end
+	}
 }
 
 for i, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do

@@ -75,7 +75,7 @@ local Prefs =
 		Default = false,
 		Choices = { OptionNameString('Off'), OptionNameString('On') },
 		Values = { false, true }
-	},
+	}
 }
 
 ThemePrefs.InitAll(Prefs)
@@ -85,7 +85,7 @@ function InitUserPrefs()
 		UserPrefScoringMode = 'DDR Extreme',
         UserPrefSoundPack   = 'default',
 		UserPrefProtimingP1 = false,
-		UserPrefProtimingP2 = false,
+		UserPrefProtimingP2 = false
 	}
 	for k, v in pairs(Prefs) do
 		local GetPref = type(v) == "boolean" and GetUserPrefB or GetUserPref
@@ -139,7 +139,7 @@ function OptionRowScreenFilter()
 					end
 				end
 			end
-		end,
+		end
 	}
 end
 

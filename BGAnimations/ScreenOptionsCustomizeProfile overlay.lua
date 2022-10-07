@@ -12,7 +12,7 @@ local number_entry= new_numpad_entry{
 		OnCommand=function(self) self:zoom(0.75):diffuse(PlayerColor(PLAYER_1)):strokecolor(ColorDarkTone(PlayerColor(PLAYER_1))) end,
 		SetCommand=function(self, param)
 			self:settext(param[1])
-		end,
+		end
 	},
 	button = Def.BitmapText{
 		Font= "Common Normal",
@@ -44,7 +44,7 @@ local number_entry= new_numpad_entry{
 			OnCommand=function(self) self:diffuse(PlayerDarkColor(PLAYER_1)) end,
 			FitCommand=function(self, param)
 				self:playcommand("SetSize",{ Width=param:GetWidth()+cursor_width_padding, tween=function(self) self:decelerate(0.125) end})
-			end,
+			end
 		},
 		loadfile( THEME:GetPathG("_frame", "1D"))(
 			{ 2/18, 14/18, 2/18 },
@@ -53,7 +53,7 @@ local number_entry= new_numpad_entry{
 			OnCommand=function(self) self:diffuse(PlayerColor(PLAYER_1)) end,
 			FitCommand=function(self, param)
 				self:playcommand("SetSize",{ Width=param:GetWidth()+cursor_width_padding, tween=function(self) self:decelerate(0.125) end})
-			end,
+			end
 		}
 	},
 	cursor_draw= "first",
@@ -109,7 +109,7 @@ local menu_items= {
 	{name= "voomax", get= "GetVoomax", set= "SetVoomax", item_type= "number", auto_done= 10},
 	{name= "birth_year", get= "GetBirthYear", set= "SetBirthYear", item_type= "number", auto_done= 1000},
 	{name= "calorie_calc", get= "GetIgnoreStepCountCalories", set= "SetIgnoreStepCountCalories", item_type= "bool", true_text= "use_heart", false_text= "use_steps"},
-	{name= "gender", get= "GetIsMale", set= "SetIsMale", item_type= "bool", true_text= "male", false_text= "female"},
+	{name= "gender", get= "GetIsMale", set= "SetIsMale", item_type= "bool", true_text= "male", false_text= "female"}
 }
 if #char_list > 0 then
 	menu_items[#menu_items+1]= {
@@ -289,7 +289,7 @@ local args= {
 			OnCommand=function(self) self:diffuse(PlayerDarkColor(PLAYER_1)) end,
 			FitCommand=function(self, param)
 				self:playcommand("SetSize",{ Width=param:GetWidth()+cursor_width_padding, tween=function(self) self:stoptweening():decelerate(0.15) end})
-			end,
+			end
 		},
 		loadfile( THEME:GetPathG("_frame", "1D"))(
 			{ 2/18, 14/18, 2/18 },
@@ -298,7 +298,7 @@ local args= {
 			OnCommand=function(self) self:diffuse(PlayerColor(PLAYER_1)) end,
 			FitCommand=function(self, param)
 				self:playcommand("SetSize",{ Width=param:GetWidth()+cursor_width_padding, tween=function(self) self:stoptweening():decelerate(0.15) end})
-			end,
+			end
 		}
 	},
 }
@@ -331,7 +331,7 @@ for i, item in ipairs(menu_items) do
 				end,
 				SetCommand= function(self, param)
 					self:settext(param[1])
-				end,
+				end
 			}
 		}
 		if item.item_type == "list" then
@@ -345,7 +345,7 @@ for i, item in ipairs(menu_items) do
 				end,
 				ShowLeftCommand= function(self) self:visible( true) end,
 				HideLeftCommand= function(self) self:visible( false) end,
-				PressLeftCommand= function(self) self:finishtweening():zoom(1.5):smooth(0.25):zoom(1) end,
+				PressLeftCommand= function(self) self:finishtweening():zoom(1.5):smooth(0.25):zoom(1) end
 			}
 			value_args[#value_args+1]= Def.Sprite{
 				Texture= THEME:GetPathG("_StepsDisplayListRow","arrow"),
@@ -359,7 +359,7 @@ for i, item in ipairs(menu_items) do
 				end,
 				ShowRightCommand= function(self) self:visible(true) end,
 				HideRightCommand= function(self) self:visible(false) end,
-				PressRightCommand= function(self) self:finishtweening():zoom(1.5):smooth(0.25):zoom(1) end,
+				PressRightCommand= function(self) self:finishtweening():zoom(1.5):smooth(0.25):zoom(1) end
 			}
 		end
 		args[#args+1]= Def.ActorFrame(value_args)

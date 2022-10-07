@@ -2,30 +2,30 @@ local t = Def.ActorFrame {}
 local tInfo = {
 	{"EventMode","Stages"},
 	{"LifeDifficulty","Life"},
-	{"TimingDifficulty","Difficulty"},
+	{"TimingDifficulty","Difficulty"}
 }
 local fSpacingX = 72
 local function MakeDisplayBar( fZoomX, fZoomY )
 	return Def.ActorFrame {
 		Def.Quad {
 			InitCommand=function(self) self:vertalign(bottom):y(1):zoomto(fZoomX+2,fZoomY+2) end,
-			OnCommand=function(self) self:diffuse(Color("Black")) end,
+			OnCommand=function(self) self:diffuse(Color("Black")) end
 		},
 		Def.Quad {
 			InitCommand=function(self) self:vertalign(bottom):zoomto(fZoomX,fZoomY) end,
-			OnCommand=function(self) self:diffuse(Color("Orange")):diffusetopedge(Color("Yellow")) end,
+			OnCommand=function(self) self:diffuse(Color("Orange")):diffusetopedge(Color("Yellow")) end
 		}
 	}
 end
 local function MakeIcon( sTarget )
 	local t = Def.ActorFrame {
 		Def.Sprite{
-			Texture= THEME:GetPathG("MenuTimer","Frame"),
+			Texture= THEME:GetPathG("MenuTimer","Frame")
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
 			Text=sTarget[2],
-			InitCommand=function(self) self:y(24+2):zoom(0.5):shadowlength(1) end,
+			InitCommand=function(self) self:y(24+2):zoom(0.5):shadowlength(1) end
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
@@ -52,7 +52,7 @@ local function MakeIcon( sTarget )
 				},
 				MakeDisplayBar( 6, 20 ) .. {
 					InitCommand=function(self) self:x(16):visible(( GetLifeDifficulty() >= 5 )) end
-				},
+				}
 			},
 			Condition=sTarget[1] == "LifeDifficulty"
 		},
@@ -92,9 +92,8 @@ end
 
 for i=1,#tInfo do
 	t[#t+1] = MakeIcon( tInfo[i] ) .. {
-		InitCommand=function(self) self:x((i-1)*fSpacingX) end,
+		InitCommand=function(self) self:x((i-1)*fSpacingX) end
 	}
 end
 
 return t
-

@@ -9,7 +9,6 @@ return Def.ActorFrame {
 	StandardDecorationFromFileOptional("TimingDifficulty","TimingDifficulty"),
 	StandardDecorationFromFileOptional("NetworkStatus","NetworkStatus"),
 	StandardDecorationFromFileOptional("SystemDirection","SystemDirection"),
-
 	StandardDecorationFromFileOptional("NumSongs","NumSongs") .. {
 		SetCommand=function(self)
 			local InstalledSongs, AdditionalSongs, InstalledCourses, AdditionalCourses, Groups, Unlocked = 0
@@ -24,9 +23,7 @@ return Def.ActorFrame {
 			else
 				return
 			end
-
 			self:settextf(THEME:GetString("ScreenTitleMenu","%i Songs (%i Groups), %i Courses"), InstalledSongs, Groups, InstalledCourses)
 		end
 	}
-
 }

@@ -1,3 +1,3 @@
 return Def.BitmapText{
-	Font= "Common Normal",
+	Font= "Common Normal"
 }

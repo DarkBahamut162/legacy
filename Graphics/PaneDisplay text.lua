@@ -23,7 +23,7 @@ local function CreatePaneDisplayItem( _pnPlayer, _sLabel, _rcRadarCategory )
 			Font= "Common Normal",
 			Text=ToUpper( THEME:GetString("PaneDisplay",_sLabel) ),
 			InitCommand=function(self) self:horizalign(left) end,
-			OnCommand=function(self) self:zoom(0.5):diffuse(color("0.9,0.9,0.9")):shadowlength(1) end,
+			OnCommand=function(self) self:zoom(0.5):diffuse(color("0.9,0.9,0.9")):shadowlength(1) end
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
@@ -55,11 +55,11 @@ local function CreatePaneDisplayGraph( _pnPlayer, _sLabel, _rcRadarCategory )
 			Font= "Common Normal",
 			Text=_sLabel,
 			InitCommand=function(self) self:horizalign(left) end,
-			OnCommand=function(self) self:zoom(0.5):shadowlength(1) end,
+			OnCommand=function(self) self:zoom(0.5):shadowlength(1) end
 		},
 		Def.Quad {
 			InitCommand=function(self) self:x(12):zoomto(50,10):horizalign(left) end,
-			OnCommand=function(self) self:diffuse(Color("Black")):shadowlength(1):diffusealpha(0.5) end,
+			OnCommand=function(self) self:diffuse(Color("Black")):shadowlength(1):diffusealpha(0.5) end
 		},
 		Def.Quad {
 			InitCommand=function(self) self:x(12):zoomto(50,10):horizalign(left) end,
@@ -110,43 +110,43 @@ end
 return Def.ActorFrame {
 	Def.ActorFrame{
 		CreatePaneDisplayItem( iPN, "Taps", 'RadarCategory_TapsAndHolds' ) .. {
-			InitCommand=function(self) self:x(-128+16+8):y(-14) end,
+			InitCommand=function(self) self:x(-128+16+8):y(-14) end
 		},
 		CreatePaneDisplayItem( iPN, "Jumps", 'RadarCategory_Jumps' ) .. {
-			InitCommand=function(self) self:x(-128+16+8):y(-14+16) end,
+			InitCommand=function(self) self:x(-128+16+8):y(-14+16) end
 		},
 		CreatePaneDisplayItem( iPN, "Holds", 'RadarCategory_Holds' ) .. {
-			InitCommand=function(self) self:x(-128+16+8):y(-14+16*2) end,
+			InitCommand=function(self) self:x(-128+16+8):y(-14+16*2) end
 		},
 		CreatePaneDisplayItem( iPN, "Mines", 'RadarCategory_Mines' ) .. {
-			InitCommand=function(self) self:x(-128+16+8):y(-14+16*3) end,
+			InitCommand=function(self) self:x(-128+16+8):y(-14+16*3) end
 		},
 		CreatePaneDisplayItem( iPN, "Hands", 'RadarCategory_Hands' ) .. {
-			InitCommand=function(self) self:x(-128+16+8+74):y(-14) end,
+			InitCommand=function(self) self:x(-128+16+8+74):y(-14) end
 		},
 		CreatePaneDisplayItem( iPN, "Rolls", 'RadarCategory_Rolls' ) .. {
-			InitCommand=function(self) self:x(-128+16+8+74):y(-14+16) end,
+			InitCommand=function(self) self:x(-128+16+8+74):y(-14+16) end
 		},
 		CreatePaneDisplayItem( iPN, "Lifts", 'RadarCategory_Lifts' ) .. {
-			InitCommand=function(self) self:x(-128+16+8+74):y(-14+16*2) end,
+			InitCommand=function(self) self:x(-128+16+8+74):y(-14+16*2) end
 		},
 		CreatePaneDisplayItem( iPN, "Fakes", 'RadarCategory_Fakes' ) .. {
-			InitCommand=function(self) self:x(-128+16+8+74):y(-14+16*3) end,
+			InitCommand=function(self) self:x(-128+16+8+74):y(-14+16*3) end
 		},
 		CreatePaneDisplayGraph( iPN, "S", 'RadarCategory_Stream' ) .. {
-			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14) end,
+			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14) end
 		},
 		CreatePaneDisplayGraph( iPN, "V", 'RadarCategory_Voltage' ) .. {
-			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12) end,
+			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12) end
 		},
 		CreatePaneDisplayGraph( iPN, "A", 'RadarCategory_Air' ) .. {
-			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12*2) end,
+			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12*2) end
 		},
 		CreatePaneDisplayGraph( iPN, "F", 'RadarCategory_Freeze' ) .. {
-			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12*3) end,
+			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12*3) end
 		},
 		CreatePaneDisplayGraph( iPN, "C", 'RadarCategory_Chaos' ) .. {
-			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12*4) end,
-		},
+			InitCommand=function(self) self:x(-128+16+8+74*2):y(-14+12*4) end
+		}
 	}
 }

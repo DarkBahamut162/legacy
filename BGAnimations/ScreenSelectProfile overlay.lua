@@ -7,7 +7,7 @@ function GetLocalProfiles()
 			Def.BitmapText{
 				Font= "Common Normal",
 				Text=profile:GetDisplayName(),
-				InitCommand=function(self) self:shadowlength(1):y(-10):zoom(1):ztest(true) end,
+				InitCommand=function(self) self:shadowlength(1):y(-10):zoom(1):ztest(true) end
 			},
 			Def.BitmapText{
 				Font= "Common Normal",
@@ -45,7 +45,7 @@ function LoadPlayerStuff(Player)
 				Font= "Common Normal",
 				Text=THEME:GetString("ScreenSelectProfile","PressStart"),
 				InitCommand=function(self) self:shadowlength(1) end,
-				OnCommand=function(self) self:diffuseshift():effectcolor1(Color('White')):effectcolor2(color("0.5,0.5,0.5")) end,
+				OnCommand=function(self) self:diffuseshift():effectcolor1(Color('White')):effectcolor2(color("0.5,0.5,0.5")) end
 			}
 		},
 		Def.ActorFrame {
@@ -57,24 +57,23 @@ function LoadPlayerStuff(Player)
 			InitCommand=function(self) self:y(-2) end,
 			Def.Quad {
 				InitCommand=function(self) self:zoomto(200-10,40+2) end,
-				OnCommand=function(self) self:diffuse(Color('Black')):diffusealpha(0.5) end,
+				OnCommand=function(self) self:diffuse(Color('Black')):diffusealpha(0.5) end
 			},
 			Def.Quad {
 				InitCommand=function(self) self:zoomto(200-10,40) end,
 				OnCommand=function(self)
 					self:diffuse(PlayerColor(Player)):fadeleft(0.25)
-					:faderight(0.25):glow(color("1,1,1,0.25")) end,
+					:faderight(0.25):glow(color("1,1,1,0.25")) end
 			},
 			Def.Quad {
 				InitCommand=function(self) self:zoomto(200-10,40):y(-40/2+20) end,
-				OnCommand=function(self) self:diffuse(Color("Black")):fadebottom(1):diffusealpha(0.35) end,
+				OnCommand=function(self) self:diffuse(Color("Black")):fadebottom(1):diffusealpha(0.35) end
 			},
 			Def.Quad {
 				InitCommand=function(self) self:zoomto(200-10,1):y(-40/2+1) end,
-				OnCommand=function(self) self:diffuse(PlayerColor(Player)):glow(color("1,1,1,0.25")) end,
-			},
+				OnCommand=function(self) self:diffuse(PlayerColor(Player)):glow(color("1,1,1,0.25")) end
+			}
 		},
-
 		Def.ActorScroller{
 			Name = 'ProfileScroller',
 			NumItemsToDraw=6,
@@ -86,14 +85,13 @@ function LoadPlayerStuff(Player)
 			end,
 			children = GetLocalProfiles()
 		},
-
 		Def.ActorFrame {
-			Name = "EffectFrame",
+			Name = "EffectFrame"
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
 			Name = 'SelectedProfileText',
-			InitCommand=function(self) self:y(160):shadowlength(1) end,
+			InitCommand=function(self) self:y(160):shadowlength(1) end
 		}
 	}
 end
@@ -201,30 +199,24 @@ local function input(event)
 end
 
 return Def.ActorFrame {
-
 	StorageDevicesChangedMessageCommand=function(self, params)
 		self:queuecommand('UpdateInternal2')
 	end,
-
 	PlayerJoinedMessageCommand=function(self, params)
 		self:queuecommand('UpdateInternal2')
 	end,
-
 	PlayerUnjoinedMessageCommand=function(self, params)
 		self:queuecommand('UpdateInternal2')
 	end,
-
 	OnCommand=function(self, params)
 		main_frame= self:GetParent()
 		SCREENMAN:GetTopScreen():AddInputCallback(input)
 		self:queuecommand('UpdateInternal2')
 	end,
-
 	UpdateInternal2Command=function(self)
 		UpdateInternal3(self, PLAYER_1)
 		UpdateInternal3(self, PLAYER_2)
 	end,
-
 	children = {
 		Def.ActorFrame {
 			Name = 'P1Frame',
@@ -236,7 +228,7 @@ return Def.ActorFrame {
 					self:zoom(1.15):bounceend(0.175):zoom(1.0)
 				end
 			end,
-			children = LoadPlayerStuff(PLAYER_1),
+			children = LoadPlayerStuff(PLAYER_1)
 		},
 		Def.ActorFrame {
 			Name = 'P2Frame',
@@ -248,22 +240,22 @@ return Def.ActorFrame {
 					self:zoom(1.15):bounceend(0.175):zoom(1.0)
 				end
 			end,
-			children = LoadPlayerStuff(PLAYER_2),
+			children = LoadPlayerStuff(PLAYER_2)
 		},
 		Def.Sound{
 			File= THEME:GetPathS("Common","start"),
 			IsAction= true,
-			StartButtonMessageCommand=function(self) self:play() end,
+			StartButtonMessageCommand=function(self) self:play() end
 		},
 		Def.Sound{
 			File= THEME:GetPathS("Common","cancel"),
 			IsAction= true,
-			BackButtonMessageCommand=function(self) self:play() end,
+			BackButtonMessageCommand=function(self) self:play() end
 		},
 		Def.Sound{
 			File= THEME:GetPathS("Common","value"),
 			IsAction= true,
-			DirectionButtonMessageCommand=function(self) self:play() end,
+			DirectionButtonMessageCommand=function(self) self:play() end
 		}
 	}
 }

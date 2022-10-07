@@ -12,13 +12,13 @@ return Def.ActorFrame {
 			Texture= THEME:GetPathG("ScreenQuickSetupOverview", "icon/_base"),
 			GainFocusCommand=function(self)
 				self:stoptweening():linear(0.125):diffuse(Color("Orange")):diffusetopedge(Color("Yellow")) end,
-			LoseFocusCommand=function(self) self:stoptweening():linear(0.125):diffuse(Color("White")) end,
+			LoseFocusCommand=function(self) self:stoptweening():linear(0.125):diffuse(Color("White")) end
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
 			Text=gc:GetName(),
 			InitCommand=function(self) self:strokecolor(Color("White")) end,
-			OnCommand=function(self) self:diffuse(Color("Black")) end,
+			OnCommand=function(self) self:diffuse(Color("Black")) end
 		}
 	},
 	Def.ActorFrame {
@@ -29,14 +29,13 @@ return Def.ActorFrame {
 		Def.Sprite{
 			Texture= THEME:GetPathG("ScreenQuickSetupOverview", "icon/_base"),
 			GainFocusCommand=function(self) self:stoptweening():linear(0.125):diffuse(Color("Red")) end,
-			LoseFocusCommand=function(self) self:stoptweening():linear(0.125):diffuse(Color("White")) end,
+			LoseFocusCommand=function(self) self:stoptweening():linear(0.125):diffuse(Color("White")) end
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
 			Text=gc:GetName(),
 			InitCommand=function(self) self:strokecolor(Color("White")) end,
-			OnCommand=function(self) self:diffuse(Color("Black")) end,
+			OnCommand=function(self) self:diffuse(Color("Black")) end
 		}
 	}
-
 }

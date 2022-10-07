@@ -23,13 +23,13 @@ return Def.ActorFrame{
   Def.ActorFrame {
     Def.ActorFrame {
       loadfile(THEME:GetPathB("","_frame 3x3"))("rounded black",96,12) .. {
-        Name="Background",
+        Name="Background"
       },
       Def.BitmapText{
         Font= "Common Normal",
         Text="Test",
         Name="Time",
-        InitCommand=function(self) self:zoom(0.675) end,
+        InitCommand=function(self) self:zoom(0.675) end
       },
       BeginCommand=function(self)
         self:SetUpdateFunction( GetTime )
@@ -42,6 +42,6 @@ return Def.ActorFrame{
     end,
     InitCommand=function(self) self:x(SCREEN_RIGHT-50):y(10):visible(false) end,
     ShowCommand=function(self) self:finishtweening():visible(true) end,
-    HideCommand=function(self) self:finishtweening():visible(false) end,
+    HideCommand=function(self) self:finishtweening():visible(false) end
   }
 }

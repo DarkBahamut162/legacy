@@ -48,14 +48,14 @@ local function Clock()
 					self:settext(string.format('%02i', sec))
 					self:sleep(1)
 					self:queuecommand("Update")
-				end,
+				end
 			},
 			Def.BitmapText{
 				Font= "Common normal",
 				Text="",
 				InitCommand=function(self)
 					self:x(28):y(-3):horizalign(left):shadowlength(0):diffusebottomedge(color("0.9,0.9,0.9"))
-					:visible(false):zoom(0.75) end,
+					:visible(false):zoom(0.75) end
 				UpdateCommand=function(self)
 					if not GetUserPrefB("Use12HourClock") then
 						self:visible(false)

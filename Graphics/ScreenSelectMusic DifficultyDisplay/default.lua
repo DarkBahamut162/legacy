@@ -1,7 +1,7 @@
 local t = Def.ActorFrame {
 	Def.ActorFrame {
 		Def.Sprite{
-			Texture= THEME:GetPathG("ScreenSelectMusic","DifficultyDisplay/_Background"),
+			Texture= THEME:GetPathG("ScreenSelectMusic","DifficultyDisplay/_Background")
 		}
 	}
 }
@@ -33,7 +33,7 @@ local tLocation = {
 	Medium		= 32*0.75,
 	Hard		= 32*1.75,
 	Challenge	= 32*2.75,
-	Edit 		= 32*4.75,
+	Edit 		= 32*4.75
 }
 for idx,diff in pairs(Difficulty) do
 	local sDifficulty = ToEnumShortString( diff )
@@ -69,7 +69,7 @@ for idx,diff in pairs(Difficulty) do
 					self:stoptweening():linear(0.1):diffuse(CustomDifficultyToColor( sDifficulty )) end,
 				HideCommand=function(self)
 					self:stoptweening():decelerate(0.05):diffuse(CustomDifficultyToDarkColor( sDifficulty )) end,
-				InitCommand=function(self) self:diffuse(CustomDifficultyToColor( sDifficulty )) end,
+				InitCommand=function(self) self:diffuse(CustomDifficultyToColor( sDifficulty )) end
 			},
 			Def.BitmapText{
 				Font= THEME:GetPathF("StepsDisplay","Meter"),
@@ -81,7 +81,7 @@ for idx,diff in pairs(Difficulty) do
 					self:stoptweening():decelerate(0.05):diffuse(CustomDifficultyToDarkColor( sDifficulty )) end,
 				InitCommand=function(self)
 					self:x(-64-8+tLocation[sDifficulty]):shadowlength(1):zoom(0.75)
-					:diffuse(CustomDifficultyToColor( sDifficulty )) end,
+					:diffuse(CustomDifficultyToColor( sDifficulty )) end
 			}
 		}
 	end

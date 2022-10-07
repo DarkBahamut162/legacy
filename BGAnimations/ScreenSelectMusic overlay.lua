@@ -30,31 +30,31 @@ for i=1,#num_players do
 			InitCommand=function(self) self:y(-35) end,
 			OnCommand=function(self)
 				self:diffuse(PlayerColor(num_players[i])):shadowlength(1):linear(0.25)
-				:zoomtowidth(80):fadeleft(0.5):faderight(0.5) end,
+				:zoomtowidth(80):fadeleft(0.5):faderight(0.5) end
 		},
 		Def.BitmapText{
 			Font= "Common Bold",
 			Text=ToEnumShortString(num_players[i]),
 			InitCommand=function(self) self:y(-48) end,
-			OnCommand=function(self) self:shadowlength(1):diffuse(PlayerColor(num_players[i])) end,
+			OnCommand=function(self) self:shadowlength(1):diffuse(PlayerColor(num_players[i])) end
 		},
 		Def.BitmapText{
 			Font= "Common Bold",
 			Text="PRESS",
 			InitCommand=function(self) self:y(-20) end,
-			OnCommand=function(self) self:shadowlength(1):pulse():effectmagnitude(1,1.125,1):effectperiod(0.5) end,
+			OnCommand=function(self) self:shadowlength(1):pulse():effectmagnitude(1,1.125,1):effectperiod(0.5) end
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
 			Text="TO START",
 			InitCommand=function(self) self:y(58) end,
-			OnCommand=function(self) self:shadowlength(1):zoom(0.75) end,
+			OnCommand=function(self) self:shadowlength(1):zoom(0.75) end
 		}
 	}
 	if IsRoutine() then
 		local ns = num_players[i] == PLAYER_1 and RoutineSkinP1() or RoutineSkinP2()
 		f[#f+1] = LoadActor( NOTESKIN:GetPathForNoteSkin("Center","Tap",ns) ) .. {
-			InitCommand=function(self) self:y(20) end,
+			InitCommand=function(self) self:y(20) end
 		}
 	end
 	t[#t+1] = f

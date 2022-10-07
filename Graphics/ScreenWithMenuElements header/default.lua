@@ -14,7 +14,7 @@ return Def.ActorFrame{
 		self:SetUpdateFunction( Update )
 	end,
 	Def.Quad {
-		InitCommand=function(self) self:vertalign(top):zoomto(SCREEN_WIDTH+1,50):diffuse(color("#161616")) end,
+		InitCommand=function(self) self:vertalign(top):zoomto(SCREEN_WIDTH+1,50):diffuse(color("#161616")) end
 	},
 	Def.Sprite{
 		Texture= THEME:GetPathG("ScreenWithMenuElements","header/_texture stripe"),
@@ -24,14 +24,13 @@ return Def.ActorFrame{
 			:zoomto(320,50):customtexturerect(0,0,(320/2)/8,50/32) end,
 		OnCommand=function(self)
 			self:texcoordvelocity(2,0):skewx(-0.0575):diffuse(color("#594300"))
-			:diffuserightedge(color("#59430000")) end,
+			:diffuserightedge(color("#59430000")) end
 	},
 	Def.Sprite{
 		Texture= THEME:GetPathG("ScreenWithMenuElements","header/Header"),
 		InitCommand=function(self) self:y(1):vertalign(top):zoomtowidth(SCREEN_WIDTH+1):diffuse(color("#ffd400")) end,
-		OnCommand=function(self) self:croptop(46/60) end,
+		OnCommand=function(self) self:croptop(46/60) end
 	},
-
 	Def.BitmapText{
 		Font= "Common Bold",
 		Name="HeaderShadow",
@@ -43,16 +42,14 @@ return Def.ActorFrame{
 			self:settext(param.Header)
 		end
 	},
-
 	Def.Quad {
 		Name="Underline",
 		InitCommand=function(self) self:x(-SCREEN_CENTER_X+24-4):y(36):horizalign(left) end,
 		OnCommand=function(self)
 			self:stoptweening():diffuse(color("#ffd400")):shadowlength(2)
 			:shadowcolor(BoostColor(color("#ffd40077"),0.25)):linear(0.25):zoomtowidth(192)
-			:fadeleft(8/192):faderight(0.5):visible(string.len( Screen.String("HeaderText") ) > 0 ) end,
+			:fadeleft(8/192):faderight(0.5):visible(string.len( Screen.String("HeaderText") ) > 0 ) end
 	},
-
 	Def.BitmapText{
 		Font= "Common Bold",
 		Name="HeaderText",
@@ -64,5 +61,4 @@ return Def.ActorFrame{
 			self:settext(param.Header)
 		end
 	}
-
 }

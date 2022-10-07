@@ -1,5 +1,4 @@
 local NumColumns = THEME:GetMetric(Var "LoadingScreen", "NumColumns")
-
 local c
 local Scores = Def.ActorFrame {
 	InitCommand = function(self)
@@ -13,26 +12,25 @@ for idx=1,NumColumns do
 		Font= THEME:GetPathF(Var "LoadingScreen","Name"),
 		Name = idx .. "Name",
 		InitCommand=function(self) self:x(x_pos):y(8):shadowlength(1):maxwidth(68) end,
-		OnCommand=function(self) self:zoom(0.75) end,
+		OnCommand=function(self) self:zoom(0.75) end
 	}
 	Scores[#Scores+1] = Def.BitmapText{
 		Font= THEME:GetPathF(Var "LoadingScreen","Score"),
 		Name = idx .. "Score",
 		InitCommand=function(self) self:x(x_pos):y(-9):shadowlength(1):maxwidth(68) end,
-		OnCommand=function(self) self:zoom(0.75) end,
+		OnCommand=function(self) self:zoom(0.75) end
 	}
 	Scores[#Scores+1] = Def.Sprite{
 		Texture= THEME:GetPathG("ScreenHighScores","ScrollerItem/filled"),
 		Name = idx .. "Filled",
-		InitCommand=function(self) self:x(x_pos) end,
+		InitCommand=function(self) self:x(x_pos) end
 	}
 	Scores[#Scores+1] = Def.Sprite{
 		Texture= THEME:GetPathG("ScreenHighScores","ScrollerItem/empty"),
 		Name = idx .. "Empty",
 		InitCommand=function(self) self:x(x_pos) end,
-		OnCommand=function(self) self:zoom(0.75) end,
+		OnCommand=function(self) self:zoom(0.75) end
 	}
-
 end
 
 local sNoScoreName = THEME:GetMetric("Common", "NoScoreName")
@@ -81,7 +79,7 @@ return Def.ActorFrame {
 	InitCommand=function(self) self:runcommandsonleaves(function(child) child:ztest(true) end) end,
 	Def.Sprite{
 		Texture= THEME:GetPathG("ScreenHighScores","ScrollerItem/frame"),
-		InitCommand=function(self) self:diffusealpha(0.25) end,
+		InitCommand=function(self) self:diffusealpha(0.25) end
 	},
 	Def.TextBanner {
 		InitCommand=function(self) self:x(-292):Load("TextBannerHighScores") end,
@@ -95,5 +93,5 @@ return Def.ActorFrame {
 			end
 		end
 	},
-	Scores,
+	Scores
 }

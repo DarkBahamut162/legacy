@@ -1,11 +1,11 @@
 local c
 local player = Var "Player"
-local function ShowProtiming()
-  if GAMESTATE:IsDemonstration() then
-    return false
-  else
-    return GetUserPrefB("UserPrefProtiming" .. ToEnumShortString(player))
-  end
+	local function ShowProtiming()
+	if GAMESTATE:IsDemonstration() then
+		return false
+	else
+		return GetUserPrefB("UserPrefProtiming" .. ToEnumShortString(player))
+	end
 end
 local bShowProtiming = ShowProtiming()
 local ProtimingWidth = 240
@@ -59,7 +59,7 @@ return Def.ActorFrame {
 			Name="Judgment",
 			InitCommand=function(self) self:pause():visible(false) end,
 			OnCommand=THEME:GetMetric("Judgment","JudgmentOnCommand"),
-			ResetCommand=function(self) self:finishtweening():stopeffect():visible(false) end,
+			ResetCommand=function(self) self:finishtweening():stopeffect():visible(false) end
 		},
 		Def.BitmapText{
 			Font= "Combo Numbers",
@@ -67,7 +67,7 @@ return Def.ActorFrame {
 			Text="",
 			InitCommand=function(self) self:visible(false) end,
 			OnCommand=THEME:GetMetric("Protiming","ProtimingOnCommand"),
-			ResetCommand=function(self) self:finishtweening():stopeffect():visible(false) end,
+			ResetCommand=function(self) self:finishtweening():stopeffect():visible(false) end
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
@@ -75,7 +75,7 @@ return Def.ActorFrame {
 			Text="",
 			InitCommand=function(self) self:visible(false) end,
 			OnCommand=THEME:GetMetric("Protiming","AverageOnCommand"),
-			ResetCommand=function(self) self:finishtweening():stopeffect():visible(false) end,
+			ResetCommand=function(self) self:finishtweening():stopeffect():visible(false) end
 		},
 		Def.BitmapText{
 			Font= "Common Normal",
@@ -83,7 +83,7 @@ return Def.ActorFrame {
 			Text=THEME:GetString("Protiming","MS"),
 			InitCommand=function(self) self:visible(false) end,
 			OnCommand=THEME:GetMetric("Protiming","TextOnCommand"),
-			ResetCommand=function(self) self:finishtweening():stopeffect():visible(false) end,
+			ResetCommand=function(self) self:finishtweening():stopeffect():visible(false) end
 		},
 		Def.Quad {
 			Name="ProtimingGraphBG",
@@ -91,13 +91,13 @@ return Def.ActorFrame {
 			ResetCommand=function(self) self:finishtweening():diffusealpha(0.8):visible(false) end,
 			OnCommand=function(self)
 				self:diffuse(Color("Black")):diffusetopedge(color("0.1,0.1,0.1,1"))
-				:diffusealpha(0.8):shadowlength(2) end,
+				:diffusealpha(0.8):shadowlength(2) end
 		},
 		Def.Quad {
 			Name="ProtimingGraphWindowW3",
 			InitCommand=function(self) self:visible(false):y(32):zoomto(ProtimingWidth-4,16-4) end,
 			ResetCommand=function(self) self:finishtweening():diffusealpha(1):visible(false) end,
-			OnCommand=function(self) self:diffuse(GameColor.Judgment["JudgmentLine_W3"]) end,
+			OnCommand=function(self) self:diffuse(GameColor.Judgment["JudgmentLine_W3"]) end
 		},
 		Def.Quad {
 			Name="ProtimingGraphWindowW2",
@@ -105,7 +105,7 @@ return Def.ActorFrame {
 				self:visible(false):y(32)
 				:zoomto(scale(PREFSMAN:GetPreference("TimingWindowSecondsW2"),0,PREFSMAN:GetPreference("TimingWindowSecondsW3"),0,ProtimingWidth-4),16-4) end,
 			ResetCommand=function(self) self:finishtweening():diffusealpha(1):visible(false) end,
-			OnCommand=function(self) self:diffuse(GameColor.Judgment["JudgmentLine_W2"]) end,
+			OnCommand=function(self) self:diffuse(GameColor.Judgment["JudgmentLine_W2"]) end
 		},
 		Def.Quad {
 			Name="ProtimingGraphWindowW1",
@@ -113,36 +113,35 @@ return Def.ActorFrame {
 				self:visible(false):y(32)
 				:zoomto(scale(PREFSMAN:GetPreference("TimingWindowSecondsW1"),0,PREFSMAN:GetPreference("TimingWindowSecondsW3"),0,ProtimingWidth-4),16-4) end,
 			ResetCommand=function(self) self:finishtweening():diffusealpha(1):visible(false) end,
-			OnCommand=function(self) self:diffuse(GameColor.Judgment["JudgmentLine_W1"]) end,
+			OnCommand=function(self) self:diffuse(GameColor.Judgment["JudgmentLine_W1"]) end
 		},
 		Def.Quad {
 			Name="ProtimingGraphUnderlay",
 			InitCommand=function(self) self:visible(false):y(32):zoomto(ProtimingWidth-4,16-4) end,
 			ResetCommand=function(self) self:finishtweening():diffusealpha(0.25):visible(false) end,
-			OnCommand=function(self) self:diffuse(Color("Black")):diffusealpha(0.25) end,
+			OnCommand=function(self) self:diffuse(Color("Black")):diffusealpha(0.25) end
 		},
 		Def.Quad {
 			Name="ProtimingGraphFill",
 			InitCommand=function(self) self:visible(false):y(32):zoomto(0,16-4):horizalign(left) end,
 			ResetCommand=function(self) self:finishtweening():diffusealpha(1):visible(false) end,
-			OnCommand=function(self) self:diffuse(Color("Red")) end,
+			OnCommand=function(self) self:diffuse(Color("Red")) end
 		},
 		Def.Quad {
 			Name="ProtimingGraphAverage",
 			InitCommand=function(self) self:visible(false):y(32):zoomto(2,7) end,
 			ResetCommand=function(self) self:finishtweening():diffusealpha(0.85):visible(false) end,
-			OnCommand=function(self) self:diffuse(Color("Orange")):diffusealpha(0.85) end,
+			OnCommand=function(self) self:diffuse(Color("Orange")):diffusealpha(0.85) end
 		},
 		Def.Quad {
 			Name="ProtimingGraphCenter",
 			InitCommand=function(self) self:visible(false):y(32):zoomto(2,16-4) end,
 			ResetCommand=function(self) self:finishtweening():diffusealpha(1):visible(false) end,
-			OnCommand=function(self) self:diffuse(Color("White")):diffusealpha(1) end,
+			OnCommand=function(self) self:diffuse(Color("White")):diffusealpha(1) end
 		},
 		InitCommand = function(self)
 			c = self:GetChildren()
 		end,
-
 		JudgmentMessageCommand=function(self, param)
 			local msgParam = param
 			MESSAGEMAN:Broadcast("TestJudgment",msgParam)

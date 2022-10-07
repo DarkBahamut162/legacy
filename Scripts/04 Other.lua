@@ -26,7 +26,7 @@ local numbered_stages= {
 	Stage_4th= true,
 	Stage_5th= true,
 	Stage_6th= true,
-	Stage_Next= true,
+	Stage_Next= true
 }
 
 function thified_curstage_index(on_eval)

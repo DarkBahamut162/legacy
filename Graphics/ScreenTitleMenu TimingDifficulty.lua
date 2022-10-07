@@ -8,7 +8,7 @@ return Def.ActorFrame {
 		OnCommand= function(self)
 			label_text= self
 			self:shadowlength(1):settextf(Screen.String("TimingDifficulty"), "")
-		end,
+		end
 	},
 	Def.BitmapText{
 		Font= "Common Normal",

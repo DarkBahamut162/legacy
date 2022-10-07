@@ -19,7 +19,6 @@ return Def.BitmapText{
 		local pnPlayer = params.PlayerNumber
 		local sGrade = params.Grade or 'Grade_None'
 		local gradeString = THEME:GetString("Grade",string.sub(sGrade,7))
-
 		self:settext(gradeString)
 		self:diffuse(PlayerColor(pnPlayer))
 		self:diffusetopedge(BoostColor(PlayerColor(pnPlayer),1.5))
