@@ -85,7 +85,7 @@ local function PercentScore(pn)
 	return t
 end
 
-for pn in ivalues(PlayerNumber) do
+for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 	local MetricsName = "StepsDisplay" .. PlayerNumberToString(pn)
 	t[#t+1] = StepsDisplay(pn) .. {
 		InitCommand=function(self) self:player(pn):name(MetricsName) ActorUtil.LoadAllCommandsAndSetXY(self,Var "LoadingScreen") end,

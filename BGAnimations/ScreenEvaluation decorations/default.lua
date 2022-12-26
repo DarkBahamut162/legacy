@@ -80,7 +80,7 @@ if ShowStandardDecoration("ComboGraph") and GAMESTATE:GetPlayMode() ~= "PlayMode
 end
 
 if ShowStandardDecoration("StepsDisplay") then
-	for pn in ivalues(PlayerNumber) do
+	for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 		local t2 = Def.StepsDisplay {
 			InitCommand=function(self) self:Load("StepsDisplayEvaluation",pn):SetFromGameState(pn) end,
 			UpdateNetEvalStatsMessageCommand=function(self,param)
@@ -94,7 +94,7 @@ if ShowStandardDecoration("StepsDisplay") then
 	end
 end
 
-for pn in ivalues(PlayerNumber) do
+for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 	local MetricsName = "MachineRecord" .. PlayerNumberToString(pn)
 	t[#t+1] = LoadActor( THEME:GetPathG(Var "LoadingScreen", "MachineRecord"), pn ) .. {
 		InitCommand=function(self)
@@ -105,7 +105,7 @@ for pn in ivalues(PlayerNumber) do
 	}
 end
 
-for pn in ivalues(PlayerNumber) do
+for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 	local MetricsName = "PersonalRecord" .. PlayerNumberToString(pn)
 	t[#t+1] = LoadActor( THEME:GetPathG(Var "LoadingScreen", "PersonalRecord"), pn ) .. {
 		InitCommand=function(self)
@@ -116,7 +116,7 @@ for pn in ivalues(PlayerNumber) do
 	}
 end
 
-for pn in ivalues(PlayerNumber) do
+for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 	local MetricsName = "StageAward" .. PlayerNumberToString(pn)
 	t[#t+1] = LoadActor( THEME:GetPathG(Var "LoadingScreen", "StageAward"), pn ) .. {
 		InitCommand=function(self)
@@ -136,7 +136,7 @@ for pn in ivalues(PlayerNumber) do
 	}
 end
 
-for pn in ivalues(PlayerNumber) do
+for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 	local MetricsName = "PeakComboAward" .. PlayerNumberToString(pn)
 	t[#t+1] = LoadActor( THEME:GetPathG(Var "LoadingScreen", "PeakComboAward"), pn ) .. {
 		InitCommand=function(self)

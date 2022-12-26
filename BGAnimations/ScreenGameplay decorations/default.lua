@@ -23,9 +23,7 @@ local function CreateSegments(Player)
 			local step = GAMESTATE:GetCurrentSteps(Player)
 
 			if step then
-				if step:UsesSplitTiming() then
-					timingData = step:GetTimingData()
-				end
+				timingData = step:GetTimingData()
 
 				local bpms = timingData:GetBPMsAndTimes(true)
 				local stops = timingData:GetStops(true)
@@ -129,7 +127,7 @@ t[#t+1] = StandardDecorationFromFileOptional("ScoreFrame","ScoreFrame")
 
 local function songMeterScale(val) return scale(val,0,1,-380/2,380/2) end
 
-for pn in ivalues(PlayerNumber) do
+for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 	local MetricsName
 	local playerColor
 	if GAMESTATE:GetNumPlayersEnabled()==1 then
@@ -174,7 +172,7 @@ for pn in ivalues(PlayerNumber) do
 	t[#t+1] = songMeterDisplay
 end
 
-for pn in ivalues(PlayerNumber) do
+for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 	local MetricsName = "ToastyDisplay" .. PlayerNumberToString(pn)
 	t[#t+1] = LoadActor( THEME:GetPathG("Player", 'toasty'), pn ) .. {
 		InitCommand=function(self)

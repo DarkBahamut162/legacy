@@ -45,7 +45,7 @@ else
 		local dispP1 = self:GetChild("DisplayP1")
 		local dispP2 = self:GetChild("DisplayP2")
 
-		for pn in ivalues(PlayerNumber) do
+		for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 			local bpmDisplay = (pn == PLAYER_1) and dispP1 or dispP2
 			local pState = GAMESTATE:GetPlayerState(pn)
 			local songPosition = pState:GetSongPosition()

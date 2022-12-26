@@ -3,7 +3,7 @@ local t = Def.ActorFrame {
 }
 local function UpdateTime(self)
 	local c = self:GetChildren()
-	for pn in ivalues(PlayerNumber) do
+	for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 		local vStats = STATSMAN:GetCurStageStats():GetPlayerStageStats( pn )
 		local vTime
 		local obj = self:GetChild( string.format("RemainingTime" .. PlayerNumberToString(pn) ) )
@@ -15,7 +15,7 @@ local function UpdateTime(self)
 end
 if GAMESTATE:GetCurrentCourse() then
 	if GAMESTATE:GetCurrentCourse():GetCourseType() == "CourseType_Survival" then
-		for pn in ivalues(PlayerNumber) do
+		for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 			local MetricsName = "RemainingTime" .. PlayerNumberToString(pn)
 			t[#t+1] = loadfile( THEME:GetPathG( Var "LoadingScreen", "RemainingTime"))( pn ) .. {
 				InitCommand=function(self)
@@ -25,7 +25,7 @@ if GAMESTATE:GetCurrentCourse() then
 				end
 			}
 		end
-		for pn in ivalues(PlayerNumber) do
+		for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 			local MetricsName = "DeltaSeconds" .. PlayerNumberToString(pn)
 			t[#t+1] = loadfile( THEME:GetPathG( Var "LoadingScreen", "DeltaSeconds"))( pn ) .. {
 				InitCommand=function(self)
