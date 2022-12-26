@@ -23,7 +23,9 @@ local function CreateSegments(Player)
 			local step = GAMESTATE:GetCurrentSteps(Player)
 
 			if step then
-				timingData = step:GetTimingData()
+				if step:UsesSplitTiming() then
+					timingData = step:GetTimingData()
+				end
 
 				local bpms = timingData:GetBPMsAndTimes(true)
 				local stops = timingData:GetStops(true)
