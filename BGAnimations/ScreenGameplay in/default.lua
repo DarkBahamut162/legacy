@@ -8,8 +8,7 @@ return Def.ActorFrame {
 			else
 				self:scale_or_crop_background()
 			end
-			self:linear(1)
-			self:diffusealpha(0)
+			self:linear(SongMeasureSec()/8):diffusealpha(0):sleep(BeginReadyDelay())
 		end
 	}
 }
