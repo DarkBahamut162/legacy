@@ -140,6 +140,19 @@ function SongMeasureSec()
 		end
 		sec = 60/bpm*4*m*(n/d)
 	end
+
+	-- check for BPMChanges between beat 0 and the first beat ~DarkBahamut162
+	for k,v in pairs(td:GetBPMsAndTimes()) do
+		local data = split('=', v)
+		local numData = {tonumber(data[1]), tonumber(data[2])}
+		numData[2] = math.round(numData[2] * 1000) / 1000
+		if numData[1] > firstBeat then break end
+		if numData[1] > 0 then
+			sec = firstSecond + math.abs(GAMESTATE:GetCurMusicSeconds())
+			sec = sec / 3
+			break
+		end
+	end
 	
 	return sec
 end
