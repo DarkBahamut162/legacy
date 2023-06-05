@@ -82,77 +82,31 @@ function BeginReadyDelay()
 	local td = GetSong():GetTimingData()
 	local bpm = round(td:GetBPMAtBeat(0),3)
 	local m = 1
-	
-	if bpm > 240 then
+
+	if bpm > 480 then
 		m =  2
 	elseif bpm < 30 then
-		m =  0.25
+		m =  0.125
+	elseif bpm < 15 then
+		m =  0.0625
 	elseif bpm < 60 then
+		m =  0.25
+	elseif bpm < 120 then
 		m =  0.5
 	end
-	
+
 	local timeSigs = split('=', td:GetTimeSignatures()[1])
 	local n = timeSigs[2]
 	local d = timeSigs[3]
 	local g_offset = round(PREFSMAN:GetPreference("GlobalOffsetSeconds"),3)
-	
+
 	local delay = trueFirstSecond-(60/bpm*12*m*(n/d))+g_offset
-	
-	if delay < 0 then
-		delay = 0
-	end
-	
+
+	if delay < 0 then delay = 0 end
+
 	return round(delay,3)
 end
 
 function SongMeasureSec()
-	local MinSecondsToStep = MinSecondsToStep()
-	local firstSecond = GetSong():GetFirstSecond()
-	local firstBeat = GetSong():GetFirstBeat()
-	local td = GetSong():GetTimingData()
-	local bpm = round(td:GetBPMAtBeat(0),3)
-	local trueFirstBeat = math.abs(MinSecondsToStep * (60/bpm)) + firstBeat
-	local trueFirstSecond = math.abs(MinSecondsToStep) + firstSecond
-	local timeSigs = split('=', td:GetTimeSignatures()[1])
-	local n = timeSigs[2]
-	local d = timeSigs[3]
-	local sec = 0
-	local m = 1
-	
-	if trueFirstBeat < 12 then
-		if bpm <= 30 then
-			sec = trueFirstSecond/6*(n/d)
-		elseif bpm <= 60 then
-			sec = trueFirstSecond/5*(n/d)
-		elseif bpm <= 120 then
-			sec = trueFirstSecond/4*(n/d)
-		else
-			sec = trueFirstSecond/3*(n/d)
-		end
-		if sec < 1 then sec = sec + 0.25 end
-	else
-		if bpm >= 240 then
-			m = 2
-		elseif bpm < 30 then
-			m = 0.25
-		elseif bpm < 60 then
-			m = 0.5
-		end
-		sec = 60/bpm*4*m*(n/d)
-	end
-
-	-- check for BPMChanges between beat 0 and the first beat ~DarkBahamut162
-	for k,v in pairs(td:GetBPMsAndTimes()) do
-		local data = split('=', v)
-		local numData = {tonumber(data[1]), tonumber(data[2])}
-		numData[2] = math.round(numData[2] * 1000) / 1000
-		if numData[1] > firstBeat then break end
-		if numData[1] > 0 then
-			sec = firstSecond + math.abs(GAMESTATE:GetCurMusicSeconds())
-			sec = sec / 3
-			break
-		end
-	end
-	
-	return sec
+	return math.max((MinSecondsToStep()-BeginReadyDelay()) / 2,0.5)
 end
