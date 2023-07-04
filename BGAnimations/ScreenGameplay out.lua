@@ -1,9 +1,13 @@
 local raveChildren
+local lastSec = GAMESTATE:GetCurrentSong():GetLastSecond() or 0
+local musicSec = GAMESTATE:GetCurrentSong():MusicLengthSeconds() or 0
+local max = math.min(5,math.max(musicSec-lastSec,1))
+local min = max/20
 
 return Def.ActorFrame{
 	Def.Quad{
 		InitCommand=function(self) self:FullScreen():diffuse(color("0,0,0,0")) end,
-		OnCommand=function(self) self:linear(5):diffusealpha(1) end
+		OnCommand=function(self) self:linear(max):diffusealpha(1) end
 	},
 	Def.ActorFrame{
 		Name="RaveMessages",
@@ -30,21 +34,21 @@ return Def.ActorFrame{
 			Name="P1Win",
 			InitCommand=function(self) self:Center():cropbottom(1):fadebottom(1) end,
 			OnCommand=function(self)
-				self:sleep(2):linear(0.5):cropbottom(0):fadebottom(0):sleep(1.75):linear(0.25):diffusealpha(0) end
+				self:sleep(min*8):linear(min*2):cropbottom(0):fadebottom(0):sleep(min*7):linear(min):diffusealpha(0) end
 		},
 		Def.Sprite{
 			Texture= THEME:GetPathG("_rave result","P2"),
 			Name="P2Win",
 			InitCommand=function(self) self:Center():cropbottom(1):fadebottom(1) end,
 			OnCommand=function(self)
-				self:sleep(2):linear(0.5):cropbottom(0):fadebottom(0):sleep(1.75):linear(0.25):diffusealpha(0) end
+				self:sleep(min*8):linear(min*2):cropbottom(0):fadebottom(0):sleep(min*7):linear(min):diffusealpha(0) end
 		},
 		Def.Sprite{
 			Texture= THEME:GetPathG("_rave result","draw"),
 			Name="Draw",
 			InitCommand=function(self) self:Center():cropbottom(1):fadebottom(1) end,
 			OnCommand=function(self)
-				self:sleep(2):linear(0.5):cropbottom(0):fadebottom(0):sleep(1.75):linear(0.25):diffusealpha(0) end
+				self:sleep(min*8):linear(min*2):cropbottom(0):fadebottom(0):sleep(min*7):linear(min):diffusealpha(0) end
 		}
 	}
 }
