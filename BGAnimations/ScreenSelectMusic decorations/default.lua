@@ -107,7 +107,30 @@ for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 	end
 end
 
-t[#t+1] = StandardDecorationFromFileOptional("BannerFrame","BannerFrame")
+t[#t+1] = StandardDecorationFromFileOptional("BannerFrame","BannerFrame")..{
+	BeginCommand=function(self) self:playcommand("Set") end,
+	SetCommand=function(self)
+		if GetSong() then
+			local MinSecondsToStep = MinSecondsToStep()
+			local firstBeat = GetSong():GetFirstBeat()
+			local td = GetSong():GetTimingData()
+			local bpm = round(td:GetBPMAtBeat(0),3)
+			local trueFirstBeat = math.abs(MinSecondsToStep * (60/bpm)) + firstBeat
+
+			if MinSecondsToStep <= 2 then
+				self:diffuse(Color.Black)
+			elseif trueFirstBeat < 12 then
+				self:diffuse(Color.Red)
+			else
+				self:diffuse(Color.White)
+			end
+		else
+			self:diffuse(Color.White)
+		end
+	end,
+	CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
+	CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end
+}
 t[#t+1] = StandardDecorationFromFileOptional("PaneDisplayFrameP1","PaneDisplayFrame")
 t[#t+1] = StandardDecorationFromFileOptional("PaneDisplayFrameP2","PaneDisplayFrame")
 t[#t+1] = StandardDecorationFromFileOptional("PaneDisplayTextP1","PaneDisplayTextP1")
