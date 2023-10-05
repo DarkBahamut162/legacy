@@ -12,7 +12,7 @@ local grades = {
 
 return Def.BitmapText{
 	Font= "Common Normal",
-	InitCommand=function(self) self:zoom(0.75):shadowlength(1):strokecolor(Color("Black")) end,
+	InitCommand=function(self) self:zoom(0.75):shadowlength(1):halign(0):strokecolor(Color("Black")) end,
 	ShowCommand=function(self) self:stoptweening():bounceend(0.15):zoomy(0.75) end,
 	HideCommand=function(self) self:stoptweening():bouncebegin(0.15):zoomy(0) end,
 	SetGradeCommand=function(self,params)
