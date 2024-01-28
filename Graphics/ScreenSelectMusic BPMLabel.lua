@@ -1,3 +1,5 @@
+local courseMode = GAMESTATE:IsCourseMode()
+
 return Def.ActorFrame {
 	Def.BitmapText{ Font= "Common Normal",
 		Text="BPM",
@@ -12,7 +14,7 @@ return Def.ActorFrame {
 				self:diffusebottomedge( Color("White") )
 			end
 		end,
-		CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-		CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end
+		CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+		CurrentCourseChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end
 	}
 }

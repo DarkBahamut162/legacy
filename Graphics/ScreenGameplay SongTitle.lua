@@ -1,6 +1,6 @@
 return Def.BitmapText{
 	Font= THEME:GetPathF("ScreenGameplay","SongTitle"),
-	CurrentSongChangedMessageCommand=function(self) self:playcommand("Refresh") end,
+	CurrentSongChangedMessageCommand=function(self) if GAMESTATE:IsCourseMode() then self:playcommand("Refresh") end end,
 	RefreshCommand=function(self)
 		local vSong = GAMESTATE:GetCurrentSong()
 		local vCourse = GAMESTATE:GetCurrentCourse()

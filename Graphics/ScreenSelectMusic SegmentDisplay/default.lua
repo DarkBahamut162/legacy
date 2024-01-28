@@ -1,5 +1,6 @@
 local iconPath = "_timingicons"
 local colX = -138
+local courseMode = GAMESTATE:IsCourseMode()
 
 local showCmd = function(self) self:stoptweening():accelerate(0.1):diffusealpha(1) end
 local hideCmd = function(self) self:stoptweening():accelerate(0.1):diffusealpha(0) end
@@ -172,7 +173,7 @@ return Def.ActorFrame{
 		ShowCommand=showCmd,
 		HideCommand=hideCmd
 	},
-	CurrentSongChangedMessageCommand=function(self) self:playcommand("SetIcons",{Player = GAMESTATE:GetEnabledPlayers()}) end,
-	CurrentStepsP1ChangedMessageCommand=function(self) self:playcommand("SetIcons",{Player = {PLAYER_1}}) end,
-	CurrentStepsP2ChangedMessageCommand=function(self) self:playcommand("SetIcons",{Player = {PLAYER_2}}) end
+	CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("SetIcons",{Player = GAMESTATE:GetEnabledPlayers()}) end end,
+	CurrentStepsP1ChangedMessageCommand=function(self) if not courseMode then self:playcommand("SetIcons",{Player = {PLAYER_1}}) end end,
+	CurrentStepsP2ChangedMessageCommand=function(self) if not courseMode then self:playcommand("SetIcons",{Player = {PLAYER_2}}) end end
 }

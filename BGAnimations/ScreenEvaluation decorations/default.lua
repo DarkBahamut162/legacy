@@ -1,3 +1,5 @@
+local courseMode = GAMESTATE:IsCourseMode()
+
 local function GraphDisplay( pn )
 	local t = Def.ActorFrame {
 		LoadActor( THEME:GetPathG("_GraphDisplay","overlay")) .. {
@@ -35,7 +37,7 @@ local function PercentScore( pn )
 		BeginCommand=function(self) self:playcommand("Set") end,
 		SetCommand=function(self)
 			local SongOrCourse, StepsOrTrail
-			if GAMESTATE:IsCourseMode() then
+			if courseMode then
 				SongOrCourse = GAMESTATE:GetCurrentCourse()
 				StepsOrTrail = GAMESTATE:GetCurrentTrail(pn)
 			else
@@ -45,7 +47,7 @@ local function PercentScore( pn )
 			if SongOrCourse and StepsOrTrail then
 				local st = StepsOrTrail:GetStepsType()
 				local diff = StepsOrTrail:GetDifficulty()
-				local courseType = GAMESTATE:IsCourseMode() and SongOrCourse:GetCourseType() or nil
+				local courseType = courseMode and SongOrCourse:GetCourseType() or nil
 				local cd = GetCustomDifficulty(st, diff, courseType)
 				self:diffuse(CustomDifficultyToColor(cd))
 				self:shadowcolor(CustomDifficultyToDarkColor(cd))
@@ -214,8 +216,8 @@ t[#t+1] = StandardDecorationFromFileOptional("SongInformation","SongInformation"
 			self:playcommand("Hide")
 		end
 	end,
-	CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-	CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end,
+	CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+	CurrentCourseChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
 	DisplayLanguageChangedMessageCommand=function(self) self:playcommand("Set") end
 }
 t[#t+1] = StandardDecorationFromFileOptional("LifeDifficulty","LifeDifficulty")

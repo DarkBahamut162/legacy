@@ -1,4 +1,5 @@
 local t = LoadFallbackB()
+local courseMode = GAMESTATE:IsCourseMode()
 
 local function StepsDisplay(pn)
 	local function set(self, player)
@@ -10,11 +11,11 @@ local function StepsDisplay(pn)
 	}
 
 	if pn == PLAYER_1 then
-		t.CurrentStepsP1ChangedMessageCommand=function(self) set(self, pn) end
-		t.CurrentTrailP1ChangedMessageCommand=function(self) set(self, pn) end
+		t.CurrentStepsP1ChangedMessageCommand=function(self) if not courseMode then set(self, pn) end end
+		t.CurrentTrailP1ChangedMessageCommand=function(self) if courseMode then set(self, pn) end end
 	else
-		t.CurrentStepsP2ChangedMessageCommand=function(self) set(self, pn) end
-		t.CurrentTrailP2ChangedMessageCommand=function(self) set(self, pn) end
+		t.CurrentStepsP2ChangedMessageCommand=function(self) if not courseMode then set(self, pn) end end
+		t.CurrentTrailP2ChangedMessageCommand=function(self) if courseMode then set(self, pn) end end
 	end
 
 	return t
@@ -70,16 +71,16 @@ local function PercentScore(pn)
 			end
 			self:settext(text)
 		end,
-		CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-		CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end
+		CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+		CurrentCourseChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end
 	}
 
 	if pn == PLAYER_1 then
-		t.CurrentStepsP1ChangedMessageCommand=function(self) self:playcommand("Set") end
-		t.CurrentTrailP1ChangedMessageCommand=function(self) self:playcommand("Set") end
+		t.CurrentStepsP1ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end
+		t.CurrentTrailP1ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end
 	else
-		t.CurrentStepsP2ChangedMessageCommand=function(self) self:playcommand("Set") end
-		t.CurrentTrailP2ChangedMessageCommand=function(self) self:playcommand("Set") end
+		t.CurrentStepsP2ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end
+		t.CurrentTrailP2ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end
 	end
 
 	return t
@@ -128,8 +129,8 @@ t[#t+1] = StandardDecorationFromFileOptional("BannerFrame","BannerFrame")..{
 			self:diffuse(Color.White)
 		end
 	end,
-	CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-	CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end
+	CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+	CurrentCourseChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end
 }
 t[#t+1] = StandardDecorationFromFileOptional("PaneDisplayFrameP1","PaneDisplayFrame")
 t[#t+1] = StandardDecorationFromFileOptional("PaneDisplayFrameP2","PaneDisplayFrame")
@@ -176,10 +177,12 @@ t[#t+1] = StandardDecorationFromFileOptional("SongTime","SongTime") .. {
 		end
 		self:settext( SecondsToMSS(length) )
 	end,
-	CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-	CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end,
-	CurrentTrailP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
-	CurrentTrailP2ChangedMessageCommand=function(self) self:playcommand("Set") end
+	CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+	CurrentCourseChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
+	CurrentStepsP1ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+	CurrentStepsP2ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+	CurrentTrailP1ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
+	CurrentTrailP2ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end
 }
 
 if not GAMESTATE:IsCourseMode() then
@@ -211,7 +214,7 @@ if not GAMESTATE:IsCourseMode() then
 	t[#t+1] = StandardDecorationFromFileOptional("NewSong","NewSong") .. {
 		InitCommand=function(self) self:playcommand("Set") end,
 		BeginCommand=function(self) self:playcommand("Set") end,
-		CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
+		CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
 		SetCommand=function(self)
 			local sSong
 			if GAMESTATE:GetCurrentSong() then
@@ -257,7 +260,7 @@ if GAMESTATE:IsCourseMode() then
 				self:visible(false)
 			end
 		end,
-		CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end
+		CurrentCourseChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end
 	}
 end
 

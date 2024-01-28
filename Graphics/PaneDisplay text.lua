@@ -1,5 +1,6 @@
 local iPN = ...
 assert(iPN,"[Graphics/PaneDisplay text.lua] No PlayerNumber Provided.")
+local courseMode = GAMESTATE:IsCourseMode()
 
 local function GetRadarData( pnPlayer, rcRadarCategory )
 	local tRadarValues
@@ -30,12 +31,12 @@ local function CreatePaneDisplayItem( _pnPlayer, _sLabel, _rcRadarCategory )
 			Text=string.format("%04i", 0),
 			InitCommand=function(self) self:x(96-24-2):horizalign(right) end,
 			OnCommand=function(self) self:zoom(0.5):shadowlength(1) end,
-			CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentStepsP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentStepsP2ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentTrailP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentTrailP2ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end,
+			CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+			CurrentCourseChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
+			CurrentStepsP1ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+			CurrentStepsP2ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+			CurrentTrailP1ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
+			CurrentTrailP2ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
 			SetCommand=function(self)
 				local song = GAMESTATE:GetCurrentSong()
 				local course = GAMESTATE:GetCurrentCourse()
@@ -64,12 +65,12 @@ local function CreatePaneDisplayGraph( _pnPlayer, _sLabel, _rcRadarCategory )
 		Def.Quad {
 			InitCommand=function(self) self:x(12):zoomto(50,10):horizalign(left) end,
 			OnCommand=function(self) self:shadowlength(0):diffuse(Color("Green")):diffusebottomedge(ColorLightTone(Color("Green"))) end,
-			CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentStepsP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentStepsP2ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentTrailP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentTrailP2ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end,
+			CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+			CurrentCourseChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
+			CurrentStepsP1ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+			CurrentStepsP2ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+			CurrentTrailP1ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
+			CurrentTrailP2ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
 			SetCommand=function(self)
 				local song = GAMESTATE:GetCurrentSong()
 				local course = GAMESTATE:GetCurrentCourse()
@@ -88,12 +89,12 @@ local function CreatePaneDisplayGraph( _pnPlayer, _sLabel, _rcRadarCategory )
 			Font= "Common Normal",
 			InitCommand=function(self) self:x(14+25):zoom(0.5):horizalign(center) end,
 			OnCommand=function(self) self:shadowlength(1):strokecolor(color("0.15,0.15,0.15,0.625")) end,
-			CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentStepsP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentStepsP2ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentTrailP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentTrailP2ChangedMessageCommand=function(self) self:playcommand("Set") end,
-			CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end,
+			CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+			CurrentCourseChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
+			CurrentStepsP1ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+			CurrentStepsP2ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+			CurrentTrailP1ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
+			CurrentTrailP2ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
 			SetCommand=function(self)
 				local song = GAMESTATE:GetCurrentSong()
 				local course = GAMESTATE:GetCurrentCourse()

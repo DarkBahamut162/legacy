@@ -1,18 +1,19 @@
 local curScreen = Var "LoadingScreen"
 local curStageIndex = GAMESTATE:GetCurrentStageIndex() + 1
 local playMode = GAMESTATE:GetPlayMode()
+local courseMode = GAMESTATE:IsCourseMode()
 
 return Def.ActorFrame {
 	loadfile(THEME:GetPathB("_frame","3x3"))("rounded black",64,16),
 	Def.BitmapText{
 		Font= "Common Normal",
 		InitCommand=function(self) self:y(-1):shadowlength(1):playcommand("Set") end,
-		CurrentSongChangedMessageCommand=function(self) self:playcommand("Set") end,
-		CurrentCourseChangedMessageCommand=function(self) self:playcommand("Set") end,
-		CurrentStepsP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
-		CurrentStepsP2ChangedMessageCommand=function(self) self:playcommand("Set") end,
-		CurrentTraiP1ChangedMessageCommand=function(self) self:playcommand("Set") end,
-		CurrentTraiP2ChangedMessageCommand=function(self) self:playcommand("Set") end,
+		CurrentSongChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+		CurrentCourseChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
+		CurrentStepsP1ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+		CurrentStepsP2ChangedMessageCommand=function(self) if not courseMode then self:playcommand("Set") end end,
+		CurrentTraiP1ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
+		CurrentTraiP2ChangedMessageCommand=function(self) if courseMode then self:playcommand("Set") end end,
 		SetCommand=function(self)
 			local curStage = GAMESTATE:GetCurrentStage()
 			if GAMESTATE:IsCourseMode() then
