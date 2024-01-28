@@ -27,14 +27,14 @@ return Def.ActorFrame {
 		-- todo: generate a better font for these.
 		Def.BitmapText{
 			Font= "_helveticaneuelt std extblk cn 42px",
-			Text=ToUpper(string_name),
+			Text=string.upper(string_name),
 			InitCommand=function(self) self:y(-12):maxwidth(232) end,
 			OnCommand=function(self)
 				self:diffuse(Color.Black):shadowlength(1):shadowcolor(color("#ffffff77")) end
 		},
 		Def.BitmapText{
 			Font= "_helveticaneuelt std extblk cn 42px",
-			Text=ToUpper(string_expl),
+			Text=string.upper(string_expl),
 			InitCommand=function(self) self:y(27.5):zoom(0.45):maxwidth(320*1.6) end
 		},
 		Def.Sprite{

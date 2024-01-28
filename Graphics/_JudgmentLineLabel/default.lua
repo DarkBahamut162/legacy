@@ -17,7 +17,7 @@ return Def.ActorFrame {
 	Def.BitmapText{
 		Font= "Common Normal",
 		InitCommand=function(self)
-			self:zoom(0.75):settext(ToUpper(JudgmentLineToLocalizedString(jl)))
+			self:zoom(0.75):settext(string.upper(JudgmentLineToLocalizedString(jl)))
 			:diffuse(JudgmentLineToColor(jl)):shadowlength(1):maxwidth(180) end
 	}
 }

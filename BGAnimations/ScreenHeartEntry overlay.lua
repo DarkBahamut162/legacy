@@ -144,7 +144,7 @@ local args= {
 	},
 	Def.BitmapText {
 		Name= "explanation", Font= "Common Large",
-		Text= ToUpper(THEME:GetString("ScreenHeartEntry", "Enter Heart Rate")),
+		Text= string.upper(THEME:GetString("ScreenHeartEntry", "Enter Heart Rate")),
 		InitCommand= function(self) self:xy( SCREEN_CENTER_X, SCREEN_CENTER_Y-128):diffuse( Color.White) end,
 		OnCommand=function(self) self:skewx(-0.125):diffuse(color("#ffd400")):strokecolor(ColorDarkTone(color("#ffd400"))) end
 	},

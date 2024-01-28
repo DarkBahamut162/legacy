@@ -22,7 +22,7 @@ local function CreatePaneDisplayItem( _pnPlayer, _sLabel, _rcRadarCategory )
 	return Def.ActorFrame {
 		Def.BitmapText{
 			Font= "Common Normal",
-			Text=ToUpper( THEME:GetString("PaneDisplay",_sLabel) ),
+			Text=string.upper( THEME:GetString("PaneDisplay",_sLabel) ),
 			InitCommand=function(self) self:horizalign(left) end,
 			OnCommand=function(self) self:zoom(0.5):diffuse(color("0.9,0.9,0.9")):shadowlength(1) end
 		},
