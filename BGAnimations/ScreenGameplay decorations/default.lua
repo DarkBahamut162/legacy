@@ -130,7 +130,7 @@ local function songMeterScale(val) return scale(val,0,1,-380/2,380/2) end
 for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 	local MetricsName
 	local playerColor
-	if GAMESTATE:GetNumPlayersEnabled()==1 then
+	if GAMESTATE:GetNumPlayersEnabled()==1 or GAMESTATE:GetPlayMode() == 'PlayMode_Rave' then
 		MetricsName = "SongMeterDisplay"
 		playerColor = Color("Orange")
 	else
