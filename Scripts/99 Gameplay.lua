@@ -83,16 +83,10 @@ function BeginReadyDelay()
 	local bpm = round(td:GetBPMAtBeat(0),3)
 	local m = 1
 
-	if bpm > 480 then
-		m =  2
-	elseif bpm < 30 then
-		m =  0.125
-	elseif bpm < 15 then
-		m =  0.0625
-	elseif bpm < 60 then
-		m =  0.25
-	elseif bpm < 120 then
-		m =  0.5
+	if bpm >= 240 then
+		m = math.ceil(math.ceil(bpm/240)/2)*2
+	else
+		m = 1/(math.ceil(math.round(240/bpm)/2)*2)
 	end
 
 	local timeSigs = split('=', td:GetTimeSignatures()[1])
