@@ -1,4 +1,4 @@
-if IsNetSMOnline() or MinSecondsToStep() <= 2 then return Def.ActorFrame{} end
+if IsNetSMOnline() or GAMESTATE:IsCourseMode() or MinSecondsToStep() <= 2 then return Def.ActorFrame{} end
 
 local length = SongMeasureSec() / 8 * 7
 

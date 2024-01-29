@@ -1,6 +1,6 @@
 local raveChildren
-local lastSec = GAMESTATE:GetCurrentSong():GetLastSecond() or 0
-local musicSec = GAMESTATE:GetCurrentSong():MusicLengthSeconds() or 0
+local lastSec = GAMESTATE:GetCurrentSong() and GAMESTATE:GetCurrentSong():GetLastSecond() or 0
+local musicSec = GAMESTATE:GetCurrentSong() and GAMESTATE:GetCurrentSong():MusicLengthSeconds() or 0
 local max = math.min(5,math.max(musicSec-lastSec,1))
 local min = max/20
 

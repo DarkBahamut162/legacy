@@ -28,14 +28,8 @@ local function PercentScore(pn)
 		InitCommand=function(self) self:zoom(0.625):shadowlength(1) end,
 		BeginCommand=function(self) self:playcommand("Set") end,
 		SetCommand=function(self)
-			local SongOrCourse, StepsOrTrail
-			if GAMESTATE:IsCourseMode() then
-				SongOrCourse = GAMESTATE:GetCurrentCourse()
-				StepsOrTrail = GAMESTATE:GetCurrentTrail(pn)
-			else
-				SongOrCourse = GAMESTATE:GetCurrentSong()
-				StepsOrTrail = GAMESTATE:GetCurrentSteps(pn)
-			end
+			local SongOrCourse = GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse() or GAMESTATE:GetCurrentSong()
+			local StepsOrTrail = GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentTrail(pn) or GAMESTATE:GetCurrentSteps(pn)
 
 			local profile, scorelist
 			local text = ""
@@ -111,7 +105,8 @@ end
 t[#t+1] = StandardDecorationFromFileOptional("BannerFrame","BannerFrame")..{
 	BeginCommand=function(self) self:playcommand("Set") end,
 	SetCommand=function(self)
-		if GetSong() then
+		local SongOrCourse = GAMESTATE:IsCourseMode() and nil or GAMESTATE:GetCurrentSong()
+		if SongOrCourse then
 			local MinSecondsToStep = MinSecondsToStep()
 			local firstBeat = GetSong():GetFirstBeat()
 			local td = GetSong():GetTimingData()
