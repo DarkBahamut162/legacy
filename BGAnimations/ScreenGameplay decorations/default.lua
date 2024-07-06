@@ -126,11 +126,19 @@ local t = LoadFallbackB()
 t[#t+1] = StandardDecorationFromFileOptional("ScoreFrame","ScoreFrame")
 
 local function songMeterScale(val) return scale(val,0,1,-380/2,380/2) end
+local skip = false
 
 for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 	local MetricsName
 	local playerColor
-	if GAMESTATE:GetNumPlayersEnabled()==1 or GAMESTATE:GetPlayMode() == 'PlayMode_Rave' then
+	if skip then break end
+	if GAMESTATE:GetNumPlayersEnabled()==2 then
+		local p1 = GAMESTATE:GetCurrentSteps(PLAYER_1)
+		local p2 = GAMESTATE:GetCurrentSteps(PLAYER_2)
+
+		if p1:GetTimingData() == p2:GetTimingData() then skip = true end
+	end
+	if GAMESTATE:GetNumPlayersEnabled()==1 or GAMESTATE:GetPlayMode() == 'PlayMode_Rave' or skip then
 		MetricsName = "SongMeterDisplay"
 		playerColor = Color("Orange")
 	else
