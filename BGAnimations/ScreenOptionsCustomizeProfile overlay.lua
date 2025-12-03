@@ -120,12 +120,12 @@ menu_items[#menu_items+1]= {name= "exit", item_type= "exit"}
 
 local menu_cursor
 local menu_pos= 1
-local menu_start= SCREEN_TOP + 80
+local menu_start= SCREEN_TOP+80
 if #menu_items > 6 then
-	menu_start= SCREEN_TOP + 68
+	menu_start= SCREEN_TOP+68
 end
-local menu_x= SCREEN_CENTER_X * 0.25
-local value_x= ( SCREEN_CENTER_X * 0.25 ) + 256
+local menu_x= SCREEN_CENTER_X*0.25*WideScreenDiff()
+local value_x= (SCREEN_CENTER_X*0.25*WideScreenDiff())+256*WideScreenDiff()
 local fader
 local cursor_on_menu= "main"
 local menu_item_actors= {}
@@ -300,11 +300,11 @@ local args= {
 				self:playcommand("SetSize",{ Width=param:GetWidth()+cursor_width_padding, tween=function(self) self:stoptweening():decelerate(0.15) end})
 			end
 		}
-	},
+	}
 }
 
 for i, item in ipairs(menu_items) do
-	local item_y= menu_start + ((i-1) * 24)
+	local item_y= menu_start + ((i-1)*24*WideScreenDiff())
 	args[#args+1]= Def.BitmapText{
 		Name= "menu_" .. item.name, Font= "Common Normal",
 		Text= THEME:GetString("ScreenOptionsCustomizeProfile", item.name),
@@ -313,6 +313,7 @@ for i, item in ipairs(menu_items) do
 			self:xy(menu_x, item_y)
 			self:diffuse(Color.White)
 			self:horizalign(left)
+			self:zoom(WideScreenDiff())
 		end
 	}
 	if item.get then
@@ -321,13 +322,14 @@ for i, item in ipairs(menu_items) do
 			Name= "value_" .. item.name,
 			InitCommand= function(self)
 				menu_values[i]= self
-				self:xy(value_x, menu_start + ((i-1) * 24))
+				self:xy(value_x, menu_start + ((i-1)*24*WideScreenDiff()))
 			end,
 			Def.BitmapText{
 				Name= "val", Font= "Common Normal", Text= value_text,
 				InitCommand= function(self)
 					self:diffuse(Color.White)
 					self:horizalign(left)
+					self:zoom(WideScreenDiff())
 				end,
 				SetCommand= function(self, param)
 					self:settext(param[1])
@@ -371,9 +373,10 @@ args[#args+1]= loadfile(THEME:GetPathB("_frame", "3x3"))("rounded black",474,_he
 	Name= "fader", InitCommand= function(self)
 		fader= self
 		self:draworder(-20)
-		self:xy(menu_x + 474/2, menu_start + _height/2 - 12)
+		self:xy(menu_x + 474/2*WideScreenDiff(), menu_start + (_height/2-12)*WideScreenDiff())
 		self:diffuse(Color.Black)
 		self:diffusealpha(0.75)
+		self:zoom(WideScreenDiff())
 	end
 }
 

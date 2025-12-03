@@ -5,7 +5,7 @@ return Def.ActorFrame {
 		Font= "Common Normal",
 		Text=GetLifeDifficulty(),
 		AltText="",
-		InitCommand=function(self) self:horizalign(left):zoom(0.675) end,
+		InitCommand=function(self) self:horizalign(left):zoom(0.675*WideScreenDiff()) end,
 		OnCommand= function(self)
 			label_text= self
 			self:shadowlength(1):settextf(Screen.String("LifeDifficulty"), "")
@@ -15,9 +15,9 @@ return Def.ActorFrame {
 		Font= "Common Normal",
 		Text=GetLifeDifficulty(),
 		AltText="",
-		InitCommand=function(self) self:zoom(0.675):halign(0) end,
+		InitCommand=function(self) self:zoom(0.675*WideScreenDiff()):halign(0) end,
 		OnCommand= function(self)
-			self:shadowlength(1):skewx(-0.125):x(label_text:GetZoomedWidth()+8)
+			self:shadowlength(1):skewx(-0.125):x(label_text:GetZoomedWidth()+8*WideScreenDiff())
 		end
 	}
 }

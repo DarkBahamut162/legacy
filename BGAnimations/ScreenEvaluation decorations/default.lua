@@ -3,7 +3,7 @@ local courseMode = GAMESTATE:IsCourseMode()
 local function GraphDisplay( pn )
 	local t = Def.ActorFrame {
 		LoadActor( THEME:GetPathG("_GraphDisplay","overlay")) .. {
-			InitCommand=function(self) self:y(6) end
+			InitCommand=function(self) self:y(6*WideScreenDiff()) end
 		},
 		Def.GraphDisplay {
 			InitCommand=function(self) self:Load("GraphDisplay") end,
@@ -33,7 +33,7 @@ end
 
 local function PercentScore( pn )
 	local t = LoadFont("Common normal")..{
-		InitCommand=function(self) self:zoom(0.625):shadowlength(1):player(pn) end,
+		InitCommand=function(self) self:zoom(0.625*WideScreenDiff()):shadowlength(1):player(pn) end,
 		BeginCommand=function(self) self:playcommand("Set") end,
 		SetCommand=function(self)
 			local SongOrCourse, StepsOrTrail
@@ -187,18 +187,18 @@ t[#t+1] = StandardDecorationFromFileOptional("SongInformation","SongInformation"
 
 			if SongOrCourse:GetDisplaySubTitle() == "" then
 				c.TextTitle:visible(true)
-				c.TextTitle:y(-16.5/2)
+				c.TextTitle:y(-16.5/2*WideScreenDiff())
 				c.TextSubtitle:visible(false)
 				c.TextSubtitle:y(0)
 				c.TextArtist:visible(true)
-				c.TextArtist:y(18/2)
+				c.TextArtist:y(18/2*WideScreenDiff())
 			else
 				c.TextTitle:visible(true)
-				c.TextTitle:y(-16.5)
+				c.TextTitle:y(-16.5*WideScreenDiff())
 				c.TextSubtitle:visible(true)
 				c.TextSubtitle:y(0)
 				c.TextArtist:visible(true)
-				c.TextArtist:y(18)
+				c.TextArtist:y(18*WideScreenDiff())
 			end
 		elseif GAMESTATE:GetCurrentCourse() then
 			SongOrCourse = GAMESTATE:GetCurrentCourse()
@@ -232,7 +232,7 @@ t[#t+1] = Def.ActorFrame {
 	LoadActor( THEME:GetPathG("ScreenStageInformation","Stage extra1" ) ) .. {
 		Condition=THEME:GetMetric( Var "LoadingScreen","Summary" ) == false,
 		InitCommand=function(self) self:Center() end,
-		OnCommand=function(self) self:diffusealpha(0):zoom(0.85):bounceend(1):zoom(1):diffusealpha(1):sleep(0):glow(Color("White")):decelerate(1):glow(Color("Invisible")):smooth(0.35):zoom(0.25):y(SCREEN_BOTTOM-72) end
+		OnCommand=function(self) self:diffusealpha(0):zoom(0.85*WideScreenDiff()):bounceend(1):zoom(WideScreenDiff()):diffusealpha(1):sleep(0):glow(Color("White")):decelerate(1):glow(Color("Invisible")):smooth(0.35):zoom(0.25*WideScreenDiff()):y(SCREEN_BOTTOM-72*WideScreenDiff()) end
 	}
 }
 t[#t+1] = Def.ActorFrame {
@@ -245,7 +245,7 @@ t[#t+1] = Def.ActorFrame {
 	LoadActor( THEME:GetPathG("ScreenStageInformation","Stage extra2" ) ) .. {
 		Condition=THEME:GetMetric( Var "LoadingScreen","Summary" ) == false,
 		InitCommand=function(self) self:Center() end,
-		OnCommand=function(self) self:diffusealpha(0):zoom(0.85):bounceend(1):zoom(1):diffusealpha(1):sleep(0):glow(Color("White")):decelerate(1):glow(Color("Invisible")):smooth(0.35):zoom(0.25):y(SCREEN_BOTTOM-72) end
+		OnCommand=function(self) self:diffusealpha(0):zoom(0.85*WideScreenDiff()):bounceend(1):zoom(WideScreenDiff()):diffusealpha(1):sleep(0):glow(Color("White")):decelerate(1):glow(Color("Invisible")):smooth(0.35):zoom(0.25*WideScreenDiff()):y(SCREEN_BOTTOM-72*WideScreenDiff()) end
 	}
 }
 return t

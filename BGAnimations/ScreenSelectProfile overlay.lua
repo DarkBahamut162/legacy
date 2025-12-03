@@ -7,11 +7,11 @@ function GetLocalProfiles()
 			Def.BitmapText{
 				Font= "Common Normal",
 				Text=profile:GetDisplayName(),
-				InitCommand=function(self) self:shadowlength(1):y(-10):zoom(1):ztest(true) end
+				InitCommand=function(self) self:shadowlength(1):y(-10*WideScreenDiff()):zoom(1*WideScreenDiff()):ztest(true) end
 			},
 			Def.BitmapText{
 				Font= "Common Normal",
-				InitCommand=function(self) self:shadowlength(1):y(8):zoom(0.5):vertspacing(-8):ztest(true) end,
+				InitCommand=function(self) self:shadowlength(1):y(8*WideScreenDiff()):zoom(0.5*WideScreenDiff()):vertspacing(-8*WideScreenDiff()):ztest(true) end,
 				BeginCommand=function(self)
 					local numSongsPlayed = profile:GetNumTotalSongsPlayed()
 					local s = numSongsPlayed == 1 and "Song" or "Songs"
@@ -61,9 +61,7 @@ function LoadPlayerStuff(Player)
 			},
 			Def.Quad {
 				InitCommand=function(self) self:zoomto(200-10,40) end,
-				OnCommand=function(self)
-					self:diffuse(PlayerColor(Player)):fadeleft(0.25)
-					:faderight(0.25):glow(color("1,1,1,0.25")) end
+				OnCommand=function(self) self:diffuse(PlayerColor(Player)):fadeleft(0.25):faderight(0.25):glow(color("1,1,1,0.25")) end
 			},
 			Def.Quad {
 				InitCommand=function(self) self:zoomto(200-10,40):y(-40/2+20) end,
@@ -80,8 +78,7 @@ function LoadPlayerStuff(Player)
 			OnCommand=function(self) self:y(1):SetFastCatchup(true):SetMask(200,58):SetSecondsPerItem(0.15) end,
 			TransformFunction=function(self, offset, itemIndex, numItems)
 				local focus = scale(math.abs(offset),0,2,1,0)
-				self:visible(false)
-				self:y(math.floor( offset*40 ))
+				self:visible(false):y(math.floor( offset*40 ))
 			end,
 			children = GetLocalProfiles()
 		},
@@ -220,24 +217,24 @@ return Def.ActorFrame {
 	children = {
 		Def.ActorFrame {
 			Name = 'P1Frame',
-			InitCommand=function(self) self:x(SCREEN_CENTER_X-160):CenterY() end,
-			OnCommand=function(self) self:zoom(0):bounceend(0.35):zoom(1) end,
+			InitCommand=function(self) self:x(SCREEN_CENTER_X-160*WideScreenDiff()):CenterY() end,
+			OnCommand=function(self) self:zoom(0):bounceend(0.35):zoom(1*WideScreenDiff()) end,
 			OffCommand=function(self) self:bouncebegin(0.35):zoom(0) end,
 			PlayerJoinedMessageCommand=function(self,param)
 				if param.Player == PLAYER_1 then
-					self:zoom(1.15):bounceend(0.175):zoom(1.0)
+					self:zoom(1.15*WideScreenDiff()):bounceend(0.175):zoom(1.0*WideScreenDiff())
 				end
 			end,
 			children = LoadPlayerStuff(PLAYER_1)
 		},
 		Def.ActorFrame {
 			Name = 'P2Frame',
-			InitCommand=function(self) self:x(SCREEN_CENTER_X+160):CenterY() end,
-			OnCommand=function(self) self:zoom(0):bounceend(0.35):zoom(1) end,
+			InitCommand=function(self) self:x(SCREEN_CENTER_X+160*WideScreenDiff()):CenterY() end,
+			OnCommand=function(self) self:zoom(0):bounceend(0.35):zoom(1*WideScreenDiff()) end,
 			OffCommand=function(self) self:bouncebegin(0.35):zoom(0) end,
 			PlayerJoinedMessageCommand=function(self,param)
 				if param.Player == PLAYER_2 then
-					self:zoom(1.15):bounceend(0.175):zoom(1.0)
+					self:zoom(1.15*WideScreenDiff()):bounceend(0.175):zoom(1.0*WideScreenDiff())
 				end
 			end,
 			children = LoadPlayerStuff(PLAYER_2)

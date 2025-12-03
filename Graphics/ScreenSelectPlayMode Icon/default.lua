@@ -6,8 +6,8 @@ local icon_color = ModeIconColors[gc:GetName()]
 
 return Def.ActorFrame {
 	Def.ActorFrame {
-		GainFocusCommand=function(self) self:stoptweening():bob():effectmagnitude(0,6,0):decelerate(0.05):zoom(1) end,
-		LoseFocusCommand=function(self) self:stoptweening():stopeffect():decelerate(0.1):zoom(0.6) end,
+		GainFocusCommand=function(self) self:stoptweening():bob():effectmagnitude(0,6,0):decelerate(0.05):zoom(1*WideScreenDiff()) end,
+		LoseFocusCommand=function(self) self:stoptweening():stopeffect():decelerate(0.1):zoom(0.6*WideScreenDiff()) end,
 		Def.Sprite{
 			Texture= THEME:GetPathG("ScreenSelectPlayMode", "Icon/_background base"),
 			InitCommand=function(self) self:diffuse(icon_color) end

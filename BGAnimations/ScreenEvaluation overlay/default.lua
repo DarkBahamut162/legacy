@@ -1,8 +1,8 @@
 local vStats = STATSMAN:GetCurStageStats()
 
 local function CreateStats( pnPlayer )
-	local aLabel = LoadFont("Common Normal") .. { InitCommand=function(self) self:zoom(0.5):shadowlength(1):horizalign(left) end }
-	local aText = LoadFont("Common Normal") .. { InitCommand=function(self) self:zoom(0.5):shadowlength(1):horizalign(left) end }
+	local aLabel = LoadFont("Common Normal") .. { InitCommand=function(self) self:zoom(0.5*WideScreenDiff()):shadowlength(1):horizalign(left) end }
+	local aText = LoadFont("Common Normal") .. { InitCommand=function(self) self:zoom(0.5*WideScreenDiff()):shadowlength(1):horizalign(left) end }
 	local pnStageStats = vStats:GetPlayerStageStats( pnPlayer )
 	local tStats = {
 		W1			= pnStageStats:GetTapNoteScores('TapNoteScore_W1'),
@@ -25,24 +25,24 @@ local function CreateStats( pnPlayer )
 
 	local t = Def.ActorFrame {}
 	t[#t+1] = Def.ActorFrame {
-		InitCommand=function(self) self:y(-34) end,
+		InitCommand=function(self) self:y(-34*WideScreenDiff()) end,
 		LoadActor(THEME:GetPathG("ScreenTitleMenu","PreferenceFrame")) .. {
-			InitCommand=function(self) self:zoom(0.875):diffuse(PlayerColor( pnPlayer )) end
+			InitCommand=function(self) self:zoom(0.875*WideScreenDiff()):diffuse(PlayerColor( pnPlayer )) end
 		},
-		aLabel .. { Text=THEME:GetString("ScreenEvaluation","ITG DP:"), InitCommand=function(self) self:x(-64)end },
-		aText .. { Text=string.format("%04i",tValues["ITG"]), InitCommand=function(self) self:x(-8):y(5):vertalign(bottom):zoom(0.6):maxwidth(60) end},
-		aText .. { Text="/", InitCommand=function(self) self:x(28):y(5):vertalign(bottom):zoom(0.5):diffusealpha(0.5) end },
-		aText .. { Text=string.format("%04i",tValues["ITG_MAX"]), InitCommand=function(self) self:x(32):y(5):vertalign(bottom):zoom(0.5):maxwidth(60) end }
+		aLabel .. { Text=THEME:GetString("ScreenEvaluation","ITG DP:"), InitCommand=function(self) self:x(-64*WideScreenDiff()) end },
+		aText .. { Text=string.format("%04i",tValues["ITG"]), InitCommand=function(self) self:x(-8*WideScreenDiff()):y(5*WideScreenDiff()):vertalign(bottom):zoom(0.6*WideScreenDiff()):maxwidth(60) end},
+		aText .. { Text="/", InitCommand=function(self) self:x(28*WideScreenDiff()):y(5*WideScreenDiff()):vertalign(bottom):zoom(0.5*WideScreenDiff()):diffusealpha(0.5) end },
+		aText .. { Text=string.format("%04i",tValues["ITG_MAX"]), InitCommand=function(self) self:x(32*WideScreenDiff()):y(5*WideScreenDiff()):vertalign(bottom):zoom(0.5*WideScreenDiff()):maxwidth(60) end }
 	}
 	t[#t+1] = Def.ActorFrame {
-		InitCommand=function(self) self:y(-6) end,
+		InitCommand=function(self) self:y(-6*WideScreenDiff()) end,
 		LoadActor(THEME:GetPathG("ScreenTitleMenu","PreferenceFrame")) .. {
-			InitCommand=function(self) self:zoom(0.875):diffuse(PlayerColor( pnPlayer )) end
+			InitCommand=function(self) self:zoom(0.875*WideScreenDiff()):diffuse(PlayerColor( pnPlayer )) end
 		},
-		aLabel .. { Text=THEME:GetString("ScreenEvaluation","MIGS DP:"), InitCommand=function(self) self:x(-64) end },
-		aText .. { Text=string.format("%04i",tValues["MIGS"]), InitCommand=function(self) self:x(-8):y(5):vertalign(bottom):zoom(0.6):maxwidth(60) end },
-		aText .. { Text="/", InitCommand=function(self) self:x(28):y(5):vertalign(bottom):zoom(0.5):diffusealpha(0.5) end },
-		aText .. { Text=string.format("%04i",tValues["MIGS_MAX"]), InitCommand=function(self) self:x(32):y(5):vertalign(bottom):zoom(0.5):maxwidth(60) end }
+		aLabel .. { Text=THEME:GetString("ScreenEvaluation","MIGS DP:"), InitCommand=function(self) self:x(-64*WideScreenDiff()) end },
+		aText .. { Text=string.format("%04i",tValues["MIGS"]), InitCommand=function(self) self:x(-8*WideScreenDiff()):y(5*WideScreenDiff()):vertalign(bottom):zoom(0.6*WideScreenDiff()):maxwidth(60) end },
+		aText .. { Text="/", InitCommand=function(self) self:x(28*WideScreenDiff()):y(5*WideScreenDiff()):vertalign(bottom):zoom(0.5*WideScreenDiff()):diffusealpha(0.5) end },
+		aText .. { Text=string.format("%04i",tValues["MIGS_MAX"]), InitCommand=function(self) self:x(32*WideScreenDiff()):y(5*WideScreenDiff()):vertalign(bottom):zoom(0.5*WideScreenDiff()):maxwidth(60) end }
 	}
 	return t
 end
@@ -50,11 +50,11 @@ end
 local t = Def.ActorFrame {}
 GAMESTATE:IsPlayerEnabled(PLAYER_1)
 t[#t+1] = Def.ActorFrame {
-	InitCommand=function(self) self:hide_if(not GAMESTATE:IsPlayerEnabled(PLAYER_1)):x(WideScale(math.floor(SCREEN_CENTER_X*0.3)-8,math.floor(SCREEN_CENTER_X*0.5)-8)):y(SCREEN_CENTER_Y-20) end,
+	InitCommand=function(self) self:hide_if(not GAMESTATE:IsPlayerEnabled(PLAYER_1)):x(WideScaleFixed(math.floor(SCREEN_CENTER_X*0.3/WideScreenDiff()/WideScreenDiff()),math.floor(SCREEN_CENTER_X*0.5/WideScreenDiff()/WideScreenDiff()))-8*WideScreenDiff()):y(SCREEN_CENTER_Y-20*WideScreenDiff()) end,
 	CreateStats( PLAYER_1 )
 }
 t[#t+1] = Def.ActorFrame {
-	InitCommand=function(self) self:hide_if(not GAMESTATE:IsPlayerEnabled(PLAYER_2)):x(WideScale(math.floor(SCREEN_CENTER_X*1.7)+8,math.floor(SCREEN_CENTER_X*1.5)+8)):y(SCREEN_CENTER_Y-20) end,
+	InitCommand=function(self) self:hide_if(not GAMESTATE:IsPlayerEnabled(PLAYER_2)):x(WideScaleFixed(math.floor(SCREEN_CENTER_X*1.7/WideScreenDiff()/WideScreenDiff()),math.floor(SCREEN_CENTER_X*1.5/WideScreenDiff()/WideScreenDiff()))+8*WideScreenDiff()):y(SCREEN_CENTER_Y-20*WideScreenDiff()) end,
 	CreateStats( PLAYER_2 )
 }
 

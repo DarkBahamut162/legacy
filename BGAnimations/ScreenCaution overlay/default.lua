@@ -21,10 +21,10 @@ return Def.ActorFrame {
 	},
 	Def.ActorFrame {
 		InitCommand=function(self) self:Center() end,
-		OnCommand=function(self) self:addy(-96) end,
+		OnCommand=function(self) self:addy(-96*WideScreenDiff()) end,
 		Def.Quad {
-			InitCommand=function(self) self:y(24):zoomto(256,2) end,
-			OnCommand=function(self) self:diffuse(color("#ffd400")):shadowcolor(BoostColor(color("#ffd40077"),0.25)):linear(0.25):zoomtowidth(256):fadeleft(0.25):faderight(0.25) end
+			InitCommand=function(self) self:y(24*WideScreenDiff()):zoomto(256*WideScreenDiff(),2*WideScreenDiff()) end,
+			OnCommand=function(self) self:diffuse(color("#ffd400")):shadowcolor(BoostColor(color("#ffd40077"),0.25)):linear(0.25):zoomtowidth(256*WideScreenDiff()):fadeleft(0.25):faderight(0.25) end
 		},
 		LoadFont("Common Large") .. {
 			Text=Screen.String("Caution"),
@@ -32,8 +32,8 @@ return Def.ActorFrame {
 		},
 		LoadFont("Common Normal") .. {
 			Text=Screen.String("CautionText"),
-			InitCommand=function(self) self:y(128) end,
-			OnCommand=function(self) self:strokecolor(color("0,0,0,0.5")):shadowlength(1):wrapwidthpixels(SCREEN_WIDTH-80) end
+			InitCommand=function(self) self:y(128*WideScreenDiff()):zoom(WideScreenDiff()) end,
+			OnCommand=function(self) self:strokecolor(color("0,0,0,0.5")):shadowlength(1):wrapwidthpixels(SCREEN_WIDTH-80*WideScreenDiff()) end
 		}
 	}
 }

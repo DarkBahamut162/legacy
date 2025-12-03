@@ -69,12 +69,9 @@ function MinSecondsToStep(metric)
 	local OFFSET = GetSMParameter(song,"OFFSET")
 	if #OFFSET > 0 then offset = OFFSET end
 	if firstBeat < 999 then firstSec = firstBeat * 60 / firstBpm end
-	if metric then 
-		firstSec = song:GetFirstSecond() - firstSec + offset
-		return math.max(firstSec, 1)
-	else
-		return song:GetFirstSecond() - firstSec + offset
-	end
+
+	firstSec = song:GetFirstSecond() - firstSec + offset
+	return math.max(firstSec, 1)
 end
 
 function BeginReadyDelay()

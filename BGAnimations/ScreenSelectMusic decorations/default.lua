@@ -25,7 +25,7 @@ t[#t+1] = StandardDecorationFromFileOptional("AlternateHelpDisplay","AlternateHe
 
 local function PercentScore(pn)
 	local t = LoadFont("Common normal")..{
-		InitCommand=function(self) self:zoom(0.625):shadowlength(1) end,
+		InitCommand=function(self) self:zoom(0.625*WideScreenDiff()):shadowlength(1) end,
 		BeginCommand=function(self) self:playcommand("Set") end,
 		SetCommand=function(self)
 			local SongOrCourse = GAMESTATE:IsCourseMode() and GAMESTATE:GetCurrentCourse() or GAMESTATE:GetCurrentSong()
@@ -87,7 +87,7 @@ for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 		PlayerJoinedMessageCommand=function(self, params)
 			if params.Player == pn then
 				self:visible(true)
-				self:zoom(0):bounceend(0.3):zoom(1)
+				self:zoom(0):bounceend(0.3):zoom(WideScreenDiff())
 			end
 		end,
 		PlayerUnjoinedMessageCommand=function(self, params)
@@ -198,11 +198,11 @@ if not GAMESTATE:IsCourseMode() then
 		self:zoom(scale(height,32,480,1,32/480))
 	end
 	t[#t+1] = Def.ActorFrame {
-		OnCommand=function(self) self:draworder(105):x(SCREEN_CENTER_X-256):y(SCREEN_CENTER_Y-84):zoom(0):sleep(0.5):decelerate(0.25):zoom(1):SetUpdateFunction(CDTitleUpdate) end,
+		OnCommand=function(self) self:draworder(105):x(SCREEN_CENTER_X-256*WideScreenDiff()):y(156*WideScreenDiff()):zoom(0):sleep(0.5):decelerate(0.25):zoom(WideScreenDiff()):SetUpdateFunction(CDTitleUpdate) end,
 		OffCommand=function(self) self:bouncebegin(0.15):zoomx(0) end,
 		Def.Sprite {
 			Name="CDTitle",
-			OnCommand=function(self) self:draworder(106):shadowlength(1):zoom(0.75):diffusealpha(1):zoom(0):bounceend(0.35):zoom(0.75):spin():effectperiod(2):effectmagnitude(0,180,0) end,
+			OnCommand=function(self) self:draworder(106):shadowlength(1):zoom(0.75*WideScreenDiff()):diffusealpha(1):zoom(0):bounceend(0.35):zoom(0.75*WideScreenDiff()):spin():effectperiod(2):effectmagnitude(0,180,0) end,
 			BackCullCommand=function(self) self:diffuse(color("0.5,0.5,0.5,1")) end
 		}
 	}
@@ -228,11 +228,11 @@ end
 if GAMESTATE:IsCourseMode() then
 	t[#t+1] = Def.ActorFrame {
 		Def.Quad {
-			InitCommand=function(self) self:x(THEME:GetMetric(Var "LoadingScreen","CourseContentsListX")):y(THEME:GetMetric(Var "LoadingScreen","CourseContentsListY") - 118):zoomto(256+32,192) end,
+			InitCommand=function(self) self:x(THEME:GetMetric(Var "LoadingScreen","CourseContentsListX")):y(THEME:GetMetric(Var "LoadingScreen","CourseContentsListY") - 118*WideScreenDiff()):zoomto(288*WideScreenDiff(),192*WideScreenDiff()) end,
 			OnCommand=function(self) self:diffuse(Color.Green):MaskSource() end
 		},
 		Def.Quad {
-			InitCommand=function(self) self:x(THEME:GetMetric(Var "LoadingScreen","CourseContentsListX")):y(THEME:GetMetric(Var "LoadingScreen","CourseContentsListY") + 186):zoomto(256+32,64) end,
+			InitCommand=function(self) self:x(THEME:GetMetric(Var "LoadingScreen","CourseContentsListX")):y(THEME:GetMetric(Var "LoadingScreen","CourseContentsListY") + 186*WideScreenDiff()):zoomto(288*WideScreenDiff(),64*WideScreenDiff()) end,
 			OnCommand=function(self) self:diffuse(Color.Blue):MaskSource() end
 		}
 	}
